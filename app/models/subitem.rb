@@ -1,0 +1,2 @@
+class Subitem < ApplicationRecord
+end
