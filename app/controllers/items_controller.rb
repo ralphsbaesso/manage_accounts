@@ -24,7 +24,14 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+
+    accountant = Accountant.first
+    unless accountant
+      accountant  = Accountant.create(name: 'ralph')
+    end
+
     @item = Item.new(item_params)
+    @item.accountant = accountant
 
     respond_to do |format|
       if @item.save

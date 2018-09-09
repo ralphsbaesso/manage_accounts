@@ -1,5 +1,5 @@
 class AccountantsController < ApplicationController
-  before_action :set_accountant, only: [:show, :edit, :update, :destroy]
+  before_action :set_accountant, only: [:show, :edit, :update, :destroy, :show]
 
   # GET /accountants
   # GET /accountants.json
@@ -10,6 +10,13 @@ class AccountantsController < ApplicationController
   # GET /accountants/1
   # GET /accountants/1.json
   def show
+    puts params
+    params
+
+  end
+
+  def show_all
+    puts 'ok'
   end
 
   # GET /accountants/new
@@ -69,6 +76,6 @@ class AccountantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def accountant_params
-      params.fetch(:accountant, {})
+      params.require(:accountant).permit(:name, :description, :id)
     end
 end

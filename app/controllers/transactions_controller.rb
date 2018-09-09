@@ -1,6 +1,10 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
+  def list
+    @transactions = Transaction.all
+  end
+
   # GET /transactions
   # GET /transactions.json
   def index

@@ -5,6 +5,7 @@ class CreateSubitems < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :level
       t.string :account_type
+      t.references :item, index: true, foreigen_key: true
 
       t.timestamps
     end

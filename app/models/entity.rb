@@ -1,2 +1,2 @@
-class Entity
+module Entity
 end

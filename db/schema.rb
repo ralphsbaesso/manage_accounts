@@ -16,21 +16,26 @@ ActiveRecord::Schema.define(version: 2018_08_07_005135) do
   enable_extension "plpgsql"
 
   create_table "accountants", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
+    t.bigint "accountant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["accountant_id"], name: "index_accounts_on_accountant_id"
   end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.bigint "accountant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["accountant_id"], name: "index_items_on_accountant_id"
   end
 
   create_table "subitems", force: :cascade do |t|
@@ -38,8 +43,10 @@ ActiveRecord::Schema.define(version: 2018_08_07_005135) do
     t.string "description"
     t.string "level"
     t.string "account_type"
+    t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_subitems_on_item_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -48,8 +55,14 @@ ActiveRecord::Schema.define(version: 2018_08_07_005135) do
     t.string "description"
     t.string "title"
     t.decimal "amount"
+    t.bigint "subitem_id"
+    t.bigint "account_id"
+    t.bigint "tranfer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_transactions_on_account_id"
+    t.index ["subitem_id"], name: "index_transactions_on_subitem_id"
+    t.index ["tranfer_id"], name: "index_transactions_on_tranfer_id"
   end
 
   create_table "transfers", force: :cascade do |t|

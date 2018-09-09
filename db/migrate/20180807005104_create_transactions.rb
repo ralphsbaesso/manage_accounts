@@ -6,6 +6,9 @@ class CreateTransactions < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :title
       t.decimal :amount
+      t.references :subitem, index: true, foreigen_key: true
+      t.references :account, index: true, foreigen_key: true
+      t.references :tranfer, index: true, foreigen_key: true
 
       t.timestamps
     end
