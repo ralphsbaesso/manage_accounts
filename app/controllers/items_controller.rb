@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  layout 'item'
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
@@ -25,21 +26,17 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
 
-    accountant = Accountant.first
-    unless accountant
-      accountant  = Accountant.create(name: 'ralph')
-    end
-
     @item = Item.new(item_params)
-    @item.accountant = accountant
+
+    @transporter = Facade.insert @item
 
     respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+      if @transporter.status != 'RED'
+        format.html { redirect_to @item, action: :show, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.json { render json: @transporter.messages, status: :unprocessable_entity }
       end
     end
   end

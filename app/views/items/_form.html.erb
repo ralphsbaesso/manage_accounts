@@ -11,6 +11,18 @@
     </div>
   <% end %>
 
+  <% if !@transporter.nil? && @transporter.messages.present? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@transporter.messages.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+        <% @transporter.messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>

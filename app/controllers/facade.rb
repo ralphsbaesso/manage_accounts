@@ -1,0 +1,25 @@
+class Facade
+
+   @@map = {'Item': RuleMapItem}
+
+  def self.insert(entity)
+    @@transporter = Transporter.new
+    strategies = @@map[entity.class.name.to_sym].insert
+    @@transporter.entity = entity
+    execute strategies
+    @@transporter
+  end
+
+
+  private
+
+  def self.execute(strategies)
+
+    strategies.each do |strategy|
+
+       unless strategy.process(@@transporter)
+         return
+       end
+    end
+  end
+end
