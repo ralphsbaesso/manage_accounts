@@ -1,3 +1,5 @@
+require 'strategy/check_exist_item'
+
 class RuleMapItem
 
   @@strategies = []

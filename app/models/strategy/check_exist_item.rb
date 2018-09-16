@@ -1,5 +1,3 @@
-require 'check_exist_item'
-
 class CheckExistItem < AStrategy
 
   def self.process(transporter)

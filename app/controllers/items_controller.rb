@@ -11,6 +11,10 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+
+    respond_to do |format|
+      format.js {'ok'}
+    end
   end
 
   # GET /items/new
@@ -37,6 +41,7 @@ class ItemsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @transporter.messages, status: :unprocessable_entity }
+        format.js { render :error }
       end
     end
   end
@@ -73,6 +78,10 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :description)
+      if params[:item].present?
+        params.require(:item).permit(:name, :description)
+      else
+        params.permit(:name, :description)
+      end
     end
 end
