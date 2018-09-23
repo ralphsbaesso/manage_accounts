@@ -70,3 +70,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
 # jquery
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+# bootstrap_sb_admin_2
+gem 'bootstrap_sb_admin_base_v2'
+gem 'rails-assets-sb-admin-v2', source: 'https://rails-assets.org'
