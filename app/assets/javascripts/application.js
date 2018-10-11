@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require bootstrap.growl
 //= require activestorage
 //= require turbolinks
 //= require bootstrap

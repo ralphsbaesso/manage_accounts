@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  layout 'item'
   before_action :set_item, only: [:show, :edit, :destroy]
 
   # GET /items
@@ -11,6 +10,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    redirect_to action: :index
   end
 
   # GET /items/new
@@ -22,8 +22,6 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  # POST /items
-  # POST /items.json
   def create
 
     @item = Item.new(item_params)
@@ -31,13 +29,12 @@ class ItemsController < ApplicationController
     @transporter = Facade.insert @item
 
     respond_to do |format|
-      if @transporter.status != 'RED'
-        format.html { redirect_to @item, action: :show, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
+      if @transporter.status == 'GREEN'
+        flash[:notice] = 'Item criado com sucesso'
+        item_all
+        format.html { render :index }
       else
         format.html { render :new }
-        format.json { render json: @transporter.messages, status: :unprocessable_entity }
-        format.js { render :error }
       end
     end
   end
@@ -51,31 +48,26 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
-        item_all
-        format.html { render :index }
+        flash[:notice] = 'Item atualizado com sucesso!'
+        format.html {
+          redirect_to action: :index
+        }
       else
         format.html { render :edit }
       end
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.json
+
   def destroy
 
     @transporter = Facade.delete @item
-    # respond_to do |format|
-    #   format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
 
     respond_to do |format|
-      if @transporter.status != 'RED'
+      if @transporter.status == 'GREEN'
         format.html { redirect_to @item, action: :show, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
-        item_all
-
         format.html { render :index }
         format.js { render :error }
       end

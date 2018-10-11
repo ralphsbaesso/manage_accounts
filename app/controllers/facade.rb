@@ -33,6 +33,8 @@ class Facade
 
   def self.execute(strategies)
 
+    puts "Quantidade de estrategias #{strategies.count}"
+
     strategies.each do |strategy|
 
        unless strategy.process(@@transporter)

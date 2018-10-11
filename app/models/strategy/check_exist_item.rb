@@ -9,9 +9,9 @@ class CheckExistItem < AStrategy
     if items.present?
       transporter.messages << 'nome já existe na base de dados'
       transporter.status = 'RED'
-      false
+      return false
     else
-      true
+      return true
     end
   end
 
