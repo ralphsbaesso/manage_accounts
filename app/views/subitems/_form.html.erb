@@ -1,37 +1,37 @@
-<%= form_with(model: subitem, local: true) do |form| %>
-  <% if subitem.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(subitem.errors.count, "error") %> prohibited this subitem from being saved:</h2>
 
-      <ul>
-      <% subitem.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<dvi class="row">
+  <div class="col-sm-6">
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <h1>teste</h1>
+
+    <%= form_with(model: subitem, local: true) do |form| %>
+
+      <div style="display: none;">
+        <%= form.text_field :id %>
+      </div>
+      <div class="form-group has-success">
+        <%= form.label :name, class: 'control-label' %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group has-success">
+        <%= form.label :description, class: 'control-label' %>
+        <%= form.text_field :description, class: 'form-control' %>
+      </div>
+
+      <div class="form-group has-success">
+        <%= form.label :level, class: 'control-label' %>
+        <%= form.select 'Prioridade', %w[alto medio baixo], class: 'form-control' %>
+      </div>
+
+      <div class="form-group has-success">
+        <%= form.label :item, class: 'control-label' %>
+        <%= form.select 'item_id', current_accountant.items.collect { |item| [ item.name, item.id ] }, class: 'form-control' %>
+      </div>
+
+      <div class="form-group has-success">
+        <%= form.submit :salvar, class: 'btn btn-outline btn-primary btn-lg' %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :level %>
-    <%= form.text_field :level %>
-  </div>
-
-  <div class="field">
-    <%= form.label :account_type %>
-    <%= form.text_field :account_type %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</dvi>

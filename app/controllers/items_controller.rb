@@ -1,19 +1,14 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :destroy]
 
-  # GET /items
-  # GET /items.json
   def index
     item_all
   end
 
-  # GET /items/1
-  # GET /items/1.json
   def show
     redirect_to action: :index
   end
 
-  # GET /items/new
   def new
     @item = Item.new
   end
@@ -25,6 +20,8 @@ class ItemsController < ApplicationController
   def create
 
     @item = Item.new(item_params)
+
+    @item.accountant = current_accountant
 
     @transporter = Facade.insert @item
 

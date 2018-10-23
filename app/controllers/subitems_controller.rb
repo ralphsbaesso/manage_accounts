@@ -1,8 +1,7 @@
 class SubitemsController < ApplicationController
   before_action :set_subitem, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_accountant!
 
-  # GET /subitems
-  # GET /subitems.json
   def index
     @subitems = Subitem.all
   end
@@ -21,8 +20,6 @@ class SubitemsController < ApplicationController
   def edit
   end
 
-  # POST /subitems
-  # POST /subitems.json
   def create
     @subitem = Subitem.new(subitem_params)
 
@@ -69,6 +66,6 @@ class SubitemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subitem_params
-      params.require(:subitem).permit(:name, :description, :level, :account_type)
+      params.require(:subitem).permit(:name, :description, :level, :account_type, :item_id)
     end
 end

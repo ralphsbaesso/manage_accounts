@@ -1,5 +1,6 @@
 class AccountantsController < ApplicationController
   before_action :set_accountant, only: [:show, :edit, :update, :destroy, :show]
+  before_action :authenticate_accountant!
 
   # GET /accountants
   # GET /accountants.json
@@ -19,17 +20,13 @@ class AccountantsController < ApplicationController
     puts 'ok'
   end
 
-  # GET /accountants/new
   def new
     @accountant = Accountant.new
   end
 
-  # GET /accountants/1/edit
   def edit
   end
 
-  # POST /accountants
-  # POST /accountants.json
   def create
     @accountant = Accountant.new(accountant_params)
 

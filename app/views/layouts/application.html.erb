@@ -35,10 +35,11 @@
     </div>
     <!-- /.navbar-header -->
 
-    <ul class="nav navbar-top-links navbar-right">
-
-    </ul>
-    <!-- /.navbar-top-links -->
+    <% if current_accountant %>
+      <ul class="nav navbar-nav navbar-center">
+        <li>Bem vindo: <%= current_accountant.email %></li>
+      </ul>
+    <% end %>
 
     <div class="navbar-default sidebar" role="navigation">
       <div class="sidebar-nav navbar-collapse">
@@ -47,13 +48,15 @@
             <a href="<%= items_path %>">Item</a>
           </li>
           <li>
-            <a href="<%= items_path %>">Subitem</a>
+            <a href="<%= subitems_path %>">Subitem</a>
+          </li>
+          <li>
+            <%= link_to 'Sair', destroy_accountant_session_path, method: :delete %>
           </li>
         </ul>
       </div>
       <!-- /.sidebar-collapse -->
     </div>
-    <!-- /.navbar-static-side -->
   </nav>
 
   <!-- Page Content -->

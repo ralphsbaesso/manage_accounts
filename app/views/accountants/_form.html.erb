@@ -1,25 +1,25 @@
-<%= form_with(model: accountant, local: true) do |form| %>
-  <% if accountant.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(accountant.errors.count, "error") %> prohibited this accountant from being saved:</h2>
 
-      <ul>
-      <% accountant.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<dvi class="row">
+  <div class="col-sm-6">
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-    <%= form.label :descrição %>
-    <%= form.text_field :description %>
-    <h1>kkkkk</h1>
+    <%= form_with(model: accountant, local: true) do |form| %>
+
+      <div style="display: none;">
+        <%= form.text_field :id %>
+      </div>
+      <div class="form-group has-success">
+        <%= form.label :name, class: 'control-label' %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group has-success">
+        <%= form.label :email, class: 'control-label' %>
+        <%= form.text_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group has-success">
+        <%= form.submit :salvar, class: 'btn btn-outline btn-primary btn-lg' %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</dvi>
