@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @accountant.name
+= link_to 'Edit', edit_accountant_path(@accountant)
+|
+= link_to 'Back', accountants_path

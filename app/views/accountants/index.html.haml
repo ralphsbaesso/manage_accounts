@@ -1,0 +1,15 @@
+%p#notice= notice
+%h1 Accountants
+%table
+  %thead
+    %tr
+      %th{:colspan => "3"}
+  %tbody
+    - @accountants.each do |accountant|
+      %tr
+        %td= accountant.name
+        %td= link_to 'Show', accountant
+        %td= link_to 'Edit', edit_accountant_path(accountant)
+        %td= link_to 'Destroy', accountant, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Accountant', new_accountant_path

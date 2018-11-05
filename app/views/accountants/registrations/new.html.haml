@@ -1,0 +1,22 @@
+%h2 Registrar
+.container-fluid
+  .row
+    .col-lg-6
+      .form-group
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          .form-group
+            = f.text_field :name, autocomplete: "email", placeholder: 'Nome...', class: "form-control"
+          .form-group
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email...', class: "form-control"
+          .form-group
+            = f.password_field :password, autofocus: true, autocomplete: "email", placeholder: 'Senha...', class: "form-control"
+          .form-group
+            = f.password_field :password_confirmation, autofocus: true, autocomplete: "email", placeholder: 'Confirme a Senha...', class: "form-control"
+          .form-group
+            .checkbox
+              %label
+                %input{:type => "checkbox"}/
+                Please accept the terms and conditions to proceed with your request.
+          .form-group
+            = f.submit 'Sign up', class: 'btn btn-success'
+            = render "accountants/shared/links"

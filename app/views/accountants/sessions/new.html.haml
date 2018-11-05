@@ -1,0 +1,13 @@
+%h2 Entrar
+.container-fluid
+  .row
+    .col-lg-6
+      .form-group
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email...', class: "form-control"
+          .form-group
+            = f.password_field :password, autofocus: true, autocomplete: "email", placeholder: 'Senha...', class: "form-control"
+          .form-group
+            = f.submit 'Entrar', class: 'btn btn-success'
+            = render "accountants/shared/links"

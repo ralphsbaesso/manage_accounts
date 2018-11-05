@@ -1,0 +1,36 @@
+
+.row
+  .col-lg-12
+    %h1.page-header Subitem
+.panel.panel-default
+  .panel-heading
+    %br/
+    = link_to 'Criar subitem', new_item_path, class: 'btn btn-info'
+  .panel-body
+    .table-responsive
+      %table#myTable.table.table-striped.table-bordered.table-hover.dataTable.no-footer.dtr-inline{"aria-describedby" => "dataTables-example_info", :role => "grid", :style => "width: 100%;", :width => "100%"}
+        %thead
+          %tr{:role => "row"}
+            %th.sorting_asc{"aria-controls" => "dataTables-example", "aria-label" => "Rendering engine: activate to sort column descending", "aria-sort" => "ascending", :colspan => "1", :rowspan => "1", :style => "width: 170px;", :tabindex => "0"}
+              Nome
+            %th.sorting{"aria-controls" => "dataTables-example", "aria-label" => "Browser: activate to sort column ascending", :colspan => "1", :rowspan => "1", :style => "width: 207px;", :tabindex => "0"}
+              Descrição
+            %th.sorting{"aria-controls" => "dataTables-example", "aria-label" => "Platform(s): activate to sort column ascending", :colspan => "1", :rowspan => "1", :style => "width: 189px;", :tabindex => "0"}
+              Nível
+            %th.sorting{"aria-controls" => "dataTables-example", "aria-label" => "Platform(s): activate to sort column ascending", :colspan => "1", :rowspan => "1", :style => "width: 189px;", :tabindex => "0"}
+              Item
+            %th.sorting{"aria-controls" => "dataTables-example", "aria-label" => "Platform(s): activate to sort column ascending", :colspan => "1", :rowspan => "1", :style => "width: 189px;", :tabindex => "0"}
+              Ações
+        %tbody
+          - @subitems.each do |subitem|
+            %tr.gradeA.odd{:role => "row"}
+              %td= subitem.name
+              %td
+                = subitem.description
+              %td
+                = subitem.level
+              %td
+                = subitem.item.name
+              %td
+                = link_to 'Editar', edit_item_path(subitem)
+                = link_to 'Apagar', subitem, method: :delete, data: { confirm: 'Are you sure?' }

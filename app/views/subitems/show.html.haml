@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @subitem.name
+%p
+  %strong Description:
+  = @subitem.description
+%p
+  %strong Level:
+  = @subitem.level
+%p
+  %strong Account type:
+  = @subitem.account_type
+= link_to 'Edit', edit_subitem_path(@subitem)
+|
+= link_to 'Back', subitems_path

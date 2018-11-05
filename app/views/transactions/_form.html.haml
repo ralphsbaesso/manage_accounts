@@ -1,0 +1,26 @@
+= form_with(model: transaction, local: true) do |form|
+  - if transaction.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(transaction.errors.count, "error")
+        prohibited this transaction from being saved:
+      %ul
+        - transaction.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :date_transaction
+    = form.text_field :date_transaction
+  .field
+    = form.label :value
+    = form.text_field :value
+  .field
+    = form.label :description
+    = form.text_field :description
+  .field
+    = form.label :title
+    = form.text_field :title
+  .field
+    = form.label :amount
+    = form.text_field :amount
+  .actions
+    = form.submit 'Salvar'

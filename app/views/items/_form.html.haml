@@ -1,0 +1,13 @@
+%dvi.row
+  .col-sm-6
+    = form_with(model: item, local: true) do |form|
+      %div{:style => "display: none;"}
+        = form.text_field :id
+      .form-group.has-success
+        = form.label :name, class: 'control-label'
+        = form.text_field :name, class: 'form-control'
+      .form-group.has-success
+        = form.label :description, class: 'control-label'
+        = form.text_field :description, class: 'form-control'
+      .form-group.has-success
+        = form.submit :salvar, class: 'btn btn-outline btn-primary btn-lg'

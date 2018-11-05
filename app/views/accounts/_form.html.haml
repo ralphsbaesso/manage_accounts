@@ -1,0 +1,8 @@
+%dvi.row
+  .col-sm-6
+    = form_with(model: account, local: true) do |form|
+      .form-group.has-success
+        = form.label :name, class: 'control-label'
+        = form.text_field :name, class: 'form-control'
+      .form-group.has-success
+        = form.submit :salvar, class: 'btn btn-outline btn-primary btn-lg'

@@ -1,6 +1,5 @@
 class SubitemsController < ApplicationController
   before_action :set_subitem, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_accountant!
 
   def index
     @subitems = Subitem.all

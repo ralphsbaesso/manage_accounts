@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Date transaction:
+  = @transaction.date_transaction
+%p
+  %strong Value:
+  = @transaction.value
+%p
+  %strong Description:
+  = @transaction.description
+%p
+  %strong Title:
+  = @transaction.title
+%p
+  %strong Amount:
+  = @transaction.amount
+= link_to 'Edit', edit_transaction_path(@transaction)
+|
+= link_to 'Back', transactions_path

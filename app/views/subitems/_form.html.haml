@@ -1,0 +1,20 @@
+%dvi.row
+  .col-sm-6
+    %h1 teste
+    = form_with(model: subitem, local: true) do |form|
+      %div{:style => "display: none;"}
+        = form.text_field :id
+      .form-group.has-success
+        = form.label :name, class: 'control-label'
+        = form.text_field :name, class: 'form-control'
+      .form-group.has-success
+        = form.label :description, class: 'control-label'
+        = form.text_field :description, class: 'form-control'
+      .form-group.has-success
+        = form.label :level, class: 'control-label'
+        = form.select 'Prioridade', %w[alto medio baixo], class: 'form-control'
+      .form-group.has-success
+        = form.label :item, class: 'control-label'
+        = form.select 'item_id', current_accountant.items.collect { |item| [ item.name, item.id ] }, class: 'form-control'
+      .form-group.has-success
+        = form.submit :salvar, class: 'btn btn-outline btn-primary btn-lg'
