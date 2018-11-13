@@ -4,7 +4,7 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
+    account_all
   end
 
   # GET /accounts/1
@@ -21,18 +21,20 @@ class AccountsController < ApplicationController
   def edit
   end
 
-  # POST /accounts
-  # POST /accounts.json
   def create
     @account = Account.new(account_params)
 
+    @account.accountant = current_accountant
+
+    @transporter = Facade.insert @account
+
     respond_to do |format|
-      if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
-        format.json { render :show, status: :created, location: @account }
+      if @transporter.status == 'GREEN'
+        account_all
+        flash[:notice] = 'Conta criado com sucesso'
+        format.html { render :index }
       else
         format.html { render :new }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,10 +42,12 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1
   # PATCH/PUT /accounts/1.json
   def update
+    hash = account_params
+    hash[:accountant_id] = current_accountant.id
     respond_to do |format|
-      if @account.update(account_params)
-        format.html { redirect_to @account, notice: 'Account was successfully updated.' }
-        format.json { render :show, status: :ok, location: @account }
+      flash[:notice] = 'conta atualizada com sucesso'
+      if @account.update(hash)
+        format.html { render :index }
       else
         format.html { render :edit }
         format.json { render json: @account.errors, status: :unprocessable_entity }
@@ -70,5 +74,9 @@ class AccountsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
       params.require(:account).permit(:name)
+    end
+
+    def account_all
+      @accounts = Account.where(accountant_id: current_accountant.id)
     end
 end

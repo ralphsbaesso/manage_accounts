@@ -1,14 +1,14 @@
-class SaveItem < AStrategy
+class SaveEntity < AStrategy
 
   def self.process(transporter)
 
 
     if transporter.status == 'GREEN'
-      item = transporter.entity
-      item.save
+      entity = transporter.entity
+      entity.save
 
-      if item.errors.present?
-        item.errors.full_messages.each do |erro|
+      if entity.errors.present?
+        entity.errors.full_messages.each do |erro|
           transporter.messages << erro
         end
         transporter.status = 'RED'

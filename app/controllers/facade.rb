@@ -1,6 +1,9 @@
 class Facade
 
-   @@map = {'Item': RuleMapItem}
+   @@map = {
+      'Item': RuleMapItem,
+      'Account': RuleMapAccount
+   }
 
   def self.insert(entity)
     @@transporter = Transporter.new
@@ -12,21 +15,21 @@ class Facade
 
 
 
-   def self.update(entity)
-     @@transporter = Transporter.new
-     strategies = @@map[entity.class.name.to_sym].update
-     @@transporter.entity = entity
-     execute strategies
-     @@transporter
-   end
+  def self.update(entity)
+    @@transporter = Transporter.new
+    strategies = @@map[entity.class.name.to_sym].update
+    @@transporter.entity = entity
+    execute strategies
+    @@transporter
+  end
 
-   def self.delete(entity)
-     @@transporter = Transporter.new
-     strategies = @@map[entity.class.name.to_sym].delete
-     @@transporter.entity = entity
-     execute strategies
-     @@transporter
-   end
+  def self.delete(entity)
+    @@transporter = Transporter.new
+    strategies = @@map[entity.class.name.to_sym].delete
+    @@transporter.entity = entity
+    execute strategies
+    @@transporter
+  end
 
 
   private

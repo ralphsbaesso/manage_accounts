@@ -1,6 +1,6 @@
 class Transporter
 
-  attr_accessor :messages, :status, :entity, :map
+  attr_accessor :messages, :status, :entity, :map, :current_accountant
 
   def initialize
     @messages = []
