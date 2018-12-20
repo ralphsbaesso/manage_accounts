@@ -11,11 +11,21 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap
- *= require bootstrap_sb_admin_base_v2
+ *= require css/bootstrap.min
+ *= require css/bootstrap-theme.css
+ *= require css/elegant-icons-style.css
+ *= require css/font-awesome.min.css
+ *= require assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css
+ *= require assets/fullcalendar/fullcalendar/fullcalendar.css
+ *= require assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css
+ *= require css/owl.carousel.css
+ *= require css/jquery-jvectormap-1.2.2.css
+ *= require css/fullcalendar.css
+ *= require css/widgets.css
+ *= require css/style.css
+ *= require css/style-responsive.css
+ *= require css/xcharts.min.css
+ *= require css/jquery-ui-1.10.4.min.css
  *= require_tree .
  *= require_self
  */
-
-body {
-    margin: 0;
-}

@@ -1,29 +1,35 @@
 .row
   .col-lg-12
-    %h1.page-header Item
-.panel.panel-default
-  .panel-heading
-    %h3 Itens do account
-    %br/
-    = link_to 'Criar item', new_item_path, class: 'btn btn-info'
-  / /.panel-heading
-  .panel-body
-    .table-responsive
-      %table#myTable.table.table-striped.table-bordered.table-hover.dataTable.no-footer.dtr-inline{"aria-describedby" => "dataTables-example_info", :role => "grid", :style => "width: 100%;", :width => "100%"}
-        %thead
-          %tr{:role => "row"}
-            %th.sorting_asc{"aria-controls" => "dataTables-example", "aria-label" => "Rendering engine: activate to sort column descending", "aria-sort" => "ascending", :colspan => "1", :rowspan => "1", :style => "width: 170px;", :tabindex => "0"}
-              Nome
-            %th.sorting{"aria-controls" => "dataTables-example", "aria-label" => "Browser: activate to sort column ascending", :colspan => "1", :rowspan => "1", :style => "width: 207px;", :tabindex => "0"}
-              Descrição
-            %th.sorting{"aria-controls" => "dataTables-example", "aria-label" => "Platform(s): activate to sort column ascending", :colspan => "1", :rowspan => "1", :style => "width: 189px;", :tabindex => "0"}
-              Ações
-        %tbody
-          - @items.each do |item|
-            %tr.gradeA.odd{:role => "row"}
-              %td= item.name
-              %td
-                = item.description
-              %td
-                = link_to 'Editar', edit_item_path(item)
-                = link_to 'Apagar', item, method: :delete, data: { confirm: 'Are you sure?' }
+    %h3.page-header
+      %i.fa.fa-laptop
+      Item
+    %ol.breadcrumb{ style: 'background-color: gainsboro;' }
+      %li
+        %i.fa.fa-home
+        %a{href: "index.html"} Home
+      %li
+        %i.fa.fa-laptop>
+        Item
+      %li
+        = link_to 'Criar item', new_item_path, class: 'btn btn-info'
+
+.row
+  .col-lg-12
+    %table#myTable.table.table-bordered
+      %thead
+        %tr{:role => "row"}
+          %th.sorting_asc{"aria-controls" => "dataTables-example", "aria-label" => "Rendering engine: activate to sort column descending", "aria-sort" => "ascending", :colspan => "1", :rowspan => "1", :style => "width: 170px;", :tabindex => "0"}
+            Nome
+          %th.sorting{"aria-controls" => "dataTables-example", "aria-label" => "Browser: activate to sort column ascending", :colspan => "1", :rowspan => "1", :style => "width: 207px;", :tabindex => "0"}
+            Descrição
+          %th.sorting{"aria-controls" => "dataTables-example", "aria-label" => "Platform(s): activate to sort column ascending", :colspan => "1", :rowspan => "1", :style => "width: 189px;", :tabindex => "0"}
+            Ações
+      %tbody
+        - @items.each do |item|
+          %tr.gradeA.odd{:role => "row"}
+            %td= item.name
+            %td
+              = item.description
+            %td
+              = link_to 'Editar', edit_item_path(item)
+              = link_to 'Apagar', item, method: :delete, data: { confirm: 'Are you sure?' }
