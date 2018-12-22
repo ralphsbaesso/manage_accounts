@@ -39,7 +39,7 @@
       .form-group
         = form.label 'Selecione a conta destino', class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.select(:destiny_account_id, options_for_select(@destination_accounts), {}, { class: 'form-control' })
+          = select_tag(:destiny_account_id, options_for_select(@destination_accounts), { class: 'form-control' })
       .form-group
         .col-lg-offset-2.col-lg-10
           = form.submit 'Salvar', class: 'btn btn-primary'

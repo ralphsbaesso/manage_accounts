@@ -1,9 +1,11 @@
 class Facade
 
    @@map = {
-      'Item': RuleMapItem,
-      'Account': RuleMapAccount
+      'Transfer': RuleMap::RuleMapTransfer
    }
+   #
+   # 'Item': RuleMap::RuleMapItem,
+   # 'Account': RuleMap::RuleMapAccount,
 
   def self.insert(entity)
     @transporter = Transporter.new

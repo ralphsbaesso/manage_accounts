@@ -78,12 +78,12 @@ ActiveRecord::Schema.define(version: 2018_12_22_164952) do
   create_table "transfers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "origin_transfer_id_id"
-    t.bigint "destiny_transfer_id_id"
-    t.index ["destiny_transfer_id_id"], name: "index_transfers_on_destiny_transfer_id_id"
-    t.index ["origin_transfer_id_id"], name: "index_transfers_on_origin_transfer_id_id"
+    t.bigint "origin_transaction_id"
+    t.bigint "destiny_transaction_id"
+    t.index ["destiny_transaction_id"], name: "index_transfers_on_destiny_transaction_id"
+    t.index ["origin_transaction_id"], name: "index_transfers_on_origin_transaction_id"
   end
 
-  add_foreign_key "transfers", "transactions", column: "destiny_transfer_id_id"
-  add_foreign_key "transfers", "transactions", column: "origin_transfer_id_id"
+  add_foreign_key "transfers", "transactions", column: "destiny_transaction_id"
+  add_foreign_key "transfers", "transactions", column: "origin_transaction_id"
 end

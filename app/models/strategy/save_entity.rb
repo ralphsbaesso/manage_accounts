@@ -1,22 +1,24 @@
-class SaveEntity < AStrategy
+module Strategy
+  class SaveEntity < AStrategy
 
-  def self.process(transporter)
+    def self.process(transporter)
 
 
-    if transporter.status == 'GREEN'
-      entity = transporter.entity
-      entity.save
+      if transporter.status == 'GREEN'
+        entity = transporter.entity
+        entity.save
 
-      if entity.errors.present?
-        entity.errors.full_messages.each do |erro|
-          transporter.messages << erro
+        if entity.errors.present?
+          entity.errors.full_messages.each do |erro|
+            transporter.messages << erro
+          end
+          transporter.status = 'RED'
+          return false
         end
-        transporter.status = 'RED'
-        return false
       end
+
+      false
     end
 
-    false
   end
-
 end

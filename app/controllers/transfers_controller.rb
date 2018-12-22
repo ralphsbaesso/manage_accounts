@@ -13,17 +13,25 @@ class TransfersController < ApplicationController
   end
 
   def create
-    @transaction = Transaction.new(transaction_params)
+    @origin_transaction = Transaction.new(transaction_params)
     transfer = Transfer.new
+    transfer.origin_transaction = @origin_transaction
+    if params[:destiny_account_id]
+      @destiny_transaction = Transaction.new(account_id: params[:destiny_account_id])
+      transfer.destiny_transaction = @destiny_transaction
+    end
 
-    p params
+    r = Facade.insert(transfer)
+
+    p r
+    redirect_to action: :new
   end
 
   private
 
 
   def transaction_params
-    params.require(:transaction).permit(:date_transaction, :value, :description, :title, :amount, :subitem_id)
+    params.require(:transaction).permit(:date_transaction, :value, :description, :title, :amount, :subitem_id, :account_id)
   end
 
 end
