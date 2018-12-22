@@ -2,92 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be0beb21-8c26-4e0e-a359-94d71f567390" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/_form.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/confirmations/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/edit.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/index.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/mailer/confirmation_instructions.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/mailer/email_changed.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/mailer/password_change.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/mailer/reset_password_instructions.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/passwords/edit.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/passwords/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/registrations/edit.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/registrations/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/sessions/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/shared/_links.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/show.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/show_all.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accountants/unlocks/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accounts/_form.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accounts/edit.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accounts/index.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/accounts/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/items/_form.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/items/_modal.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/items/edit.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/items/index.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/items/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/mailer.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/mailer.text.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/shared/_modal-error.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/subitems/_form.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/subitems/edit.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/subitems/index.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/subitems/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/subitems/show.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/transactions/_form.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/transactions/edit.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/transactions/index.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/transactions/list.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/transactions/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/transactions/show.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/transfers/_form.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/transfers/edit.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/transfers/index.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/transfers/new.html.haml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/transfers/show.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/layouts/_sidebar_menu.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/manage_accounts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/manage_accounts.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/subitems_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/subitems_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/_account.json.jbuilder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/_form.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/edit.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/index.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/index.json.jbuilder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/new.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/show.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/show.json.jbuilder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/_form.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/_item.json.jbuilder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/_modal.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/_modal_error.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/create.js.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/edit.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/error.js.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/index.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/index.json.jbuilder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/new.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/show.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/show.js.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/show.json.jbuilder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/mailer.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/mailer.text.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/shared/_modal-error.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/subitems/_form.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/subitems/_subitem.json.jbuilder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/subitems/edit.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/subitems/index.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/subitems/index.json.jbuilder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/subitems/new.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/subitems/show.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/subitems/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/accounts/_form.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/accounts/_form.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/accounts/new.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/accounts/new.html.haml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -102,7 +26,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/manage_accounts@Development__manage_accounts.rcov" NAME="Development: manage_accounts Coverage Results" MODIFIED="1541461177588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="manage_accounts" />
+    <SUITE FILE_PATH="coverage/manage_accounts@Development__manage_accounts.rcov" NAME="Development: manage_accounts Coverage Results" MODIFIED="1545483459376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="manage_accounts" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -123,157 +47,18 @@
     </expand>
     <select />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="1765075002">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="23" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.2" value="2" />
-          <entry key="project.open.time.23" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.31" value="1" />
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.40" value="1" />
-          <entry key="project.open.time.47" value="1" />
-          <entry key="project.open.time.49" value="2" />
-          <entry key="project.open.time.50" value="1" />
-          <entry key="project.open.time.58" value="1" />
-          <entry key="project.open.time.61" value="1" />
-          <entry key="project.open.time.62" value="2" />
-          <entry key="project.open.time.63" value="2" />
-          <entry key="project.open.time.65" value="1" />
-          <entry key="project.open.time.71" value="2" />
-          <entry key="project.open.time.78" value="1" />
-          <entry key="project.open.time.79" value="1" />
-          <entry key="project.open.time.82" value="1" />
-          <entry key="project.open.time.83" value="1" />
-          <entry key="project.open.time.84" value="1" />
-          <entry key="project.opened" value="26" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="Gemfile" value="12" />
-          <entry key="Guardfile" value="2" />
-          <entry key="accountants" value="2" />
-          <entry key="coffee" value="2" />
-          <entry key="css" value="10" />
-          <entry key="db:check_protected_environments" value="1" />
-          <entry key="erb" value="124" />
-          <entry key="gitignore" value="2" />
-          <entry key="haml" value="18" />
-          <entry key="html" value="14" />
-          <entry key="items" value="1" />
-          <entry key="jbuilder" value="9" />
-          <entry key="js" value="7" />
-          <entry key="lock" value="1" />
-          <entry key="rb" value="207" />
-          <entry key="ru" value="1" />
-          <entry key="scss" value="3" />
-          <entry key="sql" value="2" />
-          <entry key="xml" value="1" />
-          <entry key="yml" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CSS" value="10" />
-          <entry key="CoffeeScript" value="2" />
-          <entry key="Database Element" value="3" />
-          <entry key="HTML" value="14" />
-          <entry key="Haml" value="18" />
-          <entry key="JavaScript" value="7" />
-          <entry key="PLAIN_TEXT" value="4" />
-          <entry key="RHTML" value="124" />
-          <entry key="Ruby" value="231" />
-          <entry key="SCSS" value="3" />
-          <entry key="Scratch" value="2" />
-          <entry key="XML" value="1" />
-          <entry key="YAML" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="Gemfile" value="207" />
-          <entry key="Ruby Console" value="328" />
-          <entry key="css" value="31" />
-          <entry key="erb" value="2949" />
-          <entry key="gitignore" value="39" />
-          <entry key="haml" value="49" />
-          <entry key="html" value="1" />
-          <entry key="js" value="67" />
-          <entry key="rb" value="5284" />
-          <entry key="txt" value="200" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="CSS" value="31" />
-          <entry key="HTML" value="1" />
-          <entry key="Haml" value="49" />
-          <entry key="JavaScript" value="67" />
-          <entry key="PLAIN_TEXT" value="239" />
-          <entry key="RHTML" value="2949" />
-          <entry key="Ruby" value="5819" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.vcs.git.usages">
-        <counts>
-          <entry key="git.branch.rename" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.js.language.service.starts" />
-      <usages-collector id="statistics.actions.runAnything" />
-    </session>
-  </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5798372">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/accounts/_form.html.haml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" selection-start-line="8" selection-end-line="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/config/routes.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="134">
-                  <caret line="45" column="14" lean-forward="true" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/views/items/_form.html.haml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/manage_accounts.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -284,17 +69,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>destroy</find>
-      <find>inde</find>
-      <find>sb_a</find>
-      <find>rails-ass</find>
-      <find>navbar-default</find>
-      <find>nav</find>
-      <find>search</find>
-      <find>dashboard</find>
-      <find>edit</find>
-      <find>id=&quot;noti</find>
-      <find>notice</find>
       <find>dele</find>
       <find>modelos</find>
       <find>charts</find>
@@ -314,6 +88,17 @@
       <find>6 characters minimum</find>
       <find>log in</find>
       <find>haml</find>
+      <find>dash</find>
+      <find>img</find>
+      <find>avatar1_small</find>
+      <find>horizontal fo</find>
+      <find>forms</find>
+      <find>horizontal forms</find>
+      <find>serve_static_files</find>
+      <find>public_file_server</find>
+      <find>ugli</find>
+      <find>.assets.paths</find>
+      <find>vendor</find>
     </findStrings>
     <replaceStrings>
       <replace>th</replace>
@@ -328,9 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/transactions_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/transactions/list.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/transactions/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/models/strategy/a_strategy.rb" />
         <option value="$PROJECT_DIR$/app/models/strategy/rule_map_item.rb" />
         <option value="$PROJECT_DIR$/app/models/transporter.rb" />
@@ -354,12 +136,8 @@
         <option value="$PROJECT_DIR$/app/controllers/facade.rb" />
         <option value="$PROJECT_DIR$/app/models/strategy/save_item.rb" />
         <option value="$PROJECT_DIR$/app/views/items/index.html.erb" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20181016005514_add_devise_to_accountants.rb" />
-        <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/views/accountants/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/accountants_controller.rb" />
@@ -375,18 +153,19 @@
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/subitems_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/subitems/index.html.erb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/views/subitems/index.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/accounts/_form.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/_sidebar_menu.html.haml" />
+        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/accounts/new.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/accounts/_form.html.haml" />
+        <option value="$PROJECT_DIR$/config/environments/development.rb" />
+        <option value="$PROJECT_DIR$/config/initializers/assets.rb" />
+        <option value="$PROJECT_DIR$/config/application.rb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -394,13 +173,6 @@
     <option name="FILTER_INFO" value="true" />
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/package.json" />
-      <path value="$PROJECT_DIR$/public/admin_2/package.json" />
-      <path value="$PROJECT_DIR$/public/layout/package.json" />
-    </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1366" />
@@ -417,45 +189,6 @@
             <path>
               <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
               <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="accounts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="items" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -501,8 +234,8 @@
   </component>
   <component name="RunManager" selected="Rails.Development: manage_accounts">
     <configuration name="Development: manage_accounts" type="RailsRunConfigurationType" factoryName="Rails">
-      <predefined_log_file id="RUBY_RAILS_SERVER" enabled="true" />
       <module name="manage_accounts" />
+      <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
@@ -525,8 +258,8 @@
       <method v="2" />
     </configuration>
     <configuration name="Production: manage_accounts" type="RailsRunConfigurationType" factoryName="Rails">
-      <predefined_log_file id="RUBY_RAILS_SERVER" enabled="true" />
       <module name="manage_accounts" />
+      <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
@@ -596,10 +329,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Rake.test: manage_accounts" />
-      <item itemvalue="Rake.spec: manage_accounts" />
       <item itemvalue="Rails.Production: manage_accounts" />
       <item itemvalue="Rails.Development: manage_accounts" />
+      <item itemvalue="Rake.test: manage_accounts" />
+      <item itemvalue="Rake.spec: manage_accounts" />
     </list>
   </component>
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" />
@@ -639,6 +372,7 @@
       <workItem from="1541162222357" duration="74000" />
       <workItem from="1541459086621" duration="1413000" />
       <workItem from="1541460891991" duration="1397000" />
+      <workItem from="1545477267367" duration="6391000" />
     </task>
     <task id="LOCAL-00001" summary="regenerando projeto">
       <created>1533603885798</created>
@@ -700,7 +434,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129463000" />
+    <option name="totallyTimeSpent" value="135854000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -714,7 +448,7 @@
   <component name="ToolWindowManager">
     <frame x="-3" y="0" width="1926" height="1052" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14941302" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15101388" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32937366" />
@@ -726,11 +460,11 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.51943845" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.51939654" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010672" side_tool="true" weight="0.41468683" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32900432" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49905303" weight="0.28401726" />
-      <window_info anchor="bottom" id="Debug" order="13" sideWeight="0.49893278" weight="0.38660908" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49905303" weight="0.28340518" />
+      <window_info anchor="bottom" id="Debug" order="13" sideWeight="0.49893278" weight="0.43534482" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -775,9 +509,20 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="regenerando projeto" />
@@ -803,11 +548,6 @@
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/views/accountants/edit.html.erb</url>
-          <line>2</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/controllers/accountants_controller.rb</url>
           <line>75</line>
           <option name="timeStamp" value="15" />
@@ -817,13 +557,13 @@
           <line>10</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/config/environments/production.rb</url>
+          <line>22</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="RailsRunConfigurationType">
-        <watch expression="current_accountant.items.collect { |item| [ item.name, item.id ] }" language="RHTML" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -880,87 +620,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="49" column="14" lean-forward="true" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://392ea819-14d7-4f3b-8d2b-06c2226502c1/database/manage_accounts_development/schema/public/table/items" />
-    <entry file="file://$PROJECT_DIR$/app/views/items/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/subitem.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/accountants/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/accountants/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/accountants/show_all.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/accountants/passwords/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.3.1/gems/devise-4.5.0/app/controllers/devise/sessions_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/accountants/omniauth_callbacks_controller.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/accountants/confirmations_controller.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/accountants/unlocks_controller.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/subitems/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/accountants/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/accountants/unlocks/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/accountants/confirmations/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/accountants/passwords/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/accountants/registrations/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="606">
@@ -1042,39 +701,14 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/392ea819-14d7-4f3b-8d2b-06c2226502c1/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/items/_item.json.jbuilder">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/items/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/items/_modal.html.erb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/subitems/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/items/_item.json.jbuilder" />
+    <entry file="file://$PROJECT_DIR$/app/views/items/index.html.erb" />
+    <entry file="file://$PROJECT_DIR$/app/views/items/_modal.html.erb" />
+    <entry file="file://$PROJECT_DIR$/app/views/subitems/index.html.erb" />
     <entry file="file://$PROJECT_DIR$/app/views/subitems/edit.html.haml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/items/_modal_error.html.haml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/items/_modal_error.html.haml" />
     <entry file="file://$PROJECT_DIR$/app/views/items/edit.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1082,16 +716,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/items/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/items/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/items/show.html.haml" />
     <entry file="file://$PROJECT_DIR$/app/views/items/new.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1099,9 +724,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_modal-error.html.erb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_modal-error.html.erb" />
     <entry file="file://$PROJECT_DIR$/app/views/shared/_modal-error.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1123,9 +746,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/accounts/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/accounts/show.html.haml" />
     <entry file="file://$PROJECT_DIR$/app/views/subitems/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -1136,14 +757,7 @@
     <entry file="file://$PROJECT_DIR$/app/views/items/_form.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/accounts/_form.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -1154,10 +768,140 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/accountants/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/layout/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/NiceAdmin/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/items/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="4" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_sidebar_menu.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/NiceAdmin/form_component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="19" selection-start-line="19" selection-end-line="30" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/assets/NiceAdmin/css/bootstrap-colorpicker.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/accounts/new.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/accounts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/accounts/_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/assets/NiceAdmin/css/daterangepicker.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="264" column="18" selection-start-line="264" selection-start-column="18" selection-end-line="264" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/assets/NiceAdmin/css/bootstrap-datepicker.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="22" column="78" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="78" lean-forward="true" selection-start-line="4" selection-start-column="78" selection-end-line="4" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/application.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/assets.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="45" column="14" lean-forward="true" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/manage_accounts.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
         </state>
       </provider>
     </entry>

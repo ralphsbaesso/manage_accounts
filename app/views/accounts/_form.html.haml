@@ -1,8 +1,13 @@
-%dvi.row
-  .col-sm-6
-    = form_with(model: account, local: true) do |form|
-      .form-group.has-success
-        = form.label :name, class: 'control-label'
-        = form.text_field :name, class: 'form-control'
-      .form-group.has-success
-        = form.submit :salvar, class: 'btn btn-outline btn-primary btn-lg'
+
+%section.panel
+  %header.panel-heading
+    Horizontal Forms
+  .panel-body
+    = form_with(model: account, local: true, class: 'form-horizontal') do |form|
+      .form-group
+        = form.label 'Nome', class: 'col-lg-2 control-label', for: "inputEmail1"
+        .col-lg-10
+          = form.text_field :name, class: 'form-control', placeholder: "Nome da conta"
+      .form-group
+        .col-lg-offset-2.col-lg-10
+          = form.submit 'Salvar', class: 'btn btn-primary'

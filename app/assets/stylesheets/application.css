@@ -26,6 +26,7 @@
  *= require css/style-responsive.css
  *= require css/xcharts.min.css
  *= require css/jquery-ui-1.10.4.min.css
+ *= require css/daterangepicker.css
  *= require_tree .
  *= require_self
  */
