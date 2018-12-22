@@ -6,29 +6,30 @@
       %li.active
         %a{href: "/"}
           %i.icon_house_alt
-          %span Dashboard
+          %span Início
       %li.sub-menu
         %a{href: "javascript:;"}
           %i.icon_document_alt
-          %span Forms
+          %span Menu
           %span.menu-arrow.arrow_carrot-right
         %ul.sub
           %li
-            %a{href: "form_component.html"} Form Elements
+            = link_to accounts_path do
+              Contas
           %li
-            %a{href: "form_validation.html"} Form Validation
+            = link_to items_path do
+              Items
+          %li
+            = link_to subitems_path do
+              Subitems
       %li.sub-menu
         %a{href: "javascript:;"}
           %i.icon_desktop
-          %span UI Fitures
+          %span Transações
           %span.menu-arrow.arrow_carrot-right
         %ul.sub
           %li
-            %a{href: "general.html"} Elements
-          %li
-            %a{href: "buttons.html"} Buttons
-          %li
-            %a{href: "grids.html"} Grids
+            = link_to 'Nova transação', '/transfers/new'
       %li
         %a{href: "widgets.html"}
           %i.icon_genius
@@ -63,3 +64,4 @@
             %a{href: "blank.html"} Blank Page
           %li
             %a{href: "404.html"} 404 Error
+

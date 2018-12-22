@@ -2,5 +2,5 @@ class Item < ApplicationRecord
 
   belongs_to :accountant
 
-  has_many :subitem
+  has_many :subitems
 end

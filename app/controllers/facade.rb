@@ -6,29 +6,36 @@ class Facade
    }
 
   def self.insert(entity)
-    @@transporter = Transporter.new
+    @transporter = Transporter.new
     strategies = @@map[entity.class.name.to_sym].insert
-    @@transporter.entity = entity
+    @transporter.entity = entity
     execute strategies
-    @@transporter
+    @transporter
+  end
+   
+  def self.select(entity, args)
+     @transporter = Transporter.new
+     strategies = @@map[entity.class.name.to_sym].insert
+     @transporter.entity = entity
+     @transporter.map[args] = args
+     execute strategies
+     @transporter
   end
 
-
-
   def self.update(entity)
-    @@transporter = Transporter.new
+    @transporter = Transporter.new
     strategies = @@map[entity.class.name.to_sym].update
-    @@transporter.entity = entity
+    @transporter.entity = entity
     execute strategies
-    @@transporter
+    @transporter
   end
 
   def self.delete(entity)
-    @@transporter = Transporter.new
+    @transporter = Transporter.new
     strategies = @@map[entity.class.name.to_sym].delete
-    @@transporter.entity = entity
+    @transporter.entity = entity
     execute strategies
-    @@transporter
+    @transporter
   end
 
 
@@ -40,7 +47,7 @@ class Facade
 
     strategies.each do |strategy|
 
-       unless strategy.process(@@transporter)
+       unless strategy.process(@transporter)
          return
        end
     end

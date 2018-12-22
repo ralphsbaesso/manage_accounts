@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_16_005514) do
+ActiveRecord::Schema.define(version: 2018_12_22_164952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,17 +69,21 @@ ActiveRecord::Schema.define(version: 2018_10_16_005514) do
     t.decimal "amount"
     t.bigint "subitem_id"
     t.bigint "account_id"
-    t.bigint "tranfer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["subitem_id"], name: "index_transactions_on_subitem_id"
-    t.index ["tranfer_id"], name: "index_transactions_on_tranfer_id"
   end
 
   create_table "transfers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "origin_transfer_id_id"
+    t.bigint "destiny_transfer_id_id"
+    t.index ["destiny_transfer_id_id"], name: "index_transfers_on_destiny_transfer_id_id"
+    t.index ["origin_transfer_id_id"], name: "index_transfers_on_origin_transfer_id_id"
   end
 
+  add_foreign_key "transfers", "transactions", column: "destiny_transfer_id_id"
+  add_foreign_key "transfers", "transactions", column: "origin_transfer_id_id"
 end

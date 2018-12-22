@@ -9,13 +9,14 @@ Rails.application.routes.draw do
 
 
   devise_for :accountants
-  resources :transfers
-  get 'transactions/', to: 'transactions#list' #, as: :transaction
-  get 'transactions/new', to: 'transactions#new'
+  # resources :transfers
   # resources :transactions
   resources :subitems
   resources :items
   resources :accounts
   resources :accountants
+
+  post '/transfer/create', to: 'transfers#create'
+  get '/transfers/new', to: 'transfers#new'
 
 end

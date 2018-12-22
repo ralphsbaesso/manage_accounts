@@ -1,11 +1,58 @@
-= form_with(model: transfer, local: true) do |form|
-  - if transfer.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(transfer.errors.count, "error")
-        prohibited this transfer from being saved:
-      %ul
-        - transfer.errors.full_messages.each do |message|
-          %li= message
-  .actions
-    = form.submit
+
+%section.panel
+  %header.panel-heading
+    Horizontal Forms
+  .panel-body
+    = form_with(model: @transaction, url: '/transfer/create', local: true, class: 'form-horizontal') do |form|
+      .form-group
+        = form.label 'Selecione a conta', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.select(:account_id, options_for_select(@array_accounts), {}, { class: 'form-control' })
+      .form-group
+        = form.label 'Data', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.text_field :date_transaction, class: 'form-control'
+      .form-group
+        = form.label 'Valor', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.text_field :value, class: 'form-control'
+      .form-group
+        = form.label 'Quantidade', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.text_field :amount, class: 'form-control'
+      .form-group
+        = form.label 'Descriçãp', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.text_field :descritpion, class: 'form-control'
+      .form-group
+        = form.label 'Título', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.text_field :title, class: 'form-control'
+      .form-group
+        = form.label 'Item', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.select(:item_id, options_for_select(@items.collect { |a| [a.name, a.id] }), {}, { class: 'form-control' })
+      .form-group
+        = form.label 'Subitem', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.select(:subitem_id, options_for_select(@hash_subitems[@items.first.id].collect { |a| [a.name, a.id] }), {}, { class: 'form-control' })
+      .form-group
+        = form.label 'Selecione a conta destino', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.select(:destiny_account_id, options_for_select(@destination_accounts), {}, { class: 'form-control' })
+      .form-group
+        .col-lg-offset-2.col-lg-10
+          = form.submit 'Salvar', class: 'btn btn-primary'
+
+- selects = {}
+- @hash_subitems.each do |id, subitems|
+  - selects[id] = (select_tag :subitem_id, options_for_select(subitems.collect { |a| [a.name, a.id] }), class: 'form-control', id: id)
+
+:javascript
+  var selects_subitems = #{selects.to_json.html_safe};
+
+  $('#transaction_item_id').change(function() {
+    var id = this.value
+    $('#transaction_subitem_id').html(selects_subitems[id]);
+  })
+
