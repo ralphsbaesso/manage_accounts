@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_22_164952) do
+ActiveRecord::Schema.define(version: 2018_12_26_231817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 2018_12_22_164952) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["accountant_id"], name: "index_accounts_on_accountant_id"
+  end
+
+  create_table "families", force: :cascade do |t|
+    t.string "name"
+    t.bigint "accountant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accountant_id"], name: "index_families_on_accountant_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -84,6 +92,7 @@ ActiveRecord::Schema.define(version: 2018_12_22_164952) do
     t.index ["origin_transaction_id"], name: "index_transfers_on_origin_transaction_id"
   end
 
+  add_foreign_key "families", "accountants"
   add_foreign_key "transfers", "transactions", column: "destiny_transaction_id"
   add_foreign_key "transfers", "transactions", column: "origin_transaction_id"
 end

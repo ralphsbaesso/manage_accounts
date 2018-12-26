@@ -5,7 +5,7 @@ class Accountant < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :accounts
-
   has_many :items
+  has_one :family, autosave: true
 
 end

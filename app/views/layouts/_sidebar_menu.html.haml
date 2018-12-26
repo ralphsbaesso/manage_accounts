@@ -64,4 +64,7 @@
             %a{href: "blank.html"} Blank Page
           %li
             %a{href: "404.html"} 404 Error
+      %li
+        = form_tag destroy_accountant_session_path, method: :delete do
+          = submit_tag 'Sair', class: 'btn btn-link'
 
