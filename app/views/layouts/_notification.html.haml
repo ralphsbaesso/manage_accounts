@@ -1,0 +1,190 @@
+.top-nav.notification-row
+  - if current_accountant
+    / notificatoin dropdown start
+    %ul.nav.pull-right.top-menu
+      / task notificatoin start
+      %li#task_notificatoin_bar.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %i.icon-task-l
+          %span.badge.bg-important 6
+        %ul.dropdown-menu.extended.tasks-bar
+          .notify-arrow.notify-arrow-blue
+          %li
+            %p.blue You have 6 pending letter
+          %li
+            %a{href: "#"}
+              .task-info
+                .desc Design PSD
+                .percent 90%
+              .progress.progress-striped
+                .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "90", role: "progressbar", style: "width: 90%"}
+                  %span.sr-only 90% Complete (success)
+          %li
+            %a{href: "#"}
+              .task-info
+                .desc
+                  Project 1
+                .percent 30%
+              .progress.progress-striped
+                .progress-bar.progress-bar-warning{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "30", role: "progressbar", style: "width: 30%"}
+                  %span.sr-only 30% Complete (warning)
+          %li
+            %a{href: "#"}
+              .task-info
+                .desc Digital Marketing
+                .percent 80%
+              .progress.progress-striped
+                .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "80", role: "progressbar", style: "width: 80%"}
+                  %span.sr-only 80% Complete
+          %li
+            %a{href: "#"}
+              .task-info
+                .desc Logo Designing
+                .percent 78%
+              .progress.progress-striped
+                .progress-bar.progress-bar-danger{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "78", role: "progressbar", style: "width: 78%"}
+                  %span.sr-only 78% Complete (danger)
+          %li
+            %a{href: "#"}
+              .task-info
+                .desc Mobile App
+                .percent 50%
+              .progress.progress-striped.active
+                .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "50", role: "progressbar", style: "width: 50%"}
+                  %span.sr-only 50% Complete
+          %li.external
+            %a{href: "#"} See All Tasks
+            / task notificatoin end
+            / inbox notificatoin start
+      %li#mail_notificatoin_bar.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %i.icon-envelope-l
+          %span.badge.bg-important 5
+        %ul.dropdown-menu.extended.inbox
+          .notify-arrow.notify-arrow-blue
+          %li
+            %p.blue You have 5 new messages
+          %li
+            %a{href: "#"}
+              %span.photo
+                -#%img{alt: "avatar", src: "./img/avatar-mini.jpg"}/
+              %span.subject
+                %span.from Greg  Martin
+                %span.time 1 min
+              %span.message
+                I really like this admin panel.
+          %li
+            %a{href: "#"}
+              %span.photo
+                -#%img{alt: "avatar", src: "./img/avatar-mini2.jpg"}/
+              %span.subject
+                %span.from Bob   Mckenzie
+                %span.time 5 mins
+              %span.message
+                Hi, What is next project plan?
+          %li
+            %a{href: "#"}
+              %span.photo
+                -#%img{alt: "avatar", src: "./img/avatar-mini3.jpg"}/
+              %span.subject
+                %span.from Phillip   Park
+                %span.time 2 hrs
+              %span.message
+                I am like to buy this Admin Template.
+          %li
+            %a{href: "#"}
+              %span.photo
+                -#%img{alt: "avatar", src: "./img/avatar-mini4.jpg"}/
+              %span.subject
+                %span.from Ray   Munoz
+                %span.time 1 day
+              %span.message
+                Icon fonts are great.
+          %li
+            %a{href: "#"} See all messages
+            / inbox notificatoin end
+            / alert notification start
+      %li#alert_notificatoin_bar.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %i.icon-bell-l
+          %span.badge.bg-important 7
+        %ul.dropdown-menu.extended.notification
+          .notify-arrow.notify-arrow-blue
+          %li
+            %p.blue You have 4 new notifications
+          %li
+            %a{href: "#"}
+              %span.label.label-primary
+                %i.icon_profile
+              Friend Request
+              %span.small.italic.pull-right 5 mins
+          %li
+            %a{href: "#"}
+              %span.label.label-warning
+                %i.icon_pin
+              John location.
+              %span.small.italic.pull-right 50 mins
+          %li
+            %a{href: "#"}
+              %span.label.label-danger
+                %i.icon_book_alt
+              Project 3 Completed.
+              %span.small.italic.pull-right 1 hr
+          %li
+            %a{href: "#"}
+              %span.label.label-success
+                %i.icon_like
+              Mick appreciated your work.
+              %span.small.italic.pull-right Today
+          %li
+            %a{href: "#"} See all notifications
+            / alert notification end
+            / user login dropdown start
+      %li.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %span.profile-ava
+            -#%img{alt: "", src: "img/avatar1_small.jpg"}/
+          %span.username Jenifer Smith
+          %b.caret
+        %ul.dropdown-menu.extended.logout
+          .log-arrow-up
+          %li.eborder-top
+            %a{href: "#"}
+              %i.icon_profile
+              My Profile
+          %li
+            %a{href: "#"}
+              %i.icon_mail_alt
+              My Inbox
+          %li
+            %a{href: "#"}
+              %i.icon_clock_alt
+              Timeline
+          %li
+            %a{href: "#"}
+              %i.icon_chat_alt
+              Chats
+          %li
+            %a{ href: 'javascript:{}', onclick: 'document.getElementById("form-logof").submit(); return false;'}
+              %i.icon_key_alt
+              Log Out
+          %li
+            %a{href: "documentation.html"}
+              %i.icon_key_alt
+              Documentation
+          %li
+            %a{href: "documentation.html"}
+              %i.icon_key_alt
+              Documentation
+            / user login dropdown end
+          / notificatoin dropdown end
+
+    = form_tag destroy_accountant_session_path, id: 'form-logof', method: :delete
+  - else
+    = link_to "Entrar", new_accountant_session_path, class: "btn btn-primary btn-sm"
+    = link_to "Registrar", new_accountant_registration_path, class: "btn btn-default btn-sm"
+
+:javascript
+  $('.dropdown').click(function() {
+    $(this).find('.dropdown-menu').toggle('slow');
+  });

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_scope :accountant do
     get '/accountants/sign_in', to: 'accountants/sessions#new'
     get '/accountants/sign_up', to: 'accountants/registrations#new'
+    post '/accountants/', to: 'accountants/registrations#create'
   end
 
 

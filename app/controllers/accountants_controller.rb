@@ -31,7 +31,7 @@ class AccountantsController < ApplicationController
     @accountant = Accountant.new(accountant_params)
 
     respond_to do |format|
-      if @accountant.save
+      if @accountant.saverail
         format.html { redirect_to @accountant, notice: 'Accountant was successfully created.' }
         format.json { render :show, status: :created, location: @accountant }
       else

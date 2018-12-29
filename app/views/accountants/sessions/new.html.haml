@@ -3,7 +3,7 @@
   .row
     .col-lg-6
       .form-group
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = form_for(resource, as: resource_name, url: accountant_session_path) do |f|
           .form-group
             = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email...', class: "form-control"
           .form-group

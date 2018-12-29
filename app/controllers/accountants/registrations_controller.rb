@@ -11,9 +11,17 @@ class Accountants::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
 
-    puts params.to_s
+    super do
+      @accountant = resource
+    end
+
+    unless @accountant.errors.present?
+      @accountant.name = accountant_params[:name]
+      family = Family.new(name: params[:family_name])
+      family.accountant = @accountant
+      @accountant.save
+    end
   end
 
   # GET /resource/edit
@@ -61,4 +69,10 @@ class Accountants::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  #
+  private
+
+  def accountant_params
+    params.require(:accountant).permit(:name)
+  end
 end
