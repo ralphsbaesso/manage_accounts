@@ -1,6 +1,1 @@
-.row
-  .col-lg-12
-    %h3.page-header
-      %i.fas.fa-money-check-alt
-      Nova conta
-= render 'form', account: @account
+= render 'form', account: @account, method: :put, title: 'NOVA CONTA', button: 'Salvar'

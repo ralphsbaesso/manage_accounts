@@ -1,19 +1,14 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :destroy]
+  before_action :set_item, only: [:edit, :update, :destroy]
 
   def index
     item_all
-  end
-
-  def show
-    redirect_to action: :index
   end
 
   def new
     @item = Item.new
   end
 
-  # GET /items/1/edit
   def edit
   end
 
@@ -36,25 +31,19 @@ class ItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
   def update
 
-    @item = Item.new(item_params)
-    @transporter = Facade.update @item
+    @transporter = Facade.update @item, attributes: item_params
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
         flash[:notice] = 'Item atualizado com sucesso!'
-        format.html {
-          redirect_to action: :index
-        }
+        format.html { redirect_to action: :index }
       else
-        format.html { render :edit }
+        format.html { render :edit, item: @item }
       end
     end
   end
-
 
   def destroy
 
@@ -62,11 +51,9 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
-        format.html { redirect_to @item, action: :show, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
+        format.html { redirect_to action: :index, notice: 'Item deletado com sucesso' }
       else
         format.html { render :index }
-        format.js { render :error }
       end
     end
   end
@@ -87,6 +74,6 @@ class ItemsController < ApplicationController
     end
 
     def item_all
-      @items = Item.all
+      @items = Item.where(accountant_id: current_accountant.id)
     end
 end

@@ -7,10 +7,8 @@
       %li
         %i.fa.fa-home
         %a{href: "/"} Home
-      %li
-        = link_to 'Item', items_path
-      %li
-        = link_to 'Criar item', new_item_path
+      %li= link_to 'Item', items_path
+      %li= link_to 'Criar item', new_item_path
 
 .row
   .col-lg-12
@@ -27,8 +25,12 @@
         - @items.each do |item|
           %tr.gradeA.odd{:role => "row"}
             %td= item.name
+            %td= item.description
             %td
-              = item.description
-            %td
-              = link_to 'Editar', edit_item_path(item)
-              = link_to 'Apagar', item, method: :delete, data: { confirm: 'Você tem certeza?' }
+              = link_to edit_item_path(item), class: 'btn btn-warning' do
+                editar
+                %i.fas.fa-edit
+              = form_tag  "/items/#{item.id}", method: :delete, style: 'display: inline;' do
+                = button_tag nil, type: :submit, class: 'btn btn-danger', data: { confirm: 'Você tem certeza?' } do
+                  excluir
+                  %i.fas.fa-trash-alt

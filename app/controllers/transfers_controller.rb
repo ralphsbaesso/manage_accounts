@@ -10,6 +10,12 @@ class TransfersController < ApplicationController
       @hash_subitems[item.id] = item.subitems
     end
     @destination_accounts = [['','']] + @array_accounts
+
+    @errors = []
+    @errors << 'Deve existir pelo menos uma conta.' unless current_accountant.accounts.present?
+    @errors << 'Deve existir pelo menos um item.' unless current_accountant.items.present?
+    @errors << 'Deve existir pelo menos um subitem.' unless @hash_subitems.present?
+
   end
 
   def create

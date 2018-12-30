@@ -1,5 +1,5 @@
 module Strategy
-  class CheckExistAssociation < AStrategy
+  class CheckExistAssociationToItem < AStrategy
 
     def self.process(transporter)
 

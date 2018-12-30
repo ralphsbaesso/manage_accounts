@@ -1,11 +1,8 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_action :set_account, only: [:edit, :update, :destroy]
 
   def index
     account_all
-  end
-
-  def show
   end
 
   def new
@@ -16,6 +13,7 @@ class AccountsController < ApplicationController
   end
 
   def create
+
     @account = Account.new(account_params)
 
     @account.accountant = current_accountant
@@ -34,25 +32,29 @@ class AccountsController < ApplicationController
   end
 
   def update
-    hash = account_params
-    hash[:accountant_id] = current_accountant.id
+
+    @transporter = Facade.update @account, account_params
+
     respond_to do |format|
-      flash[:notice] = 'conta atualizada com sucesso'
-      if @account.update(hash)
-        format.html { render :index }
+      if @transporter.status == 'GREEN'
+        flash[:notice] = 'conta atualizada com sucesso'
+        format.html { redirect_to action: :index }
       else
-        format.html { render :edit }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
+        format.html { render :edit, account: @account }
       end
     end
   end
 
   def destroy
-    # @account.destroy
-    # respond_to do |format|
-    #   format.html { redirect_to accounts_url, notice: 'Account was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
+    @transporter = Facade.delete @account
+
+    respond_to do |format|
+      if @transporter.status == 'GREEN'
+        format.html { redirect_to action: :index, notice: 'Conta deletada com sucesso' }
+      else
+        format.html { render :index }
+      end
+    end
   end
 
   private

@@ -1,5 +1,1 @@
-.row
-  .col-lg-12
-    %h1.page-header Atualizar Item
-.panel.panel-default
-  = render 'form', item: @item
+= render 'form', item: @item, method: :put, title: 'ATUALIZAR ITEM', button: 'Atualizar'

@@ -13,6 +13,7 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application', media: 'all'
+    %link{crossorigin: "anonymous", href: "https://use.fontawesome.com/releases/v5.6.3/css/all.css", integrity: "sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/", rel: "stylesheet"}/
 
   %body
     / container section start
@@ -21,18 +22,16 @@
         .toggle-nav
           .icon-reorder.tooltips{"data-original-title" => "Toggle Navigation", "data-placement" => "bottom"}
             %i.icon_menu
+
         / logo start
-        %a.logo{href: "index.html"}
-          Gerenciamento de
-          %span.lite contas
+        - if current_accountant
+          = link_to current_accountant.family.name, '#', class: 'logo'
+        - else
+          %a.logo{href: "index.html"}
+            Gerenciamento de
+            %span.lite contas
         / logo end
-        #top_menu.nav.search-row
-          / search form start
-          %ul.nav.top-menu
-            %li
-              %form.navbar-form
-                %input.form-control{placeholder: "Search", type: "text"}/
-          / search form end
+
         = render 'layouts/notification'
       / header end
 
@@ -41,24 +40,24 @@
       / main content start
       %section#main-content
         %section.wrapper
+          .row
+            .col-lg-12
+              - if !@transporter.nil? && @transporter.messages.present?
+                = render 'shared/modal-error'
+                :javascript
+                  $('#modal-error').modal('show');
+              - if notice
+                .alert.alert-success.fade.in{ style: 'cursor: pointer;'}
+                  %strong Sucesso!
+                  = notice
+                  - flash[:notice] = nil
+                :javascript
+                  $('.alert-success').click(function() {
+                    $(this).hide('slow');
+                  });
 
           = yield
 
-.row
-  .col-lg-12
-    - if !@transporter.nil? && @transporter.messages.present?
-      = render 'shared/modal-error'
-      :javascript
-        $('#modal-error').modal('show');
-    - if notice
-      :javascript
-        $.notify({
-            // options
-            message: '#{notice}'
-        },{
-            // settings
-            type: 'success'
-        });
 
 
 :javascript

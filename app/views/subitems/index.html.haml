@@ -1,36 +1,37 @@
+.row
+  .col-lg-12
+    %h3.page-header
+      %i.fa.fa-laptop
+      Subitem
+    %ol.breadcrumb{ style: 'background-color: gainsboro;' }
+      %li
+        %i.fa.fa-home
+        %a{href: "/"} Home
+      %li= link_to 'Subitem', subitems_path
+      %li= link_to 'Criar subitem', new_subitem_path
 
 .row
   .col-lg-12
-    %h1.page-header Subitem
-.panel.panel-default
-  .panel-heading
-    %br/
-    = link_to 'Criar subitem', new_subitem_path, class: 'btn btn-info'
-  .panel-body
-    .table-responsive
-      %table
-        %thead
-          %tr{:role => "row"}
-            %th
-              Nome
-            %th.sorting{"aria-controls" => "dataTables-example", "aria-label" => "Browser: activate to sort column ascending", :colspan => "1", :rowspan => "1", :style => "width: 207px;", :tabindex => "0"}
-              Descrição
-            %th
-              Nível
-            %th
-              Item
-            %th
-              Ações
-        %tbody
-          - @subitems.each do |subitem|
-            %tr.gradeA.odd{:role => "row"}
-              %td= subitem.name
-              %td
-                = subitem.description
-              %td
-                = subitem.level
-              %td
-                = subitem.item.name
-              %td
-                = link_to 'Editar', edit_item_path(subitem)
-                = link_to 'Apagar', subitem, method: :delete, data: { confirm: 'Are you sure?' }
+    %table#table-item.table.table-bordered
+      %thead
+        %tr{:role => "row"}
+          %th
+            Nome
+          %th.sorting{"aria-controls" => "dataTables-example", "aria-label" => "Browser: activate to sort column ascending", :colspan => "1", :rowspan => "1", :style => "width: 207px;", :tabindex => "0"}
+            Descrição
+          %th
+            Nível
+          %th
+            Item
+          %th
+            Ações
+      %tbody
+        - @subitems.each do |subitem|
+          %tr.gradeA.odd{:role => "row"}
+            %td= subitem.name
+            %td= subitem.description
+            %td= subitem.level
+            %td= subitem.item.name
+            %td
+              = link_to 'Editar', edit_item_path(subitem)
+              = link_to 'Apagar', subitem, method: :delete, data: { confirm: 'Are you sure?' }

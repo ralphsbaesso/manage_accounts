@@ -3,16 +3,15 @@ module Strategy
 
     def self.process(transporter)
 
-
-
       entity = transporter.entity
 
       if entity.is_a? Item
-        check_item(entity)
+        check_item(entity, transporter)
       elsif entity.is_a? Account
-        check_account(entity)
+        check_account(entity, transporter)
+      elsif entity.is_a? Subitem
+        check_subitem(entity, transporter)
       end
-
 
     end
 
@@ -32,7 +31,7 @@ module Strategy
 
     end
 
-    def self.check_account(account)
+    def self.check_account(account, transporter)
 
       account = Account.where(name: account.name, accountant_id: account.accountant_id)
 
@@ -45,5 +44,20 @@ module Strategy
       end
 
     end
+
+    def self.check_subitem(subitem, transporter)
+
+      subitems = Subitem.where(name: subitem.name, accountant_id: subitem.accountant_id)
+
+      if subitems.present?
+        transporter.messages << 'nome já existe na base de dados'
+        transporter.status = 'RED'
+        return false
+      else
+        return true
+      end
+
+    end
+
   end
 end

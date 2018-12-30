@@ -1,2 +1,14 @@
+- if @errors.present?
 
-= render 'form'
+  %section.panel
+    %header.panel-heading
+      Transação
+    .panel-body
+      .panel.panel-danger
+        .panel-heading Para uma nova transação é nescessário corrigir os erros abaixo
+        - @errors.each do |error|
+          .panel-content= error
+      .panel.panel-info
+
+- else
+  = render 'form'

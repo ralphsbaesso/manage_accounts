@@ -1,7 +1,18 @@
+.row
+  .col-lg-12
+    %h3.page-header
+      %i.fa.fa-laptop
+      Contas
+    %ol.breadcrumb{ style: 'background-color: gainsboro;' }
+      %li
+        %i.fa.fa-home
+        %a{href: "/"} Home
+      %li
+        = link_to 'Contas', accounts_path
 
 %section.panel
   %header.panel-heading
-    Nova transação
+    %h1= title
   .panel-body
     = form_with(model: account, local: true, class: 'form-horizontal') do |form|
       .form-group
@@ -10,4 +21,4 @@
           = form.text_field :name, class: 'form-control', placeholder: "Nome da conta"
       .form-group
         .col-lg-offset-2.col-lg-10
-          = form.submit 'Salvar', class: 'btn btn-primary'
+          = form.submit button, class: 'btn btn-primary'

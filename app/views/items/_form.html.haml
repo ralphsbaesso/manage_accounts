@@ -1,13 +1,28 @@
-%dvi.row
-  .col-sm-6
-    = form_with(model: item, local: true) do |form|
-      %div{:style => "display: none;"}
-        = form.text_field :id
-      .form-group.has-success
-        = form.label :name, class: 'control-label'
-        = form.text_field :name, class: 'form-control'
-      .form-group.has-success
-        = form.label :description, class: 'control-label'
-        = form.text_field :description, class: 'form-control'
-      .form-group.has-success
-        = form.submit :salvar, class: 'btn btn-outline btn-primary'
+.row
+  .col-lg-12
+    %h3.page-header
+      %i.fa.fa-laptop
+      Item
+    %ol.breadcrumb{ style: 'background-color: gainsboro;' }
+      %li
+        %i.fa.fa-home
+        %a{href: "/"} Home
+      %li
+        = link_to 'Item', items_path
+
+%section.panel
+  %header.panel-heading
+    %h1= title
+  .panel-body
+    = form_with(model: item, method: method, local: true, class: 'form-horizontal') do |form|
+      .form-group
+        = form.label 'Nome', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.text_field :name, class: 'form-control'
+      .form-group
+        = form.label 'Descrição', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.text_field :description, class: 'form-control'
+      .form-group
+        .col-lg-offset-2.col-lg-10
+          = form.submit button, class: 'btn btn-primary'
