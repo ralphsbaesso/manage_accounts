@@ -1,6 +1,6 @@
 class Facade
 
-   @@map = {
+   @map = {
       'Transfer': RuleMap::RuleMapTransfer,
       'Item': RuleMap::RuleMapItem,
       'Account': RuleMap::RuleMapAccount,
@@ -8,7 +8,7 @@ class Facade
 
   def self.insert(entity)
     @transporter = Transporter.new
-    strategies = @@map[entity.class.name.to_sym].insert
+    strategies = @map[entity.class.name.to_sym].insert
     @transporter.entity = entity
     execute strategies
     @transporter
@@ -16,7 +16,7 @@ class Facade
    
   def self.select(entity, args={})
      @transporter = Transporter.new
-     strategies = @@map[entity.class.name.to_sym].insert
+     strategies = @map[entity.class.name.to_sym].insert
      @transporter.entity = entity
      @transporter.map = args
      execute strategies
@@ -25,7 +25,7 @@ class Facade
 
   def self.update(entity, args={})
     @transporter = Transporter.new
-    strategies = @@map[entity.class.name.to_sym].update
+    strategies = @map[entity.class.name.to_sym].update
     @transporter.entity = entity
     @transporter.map = args
     execute strategies
@@ -34,7 +34,7 @@ class Facade
 
   def self.delete(entity)
     @transporter = Transporter.new
-    strategies = @@map[entity.class.name.to_sym].delete
+    strategies = @map[entity.class.name.to_sym].delete
     @transporter.entity = entity
     execute strategies
     @transporter
@@ -45,7 +45,7 @@ class Facade
 
   def self.execute(strategies)
 
-    puts "Quantidade de estrategias #{strategies.count}"
+    puts ">>>>>>>>>>>>>>   Quantidade de estrategias #{strategies.count}"
 
     strategies.each do |strategy|
 

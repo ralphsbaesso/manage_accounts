@@ -2,38 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be0beb21-8c26-4e0e-a359-94d71f567390" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/models/rule_map/rule_map_subitem.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/strategy/check_exist_association_to_subitem.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20181227001831_add_devise_to_accountants.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/strategy/destroy_entity.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/accounts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/accounts_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/facade.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/facade.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/items_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/items_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/subitems_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/subitems_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/transfers_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/transfers_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/rule_map/rule_map_account.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/rule_map/rule_map_account.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/facade.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/facade.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/rule_map/rule_map_item.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/rule_map/rule_map_item.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/strategy/check_equals_name_item_to_update.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/strategy/check_equals_name_entity_to_update.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/strategy/check_exist_association.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/strategy/check_exist_association_to_item.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/strategy/check_exist_entity.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/strategy/check_exist_entity.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/_form.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/accounts/_form.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/edit.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/accounts/edit.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/index.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/accounts/index.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/accounts/new.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/accounts/new.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/_form.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/items/_form.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/_modal.html.haml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/edit.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/items/edit.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/index.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/items/index.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/items/new.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/items/new.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/_notification.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_notification.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/shared/_modal-error.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/shared/_modal-error.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/subitems/_form.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/subitems/_form.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/subitems/index.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/subitems/index.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/subitems/new.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/subitems/new.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/transfers/new.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/transfers/new.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20180807003900_create_accounts.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20180807003900_create_accounts.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/strategy/check_exist_association_to_subitem.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/strategy/check_exist_association_to_subitem.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -48,7 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/manage_accounts@Development__manage_accounts.rcov" NAME="Development: manage_accounts Coverage Results" MODIFIED="1546183477813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="manage_accounts" />
+    <SUITE FILE_PATH="coverage/manage_accounts@Development__manage_accounts.rcov" NAME="Development: manage_accounts Coverage Results" MODIFIED="1546186184837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="manage_accounts" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -68,29 +42,29 @@
     <splitter split-orientation="horizontal" split-proportion="0.5494284">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/items_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+                <state relative-caret-position="36">
+                  <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/models/rule_map/rule_map_item.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.3.1/gems/activesupport-5.2.1/lib/active_support/callbacks.rb">
+            <entry file="file://$PROJECT_DIR$/app/models/strategy/check_exist_association_to_subitem.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="203">
-                  <caret line="132" selection-start-line="132" selection-end-line="132" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/models/rule_map/rule_map_subitem.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+                <state relative-caret-position="45">
+                  <caret line="3" selection-start-line="3" selection-end-line="3" />
                 </state>
               </provider>
             </entry>
@@ -105,37 +79,28 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/models/strategy/check_exist_association_to_subitem.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+            <entry file="file://$PROJECT_DIR$/app/models/facade.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="150">
-                  <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+                  <caret line="10" column="14" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="14" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/items/index.html.haml">
+            <entry file="file://$PROJECT_DIR$/app/models/strategy/destroy_entity.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+                <state relative-caret-position="45">
+                  <caret line="3" selection-start-line="3" selection-end-line="3" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/models/strategy/check_equals_name_entity_to_update.rb">
+            <entry file="file://$PROJECT_DIR$/app/models/strategy/a_strategy.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+                <state relative-caret-position="105">
+                  <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
                 </state>
               </provider>
             </entry>
@@ -144,29 +109,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/accounts_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="189">
-                  <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/controllers/subitems_controller.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="729">
-                  <caret line="74" column="18" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/models/strategy/check_exist_entity.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="44" selection-start-line="44" selection-end-line="44" />
+                <state relative-caret-position="398">
+                  <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
                 </state>
               </provider>
             </entry>
@@ -184,8 +131,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>horizontal fo</find>
-      <find>forms</find>
       <find>horizontal forms</find>
       <find>serve_static_files</find>
       <find>public_file_server</find>
@@ -214,10 +159,14 @@
       <find>set_item</find>
       <find>webfonts</find>
       <find>fa-trash-alt</find>
+      <find>@@map</find>
+      <find>@@strategies</find>
     </findStrings>
     <replaceStrings>
       <replace>th</replace>
       <replace>@transporter</replace>
+      <replace>@map</replace>
+      <replace>@strategies</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -238,7 +187,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/models/rule_map_transfer.rb" />
         <option value="$PROJECT_DIR$/app/models/strategy/check_exist_association.rb" />
         <option value="$PROJECT_DIR$/app/models/strategy/a_strategy.rb" />
         <option value="$PROJECT_DIR$/app/models/strategy/save_entity.rb" />
@@ -258,9 +206,7 @@
         <option value="$PROJECT_DIR$/app/views/accountants/sessions/new.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/_notification.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/facade.rb" />
-        <option value="$PROJECT_DIR$/app/models/rule_map/rule_map_item.rb" />
         <option value="$PROJECT_DIR$/app/models/rule_map/rule_map_account.rb" />
-        <option value="$PROJECT_DIR$/app/models/facade.rb" />
         <option value="$PROJECT_DIR$/app/views/items/_modal.html.haml" />
         <option value="$PROJECT_DIR$/app/views/shared/_modal-error.html.haml" />
         <option value="$PROJECT_DIR$/app/views/accounts/edit.html.haml" />
@@ -276,19 +222,22 @@
         <option value="$PROJECT_DIR$/db/migrate/20180807003900_create_accounts.rb" />
         <option value="$PROJECT_DIR$/app/views/transfers/new.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/transfers_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/accounts_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/subitems_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/strategy/check_equals_name_item_to_update.rb" />
         <option value="$PROJECT_DIR$/app/models/strategy/check_equals_name_entity_to_update.rb" />
         <option value="$PROJECT_DIR$/app/models/strategy/check_exist_association_to_item.rb" />
-        <option value="$PROJECT_DIR$/app/models/strategy/check_exist_association_to_subitem.rb" />
         <option value="$PROJECT_DIR$/vendor/assets/fontawesome.css" />
         <option value="$PROJECT_DIR$/vendor/assets/font/fontawesome.css" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/app/models/strategy/check_exist_entity.rb" />
         <option value="$PROJECT_DIR$/app/views/items/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/subitems_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/accounts_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/strategy/check_exist_association_to_subitem.rb" />
+        <option value="$PROJECT_DIR$/app/models/strategy/destroy_entity.rb" />
         <option value="$PROJECT_DIR$/app/controllers/items_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/facade.rb" />
+        <option value="$PROJECT_DIR$/app/models/rule_map/rule_map_item.rb" />
       </list>
     </option>
   </component>
@@ -316,6 +265,31 @@
             <path>
               <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
               <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="rule_map" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="strategy" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
@@ -517,7 +491,7 @@
       <workItem from="1545683620009" duration="2332000" />
       <workItem from="1545865246424" duration="6260000" />
       <workItem from="1546038407635" duration="5940000" />
-      <workItem from="1546163971051" duration="17439000" />
+      <workItem from="1546163971051" duration="18823000" />
     </task>
     <task id="LOCAL-00001" summary="regenerando projeto">
       <created>1533603885798</created>
@@ -610,11 +584,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546044335034</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="melhorias nos layouts">
+      <created>1546185088404</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1546185088404</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189943000" />
+    <option name="totallyTimeSpent" value="191327000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -741,7 +722,8 @@
     <MESSAGE value="reorganizando a estrutura dos models" />
     <MESSAGE value="criado model family" />
     <MESSAGE value="alterações nos layouts" />
-    <option name="LAST_COMMIT_MESSAGE" value="alterações nos layouts" />
+    <MESSAGE value="melhorias nos layouts" />
+    <option name="LAST_COMMIT_MESSAGE" value="melhorias nos layouts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -762,30 +744,30 @@
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/items_controller.rb</url>
-          <line>49</line>
-          <option name="timeStamp" value="60" />
+          <url>file://$PROJECT_DIR$/app/models/strategy/check_exist_association_to_subitem.rb</url>
+          <line>6</line>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/items_controller.rb</url>
-          <line>51</line>
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/items_controller.rb</url>
-          <line>55</line>
-          <option name="timeStamp" value="63" />
+          <url>file://$PROJECT_DIR$/app/models/facade.rb</url>
+          <line>18</line>
+          <option name="timeStamp" value="72" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="RailsRunConfigurationType">
-        <watch expression="@transporter.status" language="ruby" />
+        <watch expression="@transporter" language="ruby" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>@transporter</expression-string>
+        <language-id>ruby</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>@transporter.status</expression-string>
         <language-id>ruby</language-id>
@@ -831,28 +813,9 @@
         <language-id>ruby</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>@subitem</expression-string>
-        <language-id>ruby</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/NiceAdmin/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/rule_map/rule_map_transfer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/rule_map/rule_map_account.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -916,13 +879,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/facade.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/items/_modal.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -947,13 +903,6 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/accountants_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-315" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/rule_map/rule_map_item.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/shared/_modal-error.html.haml">
@@ -1085,52 +1034,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/accounts_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/subitems_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="74" column="18" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/strategy/save_entity.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/rule_map/rule_map_subitem.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/strategy/check_equals_name_entity_to_update.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/strategy/check_exist_association_to_item.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/strategy/check_exist_association_to_subitem.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1160,7 +1067,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/strategy/check_exist_entity.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="240">
           <caret line="44" selection-start-line="44" selection-end-line="44" />
         </state>
       </provider>
@@ -1179,10 +1086,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/subitems_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/accounts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/rule_map/rule_map_subitem.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/strategy/a_strategy.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/strategy/destroy_entity.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/strategy/save_entity.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/strategy/check_exist_association_to_subitem.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/strategy/check_exist_association_to_item.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/items_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+        <state relative-caret-position="36">
+          <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/facade.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/rule_map/rule_map_item.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
         </state>
       </provider>
     </entry>

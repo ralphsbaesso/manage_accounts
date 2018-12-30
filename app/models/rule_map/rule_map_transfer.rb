@@ -1,10 +1,10 @@
 module RuleMap
   class RuleMapTransfer
 
-    @@strategies = []
-
     def self.insert
-      @@strategies << Strategy::StrategyTransfer::CheckAccounts
+      [
+          Strategy::StrategyTransfer::CheckAccounts,
+      ]
     end
 
     def self.delete

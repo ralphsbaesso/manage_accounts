@@ -1,19 +1,24 @@
 module RuleMap
   class RuleMapItem
 
-    @@strategies = []
-
     def self.insert
-      @@strategies << Strategy::CheckExistEntity
-      @@strategies << Strategy::SaveEntity
+      [
+          Strategy::CheckExistEntity,
+          Strategy::SaveEntity
+      ]
     end
 
     def self.delete
-      @@strategies << Strategy::CheckExistAssociationToItem
+      [
+          Strategy::CheckExistAssociationToItem,
+          Strategy::DestroyEntity
+      ]
     end
 
     def self.update
-      @@strategies << Strategy::CheckEqualsNameEntityToUpdate
+      [
+          Strategy::CheckEqualsNameEntityToUpdate
+      ]
     end
   end
 end

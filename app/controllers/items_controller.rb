@@ -53,6 +53,7 @@ class ItemsController < ApplicationController
       if @transporter.status == 'GREEN'
         format.html { redirect_to action: :index, notice: 'Item deletado com sucesso' }
       else
+        item_all
         format.html { render :index }
       end
     end
