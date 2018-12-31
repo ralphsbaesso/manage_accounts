@@ -11,11 +11,13 @@ module Strategy
           origin_transaction = transfer.origin_transaction
           destiny_transaction = transfer.destiny_transaction
 
-          if origin_transaction.account.id == destiny_transaction.account.id
+          if destiny_transaction and (origin_transaction.account.id == destiny_transaction.account.id)
             transporter.messages << 'Não é possível referenciar uma transação de uma conta para a mesma conata'
             transporter.status = 'RED'
             return false
           end
+
+          return true
 
         end
 

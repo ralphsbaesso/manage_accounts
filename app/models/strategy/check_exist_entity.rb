@@ -47,7 +47,15 @@ module Strategy
 
     def self.check_subitem(subitem, transporter)
 
-      subitems = Subitem.where(name: subitem.name, accountant_id: subitem.accountant_id)
+      accountant_id = transporter.map[:accountant_id]
+      item_id = subitem.item_id
+
+      sql = "select subitems.* from subitems " +
+        "join items on subitems.item_id = items.id " +
+        "join accountants on items.accountant_id = accountants.id " +
+        "where accountants.id = ? and items.id = ? and subitems.name = ? "
+
+      subitems = Subitem.find_by_sql [sql, accountant_id, item_id, subitem.name]
 
       if subitems.present?
         transporter.messages << 'nome já existe na base de dados'

@@ -4,12 +4,14 @@ class Facade
       'Transfer': RuleMap::RuleMapTransfer,
       'Item': RuleMap::RuleMapItem,
       'Account': RuleMap::RuleMapAccount,
+      'Subitem': RuleMap::RuleMapSubitem,
    }
 
-  def self.insert(entity)
+  def self.insert(entity, args={})
     @transporter = Transporter.new
     strategies = @map[entity.class.name.to_sym].insert
     @transporter.entity = entity
+    @transporter.map = args
     execute strategies
     @transporter
   end
@@ -32,10 +34,11 @@ class Facade
     @transporter
   end
 
-  def self.delete(entity)
+  def self.delete(entity, args={})
     @transporter = Transporter.new
     strategies = @map[entity.class.name.to_sym].delete
     @transporter.entity = entity
+    @transporter.map = args
     execute strategies
     @transporter
   end

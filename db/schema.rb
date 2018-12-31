@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_12_27_001831) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.datetime "date_transaction"
+    t.date "date_transaction"
     t.decimal "value"
     t.string "description"
     t.string "title"

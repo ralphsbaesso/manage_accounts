@@ -3,6 +3,38 @@ class TransfersController < ApplicationController
 
   def new
     @transaction = Transaction.new
+    initialize_variables
+  end
+
+  def create
+    @origin_transaction = Transaction.new(transaction_params)
+
+    transfer = Transfer.new
+    transfer.origin_transaction = @origin_transaction
+    if params[:destiny_account_id].present?
+      @destiny_transaction = Transaction.new(account_id: params[:destiny_account_id])
+      transfer.destiny_transaction = @destiny_transaction
+    end
+
+    @transporter = Facade.insert(transfer)
+    initialize_variables
+
+    respond_to do |format|
+      if @transporter.status == 'GREEN'
+        @transaction = Transaction.new
+        flash[:notice] = 'Transação gravada'
+        format.html { render :new }
+      else
+        @transaction = @origin_transaction
+        format.html { render :new }
+      end
+    end
+  end
+
+  private
+
+  def initialize_variables
+
     @array_accounts = current_accountant.accounts.collect { |a| [a.name, a.id] }
     @items = current_accountant.items
     @hash_subitems = {}
@@ -17,23 +49,6 @@ class TransfersController < ApplicationController
     @errors << 'Deve existir pelo menos um subitem.' unless @hash_subitems.present?
 
   end
-
-  def create
-    @origin_transaction = Transaction.new(transaction_params)
-    transfer = Transfer.new
-    transfer.origin_transaction = @origin_transaction
-    if params[:destiny_account_id]
-      @destiny_transaction = Transaction.new(account_id: params[:destiny_account_id])
-      transfer.destiny_transaction = @destiny_transaction
-    end
-
-    r = Facade.insert(transfer)
-
-    p r
-    redirect_to action: :new
-  end
-
-  private
 
 
   def transaction_params

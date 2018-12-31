@@ -16,12 +16,12 @@ class SubitemsController < ApplicationController
     
     @subitem = Subitem.new(subitem_params)
     
-    @transporter = Facade.insert(@subitem)
+    @transporter = Facade.insert(@subitem, accountant_id: current_accountant.id)
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
         flash[:notice] = 'Subitem criado com sucesso'
-        item_all
+        subitem_all
         format.html { render :index }
       else
         format.html { render :new }

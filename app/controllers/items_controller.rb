@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
-        flash[:notice] = 'Item criado com sucesso'
+        flash[:notice] = 'Item criado.'
         item_all
         format.html { render :index }
       else
@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
-        flash[:notice] = 'Item atualizado com sucesso!'
+        flash[:notice] = 'Item atualizado.!'
         format.html { redirect_to action: :index }
       else
         format.html { render :edit, item: @item }
@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
-        format.html { redirect_to action: :index, notice: 'Item deletado com sucesso' }
+        format.html { redirect_to action: :index, notice: 'Item deletado.' }
       else
         item_all
         format.html { render :index }

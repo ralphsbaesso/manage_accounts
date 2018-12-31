@@ -3,7 +3,9 @@ module RuleMap
 
     def self.insert
       [
+          Strategy::StrategyTransfer::CheckTransactions,
           Strategy::StrategyTransfer::CheckAccounts,
+          Strategy::SaveEntity
       ]
     end
 

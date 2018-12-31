@@ -144,7 +144,7 @@
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %span.profile-ava
             -#%img{alt: "", src: "img/avatar1_small.jpg"}/
-          %span.username Jenifer Smith
+          %span.username= current_accountant.name
           %b.caret
         %ul.dropdown-menu.extended.logout
           .log-arrow-up

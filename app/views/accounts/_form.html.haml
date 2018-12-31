@@ -20,5 +20,9 @@
         .col-lg-10
           = form.text_field :name, class: 'form-control', placeholder: "Nome da conta"
       .form-group
+        = form.label 'Descrição', class: 'col-lg-2 control-label', for: "inputEmail1"
+        .col-lg-10
+          = form.text_field :description, class: 'form-control', placeholder: "Descrição da conta"
+      .form-group
         .col-lg-offset-2.col-lg-10
           = form.submit button, class: 'btn btn-primary'

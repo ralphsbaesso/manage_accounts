@@ -1,5 +1,5 @@
 module RuleMap
-  class RuleMapItem
+  class RuleMapSubitem
 
     def self.insert
       [
