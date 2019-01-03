@@ -7,5 +7,6 @@ class Accountant < ApplicationRecord
   has_many :accounts
   has_many :items
   has_one :family, autosave: true
+  has_many :tasks
 
 end

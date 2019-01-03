@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'accountants#index'
+  root to: 'tasks#index'
 
   devise_scope :accountant do
     get '/accountants/sign_in', to: 'accountants/sessions#new'
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :items
   resources :accounts
   resources :accountants
+  resources :tasks
 
   post '/transfer/create', to: 'transfers#create'
   get '/transfers/new', to: 'transfers#new'

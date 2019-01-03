@@ -25,7 +25,7 @@
 
         / logo start
         - if current_accountant
-          = link_to current_accountant.family.name, '#', class: 'logo'
+          = link_to current_accountant.family.name, '/', class: 'logo'
         - else
           %a.logo{href: "index.html"}
             Gerenciamento de

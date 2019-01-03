@@ -46,25 +46,7 @@
         %ul.sub
           %li
             %a{href: "basic_table.html"} Basic Table
-      %li.sub-menu
-        %a{href: "javascript:;"}
-          %i.icon_documents_alt
-          %span Pages
-          %span.menu-arrow.arrow_carrot-right
-        %ul.sub
-          %li
-            %a{href: "profile.html"} Profile
-          %li
-            %a{href: "login.html"}
-              %span Login Page
-          %li
-            %a{href: "contact.html"}
-              %span Contact Page
-          %li
-            %a{href: "blank.html"} Blank Page
-          %li
-            %a{href: "404.html"} 404 Error
-      %li
+      %li.sub-menu.hidden
         = form_tag destroy_accountant_session_path, method: :delete do
           = submit_tag 'Sair', class: 'btn btn-link'
 

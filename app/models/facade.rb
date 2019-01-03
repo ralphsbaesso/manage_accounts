@@ -5,6 +5,7 @@ class Facade
       'Item': RuleMap::RuleMapItem,
       'Account': RuleMap::RuleMapAccount,
       'Subitem': RuleMap::RuleMapSubitem,
+      'Task': RuleMap::RuleMapTask,
    }
 
   def self.insert(entity, args={})

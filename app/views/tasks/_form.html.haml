@@ -1,0 +1,37 @@
+.row
+  .col-lg-12
+    %h3.page-header
+      %i.fa.fa-laptop
+      Contas a pagar
+    %ol.breadcrumb{ style: 'background-color: gainsboro;' }
+      %li
+        %i.fa.fa-home
+        %a{href: "/"} Home
+      %li
+        = link_to 'Task', tasks_path
+
+%section.panel
+  %header.panel-heading
+    %h1= title
+  .panel-body
+    = form_with(model: task, method: method, local: true, class: 'form-horizontal') do |form|
+      .form-group
+        = form.label 'Nome', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.text_field :name, class: 'form-control'
+      .form-group
+        = form.label 'Descrição', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.text_area :description, class: 'form-control', column: 3
+      .form-group
+        = form.label 'Data de vencimento', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.text_field :due_date, value: Date.today + 7.days, class: 'form-control', type: :date
+      - if params[:action] == 'edit'
+        .form-group
+          = form.label 'Pago', class: 'col-lg-2 control-label'
+          .col-lg-10
+            = form.check_box :done, value: :done
+      .form-group
+        .col-lg-offset-2.col-lg-10
+          = form.submit button, class: 'btn btn-primary'
