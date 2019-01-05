@@ -6,22 +6,43 @@ class Accountants::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    super
+    @accountant = Accountant.new
   end
 
   # POST /resource
   def create
 
-    super do
-      @accountant = resource
+
+    @transporter = Transporter.new
+
+    if params[:family_name].present?
+      @family_name = params[:family_name]
+      family = Family.new(name: @family_name)
+    else
+      @transporter.messages << 'Deve criar uma família'
+      @transporter.status = 'RED'
+      @accountant = Accountant.new(accountant_params)
+      render :new
+      return
     end
 
-    unless @accountant.errors.present?
-      @accountant.name = accountant_params[:name]
-      family = Family.new(name: params[:family_name])
-      family.accountant = @accountant
-      @accountant.save
+    super do
+
+      if resource.errors.present?
+        @accountant.errors.full_messages.each do |erro|
+          @transporter.messages << erro
+        end
+        @transporter.status = 'RED'
+        @accountant = Accountant.new(accountant_params)
+        render :new
+        return
+      else
+        @accountant = resource
+      end
     end
+
+    family.accountants << @accountant
+    family.save
   end
 
   # GET /resource/edit
@@ -51,9 +72,9 @@ class Accountants::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, family: [:family_id]])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -73,6 +94,6 @@ class Accountants::RegistrationsController < Devise::RegistrationsController
   private
 
   def accountant_params
-    params.require(:accountant).permit(:name)
+    params.require(:accountant).permit(:name, :email, :password, :password_confirmation)
   end
 end

@@ -1,3 +1,3 @@
 class Family < ApplicationRecord
-  belongs_to :accountant
+  has_many :accountants, autosave: true
 end

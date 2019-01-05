@@ -6,7 +6,9 @@ class Accountant < ApplicationRecord
 
   has_many :accounts
   has_many :items
-  has_one :family, autosave: true
+  belongs_to :family, optional: true
   has_many :tasks
+
+  validates_presence_of :name
 
 end

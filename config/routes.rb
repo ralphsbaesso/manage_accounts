@@ -17,8 +17,6 @@ Rails.application.routes.draw do
   resources :accounts
   resources :accountants
   resources :tasks
-
-  post '/transfer/create', to: 'transfers#create'
-  get '/transfers/new', to: 'transfers#new'
+  resources :transfers
 
 end

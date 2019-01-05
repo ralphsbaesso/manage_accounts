@@ -1,4 +1,4 @@
-class Strategy::CheckExistAssociationToSubitem < AStrategy
+class Strategy::CheckExistAssociationToSubitem
 
   def self.process(transporter)
 

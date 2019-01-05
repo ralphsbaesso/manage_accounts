@@ -3,7 +3,7 @@
   %header.panel-heading
     Horizontal Forms
   .panel-body
-    = form_with(model: @transaction, url: '/transfer/create', local: true, class: 'form-horizontal') do |form|
+    = form_with(model: @transaction, url: url, method: method, local: true, class: 'form-horizontal') do |form|
       .form-group
         = form.label 'Selecione a conta', class: 'col-lg-2 control-label'
         .col-lg-10
@@ -21,9 +21,9 @@
         .col-lg-10
           = form.text_field :amount, class: 'form-control'
       .form-group
-        = form.label 'Descriçãp', class: 'col-lg-2 control-label'
+        = form.label 'Descrição', class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.text_field :descritpion, class: 'form-control'
+          = form.text_field :description, class: 'form-control'
       .form-group
         = form.label 'Título', class: 'col-lg-2 control-label'
         .col-lg-10

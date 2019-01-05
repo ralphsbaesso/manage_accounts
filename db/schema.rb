@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_225302) do
 
   create_table "accountants", force: :cascade do |t|
     t.string "name"
+    t.bigint "family_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_225302) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_accountants_on_email", unique: true
+    t.index ["family_id"], name: "index_accountants_on_family_id"
     t.index ["reset_password_token"], name: "index_accountants_on_reset_password_token", unique: true
   end
 
@@ -39,10 +41,8 @@ ActiveRecord::Schema.define(version: 2019_01_02_225302) do
 
   create_table "families", force: :cascade do |t|
     t.string "name"
-    t.bigint "accountant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["accountant_id"], name: "index_families_on_accountant_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_225302) do
     t.index ["origin_transaction_id"], name: "index_transfers_on_origin_transaction_id"
   end
 
-  add_foreign_key "families", "accountants"
+  add_foreign_key "accountants", "families"
   add_foreign_key "tasks", "accountants"
   add_foreign_key "transfers", "transactions", column: "destiny_transaction_id"
   add_foreign_key "transfers", "transactions", column: "origin_transaction_id"

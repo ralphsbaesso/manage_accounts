@@ -25,7 +25,7 @@
         - @accounts.each do |account|
           %tr.gradeA.odd{:role => "row"}
             %td= account.name
-            %td #= account.description
+            %td= account.description
             %td
               = link_to 'Editar', edit_account_path(account)
               = link_to 'Apagar', account, method: :delete, data: { confirm: 'Você tem certeza?' }

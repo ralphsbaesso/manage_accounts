@@ -11,4 +11,4 @@
       .panel.panel-info
 
 - else
-  = render 'form'
+  = render 'form', url: transfers_path, method: :post, title: 'SALVAR TRANSAÇÃO', button: 'Salvar'
