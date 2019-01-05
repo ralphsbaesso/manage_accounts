@@ -42,7 +42,10 @@
           = select_tag(:destiny_account_id, options_for_select(@destination_accounts), { class: 'form-control' })
       .form-group
         .col-lg-offset-2.col-lg-10
-          = form.submit 'Salvar', class: 'btn btn-primary'
+          = form.submit button, class: 'btn btn-primary'
+          - unless params[:action] == 'edit'
+            = hidden_field_tag :new_transaction, true
+            = form.submit 'Salvar e nova transação', class: 'btn btn-primary'
 
 - selects = {}
 - @hash_subitems.each do |id, subitems|

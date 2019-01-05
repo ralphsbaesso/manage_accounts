@@ -1,0 +1,12 @@
+.row
+  .col-lg-12
+    %h3.page-header
+      %i.fa.fa-laptop
+      Transações
+    %ol.breadcrumb{ style: 'background-color: gainsboro;' }
+      %li
+        %i.fa.fa-home
+        %a{href: "/"} Home
+      %li= link_to 'Transações', transfers_path
+      - unless params[:action] == 'new'
+        %li= link_to 'Criar nova transação', new_transfer_path

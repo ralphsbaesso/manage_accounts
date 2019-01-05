@@ -1,36 +1,37 @@
-.row
-  .col-lg-12
-    %h3.page-header
-      %i.fa.fa-laptop
-      Item
-    %ol.breadcrumb{ style: 'background-color: gainsboro;' }
-      %li
-        %i.fa.fa-home
-        %a{href: "/"} Home
-      %li= link_to 'Item', items_path
-      %li= link_to 'Criar item', new_item_path
+= render 'header'
 
 .row
   .col-lg-12
-    %table#table-item.table.table-bordered
+    %table#table-transaction.table.table-bordered
       %thead
         %tr{:role => "row"}
+          %th Conta
+          %th Data
+          %th Valor
+          %th Quantidade
+          %th Descrição
+          %th Título
+          %th item
+          %th subitem
+          %th Conta destino
           %th
-            Nome
-          %th
-            Descrição
-          %th
-            Ações
       %tbody
-        - @items.each do |item|
+        - @transactions.each do |transaction|
           %tr.gradeA.odd{:role => "row"}
-            %td= item.name
-            %td= item.description
+            %td= transaction.account.name
+            %td= format_date transaction.date_transaction
+            %td= transaction.value
+            %td= transaction.amount
+            %td= transaction.description
+            %td= transaction.title
+            %td= transaction.subitem.item.name if transaction.subitem
+            %td= transaction.subitem.name if transaction.subitem
+            %td= transaction.transfer.destiny_transaction.account.name if transaction.transfer.destiny_transaction
             %td
-              = link_to edit_item_path(item), class: 'btn btn-warning' do
+              = link_to edit_transfer_path(transaction), class: 'btn btn-warning' do
                 editar
                 %i.fas.fa-edit
-              = form_tag  "/items/#{item.id}", method: :delete, style: 'display: inline;' do
+              = form_tag  "/transactions/#{transaction.id}", method: :delete, style: 'display: inline;' do
                 = button_tag nil, type: :submit, class: 'btn btn-danger', data: { confirm: 'Você tem certeza?' } do
                   excluir
                   %i.fas.fa-trash-alt

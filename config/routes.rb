@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
 
   devise_for :accountants
-  # resources :transfers
   # resources :transactions
   resources :subitems
   resources :items

@@ -1,6 +1,10 @@
 class TransfersController < ApplicationController
   before_action :set_transfer, only: [:show, :edit, :update, :destroy]
 
+  def index
+    transaction_all
+  end
+
   def new
     @transaction = Transaction.new
     initialize_variables
@@ -23,7 +27,12 @@ class TransfersController < ApplicationController
       if @transporter.status == 'GREEN'
         @transaction = Transaction.new
         flash[:notice] = 'Transação gravada'
-        format.html { render :new }
+        if params[:commit].include? 'nova'
+          format.html { render :new }
+        else
+          transaction_all
+          format.html { render :index }
+        end
       else
         @transaction = @origin_transaction
         format.html { render :new }
@@ -53,6 +62,14 @@ class TransfersController < ApplicationController
 
   def transaction_params
     params.require(:transaction).permit(:date_transaction, :value, :description, :title, :amount, :subitem_id, :account_id)
+  end
+
+  def transaction_all
+    @transactions = []
+    current_accountant.accounts.each do |account|
+      @transactions += Transaction.where(account_id: account.id)
+    end
+    @transactions
   end
 
 end
