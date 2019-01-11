@@ -13,44 +13,25 @@
           %span Menu
           %span.menu-arrow.arrow_carrot-right
         %ul.sub
-          %li
-            = link_to accounts_path do
-              Contas
-          %li
-            = link_to items_path do
-              Items
-          %li
-            = link_to subitems_path do
-              Subitems
-          %li
-            = link_to transfers_path do
-              Transações
+          %li= link_to 'Contas', accounts_path
+          %li= link_to 'Items', items_path
+          %li= link_to 'Subitems', subitems_path
+          %li= link_to 'Transações', transfers_path
 
       %li.sub-menu
         %a{href: "javascript:;"}
-          %i.icon_desktop
-          %span Transações
+          %i.icon_documents_alt
+          %span Lembretes
           %span.menu-arrow.arrow_carrot-right
         %ul.sub
-          %li
-            = link_to 'Nova transação', '/transfers/new'
-      %li
-        %a{href: "widgets.html"}
-          %i.icon_genius
-          %span Widgets
-      %li
-        %a{href: "chart-chartjs.html"}
-          %i.icon_piechart
-          %span Charts
+          %li= link_to 'Contas a pagar', tasks_path
+
       %li.sub-menu
         %a{href: "javascript:;"}
-          %i.icon_table
-          %span Tables
+          %i.icon_piechart
+          %span Relatórios
           %span.menu-arrow.arrow_carrot-right
         %ul.sub
           %li
-            %a{href: "basic_table.html"} Basic Table
-      %li.sub-menu.hidden
-        = form_tag destroy_accountant_session_path, method: :delete do
-          = submit_tag 'Sair', class: 'btn btn-link'
+            %a{href: "javascript:;"} Em implementação
 

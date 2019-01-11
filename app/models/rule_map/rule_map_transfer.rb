@@ -5,6 +5,7 @@ module RuleMap
       [
           Strategy::StrategyTransfer::CheckTransactions,
           Strategy::StrategyTransfer::CheckAccounts,
+          Strategy::StrategyTransfer::TransferDataBetweenAccounts,
           Strategy::SaveEntity
       ]
     end

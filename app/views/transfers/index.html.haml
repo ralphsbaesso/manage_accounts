@@ -31,7 +31,7 @@
               = link_to edit_transfer_path(transaction), class: 'btn btn-warning' do
                 editar
                 %i.fas.fa-edit
-              = form_tag  "/transactions/#{transaction.id}", method: :delete, style: 'display: inline;' do
+              = form_tag  transfer_path(transaction.id), method: :delete, style: 'display: inline;' do
                 = button_tag nil, type: :submit, class: 'btn btn-danger', data: { confirm: 'Você tem certeza?' } do
                   excluir
                   %i.fas.fa-trash-alt

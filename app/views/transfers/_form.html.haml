@@ -7,7 +7,7 @@
       .form-group
         = form.label 'Selecione a conta', class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.select(:account_id, options_for_select(@array_accounts), {}, { class: 'form-control' })
+          = form.select(:account_id, options_for_select(@array_accounts, @account_selected), {}, { class: 'form-control' })
       .form-group
         = form.label 'Data', class: 'col-lg-2 control-label'
         .col-lg-10
@@ -39,7 +39,7 @@
       .form-group
         = form.label 'Selecione a conta destino', class: 'col-lg-2 control-label'
         .col-lg-10
-          = select_tag(:destiny_account_id, options_for_select(@destination_accounts), { class: 'form-control' })
+          = select_tag(:destiny_account_id, options_for_select(@destination_accounts, @destination_account_selected), { class: 'form-control' })
       .form-group
         .col-lg-offset-2.col-lg-10
           = form.submit button, class: 'btn btn-primary'

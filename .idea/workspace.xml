@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be0beb21-8c26-4e0e-a359-94d71f567390" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/transfers/_header.html.haml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/strategy/strategy_transfer/transfer_data_between_accounts.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/accountants/registrations_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/accountants/registrations_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/transfers_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/transfers_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/shared_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/shared_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/transaction.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/transaction.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/rule_map/rule_map_transfer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/rule_map/rule_map_transfer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_notification.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_notification.html.haml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/layouts/_sidebar_menu.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_sidebar_menu.html.haml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/transfers/_form.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/transfers/_form.html.haml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/transfers/index.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/transfers/index.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/transfers/new.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/transfers/new.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -28,7 +25,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/manage_accounts@Production__manage_accounts.rcov" NAME="Production: manage_accounts Coverage Results" MODIFIED="1546557316709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="manage_accounts" />
-    <SUITE FILE_PATH="coverage/manage_accounts@Development__manage_accounts.rcov" NAME="Development: manage_accounts Coverage Results" MODIFIED="1546705595879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="manage_accounts" />
+    <SUITE FILE_PATH="coverage/manage_accounts@Development__manage_accounts.rcov" NAME="Development: manage_accounts Coverage Results" MODIFIED="1547160968944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="manage_accounts" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -50,13 +47,13 @@
         <entry file="file://$PROJECT_DIR$/app/views/transfers/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/transaction.rb">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/_sidebar_menu.html.haml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
               <caret line="19" selection-start-line="19" selection-end-line="19" />
@@ -65,10 +62,37 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/_notification.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="443">
+              <caret line="161" column="22" selection-start-line="161" selection-start-column="22" selection-end-line="161" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/transfers_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="38" column="9" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+            <state relative-caret-position="330">
+              <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/NiceAdmin/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/NiceAdmin/css/elegant-icons-style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="397" column="15" selection-start-line="397" selection-start-column="1" selection-end-line="397" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -76,8 +100,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/transfers/_form.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+            <state relative-caret-position="75">
+              <caret line="5" column="35" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/transfers/edit.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/items_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="45" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -93,10 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>turbol</find>
-      <find>turbolinks</find>
-      <find>@@transporter</find>
-      <find>require</find>
       <find>autoload_paths</find>
       <find>sign_out</find>
       <find>Registrar</find>
@@ -123,6 +161,10 @@
       <find>modal-error</find>
       <find>configure_sign_up_params</find>
       <find>item</find>
+      <find>form-logof</find>
+      <find>initialize_variables</find>
+      <find>icon_documents_alt</find>
+      <find>trash</find>
     </findStrings>
     <replaceStrings>
       <replace>th</replace>
@@ -136,6 +178,7 @@
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/public</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -153,7 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/vendor/assets/font/fontawesome.css" />
         <option value="$PROJECT_DIR$/app/views/items/index.html.haml" />
         <option value="$PROJECT_DIR$/app/models/strategy/destroy_entity.rb" />
         <option value="$PROJECT_DIR$/app/models/rule_map/rule_map_item.rb" />
@@ -162,7 +204,6 @@
         <option value="$PROJECT_DIR$/app/models/strategy/check_exist_entity.rb" />
         <option value="$PROJECT_DIR$/app/models/strategy/strategy_transfer/check_accounts.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20180807005104_create_transactions.rb" />
-        <option value="$PROJECT_DIR$/app/models/rule_map/rule_map_transfer.rb" />
         <option value="$PROJECT_DIR$/app/views/accountants/shared/_links.html.haml" />
         <option value="$PROJECT_DIR$/app/views/accounts/_form.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/accounts_controller.rb" />
@@ -174,7 +215,6 @@
         <option value="$PROJECT_DIR$/app/controllers/tasks_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/tasks/new.html.haml" />
         <option value="$PROJECT_DIR$/app/views/tasks/edit.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_notification.html.haml" />
         <option value="$PROJECT_DIR$/app/views/tasks/_form.html.haml" />
         <option value="$PROJECT_DIR$/app/models/strategy/update_entity.rb" />
         <option value="$PROJECT_DIR$/app/models/rule_map/rule_map_task.rb" />
@@ -195,15 +235,18 @@
         <option value="$PROJECT_DIR$/app/views/shared/_modal-error.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/accountants/registrations_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_sidebar_menu.html.haml" />
         <option value="$PROJECT_DIR$/app/views/transfers/_header.htm.haml" />
         <option value="$PROJECT_DIR$/app/views/transfers/new.html.haml" />
         <option value="$PROJECT_DIR$/app/views/transfers/_header.html.haml" />
         <option value="$PROJECT_DIR$/app/helpers/shared_helper.rb" />
         <option value="$PROJECT_DIR$/app/models/transaction.rb" />
-        <option value="$PROJECT_DIR$/app/views/transfers/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/models/strategy/strategy_transfer/transfer_data_between_accounts.rb" />
+        <option value="$PROJECT_DIR$/app/models/rule_map/rule_map_transfer.rb" />
         <option value="$PROJECT_DIR$/app/views/transfers/_form.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/transfers/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/_sidebar_menu.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/transfers_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/_notification.html.haml" />
       </list>
     </option>
   </component>
@@ -248,19 +291,6 @@
               <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
               <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="accountants" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -268,22 +298,7 @@
               <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="accountants" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="accountants" type="462c0819:PsiDirectoryNode" />
-              <item name="registrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manage_accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="items" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="manage_accounts" type="b2602c69:ProjectViewProjectNode" />
@@ -309,18 +324,18 @@
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/models/strategy/strategy_transfer" />
+      <recent name="$PROJECT_DIR$/app/views/transactions" />
+      <recent name="$PROJECT_DIR$/app/views/transfers" />
+      <recent name="$PROJECT_DIR$/app/models/strategy" />
+      <recent name="$PROJECT_DIR$/app/models/rule_map" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/vendor/assets/font" />
       <recent name="$PROJECT_DIR$/app/models" />
       <recent name="$PROJECT_DIR$/app/models/strategy" />
       <recent name="$PROJECT_DIR$/app/models/rule_map" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/views/transactions" />
-      <recent name="$PROJECT_DIR$/app/views/transfers" />
-      <recent name="$PROJECT_DIR$/app/models/strategy" />
-      <recent name="$PROJECT_DIR$/app/models/rule_map" />
-      <recent name="$PROJECT_DIR$/app/views/tasks" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -485,7 +500,9 @@
       <workItem from="1546469206524" duration="5823000" />
       <workItem from="1546556446501" duration="2167000" />
       <workItem from="1546642636187" duration="1024000" />
-      <workItem from="1546698056332" duration="18488000" />
+      <workItem from="1546698056332" duration="18550000" />
+      <workItem from="1546902966760" duration="2342000" />
+      <workItem from="1547160603654" duration="4915000" />
     </task>
     <task id="LOCAL-00001" summary="regenerando projeto">
       <created>1533603885798</created>
@@ -613,11 +630,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546713227967</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Corrigido associação de transaction com transfer">
+      <created>1546722274138</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1546722274138</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229088000" />
+    <option name="totallyTimeSpent" value="236407000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -631,7 +655,7 @@
   <component name="ToolWindowManager">
     <frame x="-3" y="0" width="1926" height="1052" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23105656" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23639274" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32937366" />
@@ -643,11 +667,11 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.30064654" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50160086" side_tool="true" weight="0.36422414" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.29956895" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026681" side_tool="true" weight="0.36422414" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32900432" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49839914" weight="0.28340518" />
-      <window_info anchor="bottom" id="Debug" order="13" sideWeight="0.49839914" weight="0.36422414" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49786553" weight="0.2823276" />
+      <window_info anchor="bottom" id="Debug" order="13" sideWeight="0.49733192" weight="0.36422414" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -748,7 +772,8 @@
     <MESSAGE value="tela de transações" />
     <MESSAGE value="Criando model task" />
     <MESSAGE value="Correções em todo o sistema" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correções em todo o sistema" />
+    <MESSAGE value="Corrigido associação de transaction com transfer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrigido associação de transaction com transfer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -821,57 +846,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/tasks_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tasks/new.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="64" selection-start-column="64" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin_2/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/NiceAdmin/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_notification.html.haml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tasks/edit.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tasks/_form.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/rule_map/rule_map_item.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/strategy/check_equals_name_entity_to_update.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" column="47" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -1049,34 +1023,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_sidebar_menu.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/transfers/new.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/items_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="77" column="59" selection-start-line="77" selection-start-column="41" selection-end-line="77" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -1091,13 +1041,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
           <caret line="94" selection-start-line="94" selection-end-line="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/transfers/edit.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -1118,31 +1061,125 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/transaction.rb">
       <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/rule_map/rule_map_transfer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/strategy/strategy_transfer/check_accounts.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/strategy/strategy_transfer/transfer_data_between_accounts.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="3" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/strategy/strategy_transfer/check_transactions.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/strategy/strategy_transaction/required_fields.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="37" selection-start-column="37" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/items_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/transfers/edit.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/transfers/_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/NiceAdmin/index.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/transfers/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/transfers/_form.html.haml">
+    <entry file="file://$PROJECT_DIR$/public/NiceAdmin/css/elegant-icons-style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="397" column="15" selection-start-line="397" selection-start-column="1" selection-end-line="397" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="34" column="31" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/transfers_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="38" column="9" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+        <state relative-caret-position="330">
+          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_sidebar_menu.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_notification.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="161" column="22" selection-start-line="161" selection-start-column="22" selection-end-line="161" selection-end-column="22" />
         </state>
       </provider>
     </entry>

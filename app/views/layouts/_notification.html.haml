@@ -169,15 +169,17 @@
               %i.icon_key_alt
               Sair
 
+              = form_tag destroy_accountant_session_path, id: 'form-logof', method: :delete do
+                = submit_tag 'ok', class: 'hidden'
+
             / user login dropdown end
           / notificatoin dropdown end
 
-    = form_tag destroy_accountant_session_path, id: 'form-logof', method: :delete
   - else
     = link_to "Entrar", new_accountant_session_path, class: "btn btn-primary btn-sm"
     = link_to "Registrar", new_accountant_registration_path, class: "btn btn-default btn-sm"
 
 :javascript
   $('.dropdown').click(function() {
-    $(this).find('.dropdown-menu').toggle('slow');
+    $(this).find('.dropdown-menu').toggle('fast');
   });
