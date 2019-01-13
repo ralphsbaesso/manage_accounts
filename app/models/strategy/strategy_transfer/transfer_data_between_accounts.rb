@@ -8,14 +8,18 @@ module Strategy
 
         if transfer.is_a? Transfer
 
-          origin_transaction = transfer.origin_transaction
-          destiny_transaction = transfer.destiny_transaction
+          origin = transfer.origin_transaction
+          destiny = transfer.destiny_transaction
 
-          if destiny_transaction
+          if destiny
 
             begin
-              destiny_transaction.value = (origin_transaction.value * - 1)
-              destiny_transaction.date_transaction = origin_transaction.date_transaction
+              destiny.value = (origin.value * - 1)
+              destiny.date_transaction = origin.date_transaction
+              destiny.amount = origin.amount
+              destiny.description = origin.description
+              destiny.title = origin.title
+              destiny.subitem = origin.subitem
             rescue
               return false
             end

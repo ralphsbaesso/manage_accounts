@@ -75,6 +75,6 @@ class ItemsController < ApplicationController
     end
 
     def item_all
-      @items = Item.where(accountant_id: current_accountant.id)
+      @items = Item.where(accountant_id: current_accountant.id).order(:name)
     end
 end

@@ -1,5 +1,6 @@
 class TransfersController < ApplicationController
-  before_action :initialize_variables, only: [:create, :edit, :new]
+  before_action :initialize_variables, only: [:create, :edit, :new, :update]
+  before_action :set_transfer, only: [:destroy]
 
   def index
     transaction_all
@@ -13,8 +14,11 @@ class TransfersController < ApplicationController
     @transaction = Transaction.find_by(id: params[:id])
     account = @transaction.account
     @account_selected = [account.name, account.id]
-    destination_account = @transaction.transfer.destiny_transaction.account if @transaction.transfer.destiny_transaction
-    @destination_account_selected = [destination_account.name, destination_account.id] if destination_account
+    associated = @transaction.associated_transaction
+    if associated
+      destination_account = associated.account
+      @destination_account_selected = [destination_account.name, destination_account.id]
+    end
   end
 
   def create
@@ -50,14 +54,45 @@ class TransfersController < ApplicationController
 
   def update
 
-    @transporter = Facade.update @item, attributes: item_params
+    current_transaction = Transaction.find(params[:id])
+    @transfer = Transfer.find(params[:transfer_id])
+
+    @transporter = Facade.update @transfer,
+                                 current_transaction: current_transaction,
+                                 attributes_orgin: transaction_params,
+                                 attributes_destiny: { id: params[:destiny_account_id] }
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
-        flash[:notice] = 'Item atualizado.!'
+        flash[:notice] = 'Transação atualizada!'
         format.html { redirect_to action: :index }
       else
-        format.html { render :edit, item: @item }
+        transaction_params.each do |key, value|
+          current_transaction[key] = value
+        end
+        @transaction = current_transaction
+        account = @transaction.account
+        @account_selected = [account.name, account.id]
+        associated = @transaction.associated_transaction
+        if associated
+          destination_account = associated.account
+          @destination_account_selected = [destination_account.name, destination_account.id]
+        end
+        format.html { render :edit }
+      end
+    end
+  end
+
+  def destroy
+
+    @transporter = Facade.delete @transfer
+
+    respond_to do |format|
+      if @transporter.status == 'GREEN'
+        format.html { redirect_to action: :index, notice: 'Transação deletado.' }
+      else
+        transaction_all
+        format.html { render :index }
       end
     end
   end
@@ -83,7 +118,6 @@ class TransfersController < ApplicationController
 
   end
 
-
   def transaction_params
     params.require(:transaction).permit(:date_transaction, :value, :description, :title, :amount, :subitem_id, :account_id)
   end
@@ -94,6 +128,10 @@ class TransfersController < ApplicationController
       @transactions += Transaction.where(account_id: account.id)
     end
     @transactions
+  end
+
+  def set_transfer
+    @transfer = Transfer.find(params[:id])
   end
 
 end

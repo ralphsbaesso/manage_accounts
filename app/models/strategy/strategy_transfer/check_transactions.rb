@@ -7,7 +7,6 @@ class Strategy::StrategyTransfer::CheckTransactions
     if transfer.is_a? Transfer
 
       origin_transaction = transfer.origin_transaction
-      destiny_transaction = transfer.destiny_transaction
 
       messages = []
       if origin_transaction
@@ -16,13 +15,6 @@ class Strategy::StrategyTransfer::CheckTransactions
         Strategy::StrategyTransaction::RequiredFields.process(t)
         messages += t.messages
       end
-
-      # if destiny_transaction
-      # t = Transporter.new
-      # t.entity = origin_transaction
-      #   Strategy::StrategyTransaction::RequiredFields.process(t)
-      #   messages += t.messages
-      # end
 
       if messages.present?
         transporter.messages += messages

@@ -6,6 +6,7 @@
       %thead
         %tr{:role => "row"}
           %th Conta
+          %th Tipo
           %th Data
           %th Valor
           %th Quantidade
@@ -13,12 +14,15 @@
           %th Título
           %th item
           %th subitem
-          %th Conta destino
+          %th Conta associada
           %th
       %tbody
         - @transactions.each do |transaction|
+          - transfer = transaction.transfer
+          - associated = transaction.associated_transaction
           %tr.gradeA.odd{:role => "row"}
             %td= transaction.account.name
+            %td= transaction.origin? ? 'Origem' : 'Destino'
             %td= format_date transaction.date_transaction
             %td= transaction.value
             %td= transaction.amount
@@ -26,12 +30,12 @@
             %td= transaction.title
             %td= transaction.subitem.item.name if transaction.subitem
             %td= transaction.subitem.name if transaction.subitem
-            %td= transaction.transfer.destiny_transaction.account.name if transaction.transfer.destiny_transaction
+            %td= associated.account.name if associated
             %td
               = link_to edit_transfer_path(transaction), class: 'btn btn-warning' do
                 editar
                 %i.fas.fa-edit
-              = form_tag  transfer_path(transaction.id), method: :delete, style: 'display: inline;' do
+              = form_tag  transfer_path(transfer), method: :delete, style: 'display: inline;' do
                 = button_tag nil, type: :submit, class: 'btn btn-danger', data: { confirm: 'Você tem certeza?' } do
                   excluir
                   %i.fas.fa-trash-alt

@@ -4,6 +4,8 @@
     Horizontal Forms
   .panel-body
     = form_with(model: @transaction, url: url, method: method, local: true, class: 'form-horizontal') do |form|
+      - if @transaction.transfer
+        = hidden_field_tag :transfer_id, @transaction.transfer.id
       .form-group
         = form.label 'Selecione a conta', class: 'col-lg-2 control-label'
         .col-lg-10

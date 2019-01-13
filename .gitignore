@@ -30,5 +30,5 @@
 /config/master.key
 
 Gemfile.lock
-.idea/*
+.idea/**
 
