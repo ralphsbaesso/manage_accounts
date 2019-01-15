@@ -6,12 +6,12 @@ module Strategy
 
         transfer = transporter.entity
 
-        if transfer.is_a? Transfer and transporter.status == 'GREEN'
+        if transfer.is_a? Transfer
 
-          origin = transporter.map[:current_transaction]
+          current_transaction = transporter.map[:current_transaction]
 
           # checar se a transação a ser modificada é destino e está tentando apagar a transação origem
-          if origin.origin? == false
+          if current_transaction.origin? == false
             transporter.add_message 'Não é possível alteração uma transação a partir da transação destino!'
             transporter.status = 'RED'
             return false

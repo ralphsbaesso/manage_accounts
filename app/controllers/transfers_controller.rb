@@ -57,10 +57,13 @@ class TransfersController < ApplicationController
     current_transaction = Transaction.find(params[:id])
     @transfer = Transfer.find(params[:transfer_id])
 
-    @transporter = Facade.update @transfer,
-                                 current_transaction: current_transaction,
-                                 attributes_orgin: transaction_params,
-                                 attributes_destiny: { id: params[:destiny_account_id] }
+    map = {
+        current_transaction: current_transaction,
+        attributes_orgin: transaction_params,
+    }
+    map[:attributes_destiny] = { account_id: params[:destiny_account_id] } if params[:destiny_account_id].present?
+
+    @transporter = Facade.update @transfer, map
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
