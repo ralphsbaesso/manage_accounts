@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'tasks#index'
+  root to: 'app#index'
 
   devise_scope :accountant do
     get '/accountants/sign_in', to: 'accountants/sessions#new'

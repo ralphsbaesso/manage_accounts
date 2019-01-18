@@ -33,7 +33,7 @@ class AccountsController < ApplicationController
 
   def update
 
-    @transporter = Facade.update @account, account_params
+    @transporter = Facade.update @account, attributes: account_params
 
     respond_to do |format|
       if @transporter.status == 'GREEN'

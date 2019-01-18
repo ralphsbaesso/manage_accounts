@@ -12,9 +12,7 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require bootstrap.growl
 //= require activestorage
-//= require bootstrap
 //= require js/jquery.js
 //= require js/jquery-ui-1.10.4.min.js
 //= require js/jquery-1.8.3.min.js

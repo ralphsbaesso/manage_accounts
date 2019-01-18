@@ -1,0 +1,22 @@
+#myCarousel.carousel.slide{"data-ride" => "carousel"}
+  / Indicators
+  %ol.carousel-indicators
+    %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+  / Wrapper for slides
+  .carousel-inner
+    .item.active
+      %img{alt: "Los Angeles", src: "vingadores.jpeg"}/
+    .item
+      %img{alt: "Chicago", src: 'batman.jpeg'}/
+    .item
+      %img{alt: "New York", src: 'raul_seixas.jpeg'}/
+  / Left and right controls
+  %a.left.carousel-control{"data-slide" => "prev", href: "#myCarousel"}
+    %span.glyphicon.glyphicon-chevron-left
+    %span.sr-only Previous
+  %a.right.carousel-control{"data-slide" => "next", href: "#myCarousel"}
+    %span.glyphicon.glyphicon-chevron-right
+    %span.sr-only Next
+

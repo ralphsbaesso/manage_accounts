@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://rails-assets.org/
   specs:
     actioncable (5.2.1)
       actionpack (= 5.2.1)
@@ -48,6 +47,8 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    autoprefixer-rails (9.4.5)
+      execjs
     bcrypt (3.1.12)
     better_errors (2.5.0)
       coderay (>= 1.0.0)
@@ -58,9 +59,10 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
-    bootstrap_sb_admin_base_v2 (0.3.6)
-      font-awesome-rails
-      jquery-rails
+    bootstrap (4.1.3)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.7.2)
@@ -96,8 +98,6 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.25)
-    font-awesome-rails (4.7.0.4)
-      railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -141,6 +141,7 @@ GEM
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     pg (0.18.4)
+    popper_js (1.14.5)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -164,35 +165,6 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.2.1)
       sprockets-rails (>= 2.0.0)
-    rails-assets-DataTables (1.10.16)
-      rails-assets-jquery (>= 1.7.0)
-    rails-assets-bootstrap (3.2.0)
-      rails-assets-jquery (>= 1.9.0)
-    rails-assets-bootstrap.growl (3.1.3)
-      rails-assets-bootstrap (>= 2.0.0)
-      rails-assets-jquery (>= 1.10.2)
-    rails-assets-eve-raphael (0.5.0)
-    rails-assets-flot (0.8.3)
-      rails-assets-jquery (>= 1.2.6)
-    rails-assets-flot.tooltip (0.7.1)
-    rails-assets-font-awesome (4.1.0)
-    rails-assets-jquery (3.3.1)
-    rails-assets-metisMenu (1.0.3)
-    rails-assets-mocha (1.17.1)
-    rails-assets-morrisjs (0.5.1)
-      rails-assets-jquery (>= 2.1.0)
-      rails-assets-mocha (~> 1.17.1)
-      rails-assets-raphael (>= 2.0)
-    rails-assets-raphael (2.2.7)
-      rails-assets-eve-raphael (= 0.5.0)
-    rails-assets-sb-admin-v2 (0.1.0)
-      rails-assets-DataTables (~> 1.10.0)
-      rails-assets-bootstrap (~> 3.2.0)
-      rails-assets-flot (~> 0.8.3)
-      rails-assets-flot.tooltip (~> 0.7.1)
-      rails-assets-font-awesome (~> 4.1.0)
-      rails-assets-metisMenu (~> 1.0.1)
-      rails-assets-morrisjs (~> 0.5.1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -270,7 +242,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
-  bootstrap_sb_admin_base_v2!
+  bootstrap
   byebug
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
@@ -279,15 +251,12 @@ DEPENDENCIES
   haml
   html2haml
   jbuilder (~> 2.5)
-  jquery-rails (~> 4.3, >= 4.3.3)!
+  jquery-rails
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18.4)
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.0)
-  rails-assets-bootstrap!
-  rails-assets-bootstrap.growl!
-  rails-assets-sb-admin-v2!
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

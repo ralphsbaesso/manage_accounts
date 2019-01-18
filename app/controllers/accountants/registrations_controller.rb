@@ -12,7 +12,6 @@ class Accountants::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
 
-
     @transporter = Transporter.new
 
     if params[:family_name].present?
@@ -41,6 +40,7 @@ class Accountants::RegistrationsController < Devise::RegistrationsController
       end
     end
 
+    @accountant.owner = true
     family.accountants << @accountant
     family.save
   end
