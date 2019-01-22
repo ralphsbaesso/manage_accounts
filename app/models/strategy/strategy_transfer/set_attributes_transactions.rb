@@ -23,7 +23,7 @@ module Strategy
           elsif transporter.map[:attributes_destiny].present? # nao ha destiny
             transfer.destiny_transaction = Transaction.new(transporter.map[:attributes_destiny])
           else
-            transporter.map[:delete_destiny] = transfer.destiny_transaction.id
+            transporter.map[:delete_destiny] = destiny_transaction.id if destiny_transaction
             transfer.destiny_transaction = nil
           end
 

@@ -126,11 +126,11 @@ class TransfersController < ApplicationController
   end
 
   def transaction_all
-    @transactions = []
+    list = []
     current_accountant.accounts.each do |account|
-      @transactions += Transaction.where(account_id: account.id)
+      list += Transaction.where(account_id: account.id)
     end
-    @transactions
+    @transactions = list.sort_by { |value| value[:date_transaction]}
   end
 
   def set_transfer
