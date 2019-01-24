@@ -2,6 +2,22 @@
 
 .row
   .col-lg-12
+    .panel.panel-default
+      #div-filter.panel-heading
+        %h5.mb-0
+          %button.btn.btn-link.collapsed{"aria-controls" => "div-collapse", "aria-expanded" => "false", "data-target" => "#div-collapse", "data-toggle" => "collapse"}
+            Filtros
+      #div-collapse.panel.panel-body.collapse
+        = form_tag transfers_path, method: :get do
+          .row
+            .col-lg-2
+              = select_tag 'filter[month]', options_for_select(Util::Month.all), type: :date, class: 'form-control'
+            .col-lg-8
+            .col-lg-2
+              = submit_tag 'Buscar', class: 'btn btn-info pull-right'
+
+.row
+  .col-lg-12
     %table#table-transaction.table.table-bordered
       %thead
         %tr{:role => "row"}
