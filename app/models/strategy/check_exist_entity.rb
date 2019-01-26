@@ -47,7 +47,7 @@ module Strategy
 
     def self.check_subitem(subitem, transporter)
 
-      accountant_id = transporter.map[:accountant_id]
+      accountant_id = transporter.bucket[:accountant_id]
       item_id = subitem.item_id
 
       sql = "select subitems.* from subitems " +

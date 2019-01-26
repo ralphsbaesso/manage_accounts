@@ -8,38 +8,38 @@ class Facade
       'Task': RuleMap::RuleMapTask,
    }
 
-  def self.insert(entity, args={})
-    @transporter = Transporter.new
+  def self.insert(entity, accountant, args={})
+    @transporter = Transporter.new(accountant)
     strategies = @map[entity.class.name.to_sym].insert
     @transporter.entity = entity
-    @transporter.map = args
+    @transporter.bucket = args
     execute strategies
     @transporter
   end
    
-  def self.select(entity, args={})
-     @transporter = Transporter.new
-     strategies = @map[entity.class.name.to_sym].insert
+  def self.select(entity, accountant, args={})
+     @transporter = Transporter.new(accountant)
+     strategies = @map[entity.class.name.to_sym].select
      @transporter.entity = entity
-     @transporter.map = args
+     @transporter.bucket = args
      execute strategies
      @transporter
   end
 
-  def self.update(entity, args={})
-    @transporter = Transporter.new
+  def self.update(entity, accountant, args={})
+    @transporter = Transporter.new(accountant)
     strategies = @map[entity.class.name.to_sym].update
     @transporter.entity = entity
-    @transporter.map = args
+    @transporter.bucket = args
     execute strategies
     @transporter
   end
 
-  def self.delete(entity, args={})
-    @transporter = Transporter.new
+  def self.delete(entity, accountant, args={})
+    @transporter = Transporter.new(accountant)
     strategies = @map[entity.class.name.to_sym].delete
     @transporter.entity = entity
-    @transporter.map = args
+    @transporter.bucket = args
     execute strategies
     @transporter
   end

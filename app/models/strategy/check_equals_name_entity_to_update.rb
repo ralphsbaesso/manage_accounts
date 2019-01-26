@@ -19,7 +19,7 @@ module Strategy
 
     def self.check_item(item, transporter)
 
-      attributes = transporter.map[:attributes]
+      attributes = transporter.bucket[:attributes]
       item_from_db = Item.find(item.id)
 
       if attributes[:name] == item_from_db.name
@@ -40,7 +40,7 @@ module Strategy
 
     def self.check_subitem(subitem, transporter)
 
-      attributes = transporter.map[:attributes]
+      attributes = transporter.bucket[:attributes]
       subitem_from_db = Subitem.find(subitem.id)
 
       if attributes[:name] == subitem_from_db.name
@@ -61,7 +61,7 @@ module Strategy
 
     def self.check_account(account, transporter)
 
-      attributes = transporter.map[:attributes]
+      attributes = transporter.bucket[:attributes]
       account_from_db = Account.find(account.id)
 
       if attributes[:name] == account_from_db.name

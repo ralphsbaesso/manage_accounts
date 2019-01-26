@@ -8,7 +8,7 @@ module Strategy
 
         if transfer.is_a? Transfer
 
-          current_transaction = transporter.map[:current_transaction]
+          current_transaction = transporter.bucket[:current_transaction]
 
           # checar se a transação a ser modificada é destino e está tentando apagar a transação origem
           if current_transaction.origin? == false

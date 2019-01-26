@@ -8,7 +8,7 @@ module Strategy
 
         if transfer.is_a? Transfer
 
-          transaction = Transaction.new(transporter.map[:transaction_params])
+          transaction = Transaction.new(transporter.bucket[:transaction_params])
 
           messages = []
           if transaction

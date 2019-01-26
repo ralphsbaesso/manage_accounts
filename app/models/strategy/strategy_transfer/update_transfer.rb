@@ -15,7 +15,7 @@ module Strategy
 
           origin.save!
 
-          destiny_id = transporter.map[:delete_destiny]
+          destiny_id = transporter.bucket[:delete_destiny]
           if destiny_id.present?
             Transaction.destroy destiny_id
           else

@@ -11,6 +11,12 @@ module RuleMap
       ]
     end
 
+    def self.select
+      [
+          Strategy::StrategyTransfer::Filter
+      ]
+    end
+
     def self.delete
       [
           Strategy::DestroyEntity

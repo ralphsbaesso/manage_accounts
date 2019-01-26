@@ -10,7 +10,7 @@ class Strategy::StrategyTransfer::CheckTransactions
 
       messages = []
       if origin_transaction
-        t = Transporter.new
+        t = Transporter.new(transporter.current_accountant)
         t.entity = origin_transaction
         Strategy::StrategyTransaction::RequiredFields.process(t)
         messages += t.messages

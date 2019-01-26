@@ -1,11 +1,13 @@
 class Transporter
 
-  attr_accessor :messages, :status, :entity, :map, :current_accountant
+  attr_accessor :messages, :status, :entity, :bucket, :current_accountant
 
-  def initialize
+  def initialize(accountant=nil)
+    raise 'Deve passar o current_account na inicialização!' unless accountant
+    @current_accountant = accountant
     @messages = []
     @status = 'GREEN'
-    @map = {}
+    @bucket = {}
   end
 
   def add_message(msg)

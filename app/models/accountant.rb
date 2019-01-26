@@ -11,4 +11,16 @@ class Accountant < ApplicationRecord
 
   validates_presence_of :name
 
+  def account_ids
+    self.accounts.map { |account| account.id }
+  end
+
+  def subitems
+    Subitem.joins(
+      'JOIN items ON items.id = subitems.item_id'
+    ).where(
+      'items.accountant_id = :id', id: self.id
+    )
+  end
+
 end

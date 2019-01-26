@@ -11,10 +11,18 @@
         = form_tag transfers_path, method: :get do
           .row
             .col-lg-2
-              = select_tag 'filter[month]', options_for_select(Util::Month.all), type: :date, class: 'form-control'
-            .col-lg-8
+              = select_tag 'filter[month]', options_for_select(Util::Month.all, Util::Month.current), type: :date, class: 'form-control'
             .col-lg-2
-              = submit_tag 'Buscar', class: 'btn btn-info pull-right'
+              = select_tag 'filter[year]', options_for_select(Util::Year.recent, Util::Year.current), type: :date, class: 'form-control'
+            .col-lg-2
+              = select_tag 'filter[account_id]', options_for_select_accounts(first_blank: true), class: 'form-control'
+            .col-lg-2
+              = select_tag 'filter[item_id]', options_for_select_items(first_blank: true), id: :transaction_item_id, class: 'form-control'
+            .col-lg-2
+              = select_tag 'filter[subitem_id]', options_for_select_subitems(first_blank: true), id: :transaction_subitem_id, class: 'form-control'
+          .row{ style: 'border-top-width: 10px; margin-top: 10px;' }
+            .col-lg-2
+              = submit_tag 'Buscar', class: 'btn btn-info pull-right', style: 'width: 100%'
 
 .row
   .col-lg-12
@@ -55,3 +63,7 @@
                 = button_tag nil, type: :submit, class: 'btn btn-danger', data: { confirm: 'Você tem certeza?' } do
                   excluir
                   %i.fas.fa-trash-alt
+.row
+  = paginate @transactions
+
+= dynamic_select_items_subitems

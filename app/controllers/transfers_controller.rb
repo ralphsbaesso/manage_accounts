@@ -1,9 +1,11 @@
 class TransfersController < ApplicationController
-  before_action :initialize_variables, only: [:create, :edit, :new, :update]
+  before_action :initialize_variables, only: [:index, :create, :edit, :new, :update]
   before_action :set_transfer, only: [:destroy]
 
   def index
-    transaction_all
+    @transporter = Facade.select(Transfer.new, current_accountant, filter: filter_params || {})
+    @transactions = @transporter.bucket[:transactions]
+
   end
 
   def new
@@ -31,7 +33,7 @@ class TransfersController < ApplicationController
       transfer.destiny_transaction = @destiny_transaction
     end
 
-    @transporter = Facade.insert(transfer)
+    @transporter = Facade.insert(transfer, current_acountant)
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -63,7 +65,7 @@ class TransfersController < ApplicationController
     }
     map[:attributes_destiny] = { account_id: params[:destiny_account_id] } if params[:destiny_account_id].present?
 
-    @transporter = Facade.update @transfer, map
+    @transporter = Facade.update @transfer, current_accountant, map
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -88,7 +90,7 @@ class TransfersController < ApplicationController
 
   def destroy
 
-    @transporter = Facade.delete @transfer
+    @transporter = Facade.delete @transfer, current_accountant
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -107,17 +109,12 @@ class TransfersController < ApplicationController
     @account_selected = nil
     @destination_account_selected = nil
     @array_accounts = [['','']] + current_accountant.accounts.collect { |a| [a.name, a.id] }
-    @items = current_accountant.items
-    @hash_subitems = {}
-    @items.each do |item|
-      @hash_subitems[item.id] = item.subitems
-    end
     @destination_accounts = @array_accounts
 
     @errors = []
     @errors << 'Deve existir pelo menos uma conta.' unless current_accountant.accounts.present?
     @errors << 'Deve existir pelo menos um item.' unless current_accountant.items.present?
-    @errors << 'Deve existir pelo menos um subitem.' unless @hash_subitems.present?
+    @errors << 'Deve existir pelo menos um subitem.' unless current_accountant.subitems.present?
 
   end
 
@@ -125,12 +122,17 @@ class TransfersController < ApplicationController
     params.require(:transaction).permit(:date_transaction, :value, :description, :title, :amount, :subitem_id, :account_id)
   end
 
-  def transaction_all
-    list = []
-    current_accountant.accounts.each do |account|
-      list += Transaction.where(account_id: account.id)
+  def filter_params
+    filter = { page: params[:page] || 1, per: params[:per] || 10 }
+    if params[:filter]
+      hash = params.require(:filter).permit(:subitem_id, :item_id, :account_id)
+      year = params[:filter][:year]
+      month = Util::Month.number_by_name params[:filter][:month]
+      date = Date.parse("#{year}-#{month}-01")
+      hash[:date] = date
     end
-    @transactions = list.sort_by { |value| value[:date_transaction]}
+    filter.merge!(hash) if hash
+    filter
   end
 
   def set_transfer

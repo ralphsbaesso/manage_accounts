@@ -9,7 +9,7 @@
       .form-group
         = form.label 'Selecione a conta', class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.select(:account_id, options_for_select(@array_accounts, @account_selected), {}, { class: 'form-control' })
+          = form.select(:account_id, options_for_select_accounts(selected: @account_selected), {}, { class: 'form-control' })
       .form-group
         = form.label 'Data', class: 'col-lg-2 control-label'
         .col-lg-10
@@ -33,11 +33,11 @@
       .form-group
         = form.label 'Item', class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.select(:item_id, options_for_select(@items.collect { |a| [a.name, a.id] }), {}, { class: 'form-control' })
+          = form.select(:item_id, options_for_select_items, {}, { class: 'form-control' })
       .form-group
         = form.label 'Subitem', class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.select(:subitem_id, options_for_select(@hash_subitems[@items.first.id].collect { |a| [a.name, a.id] }), {}, { class: 'form-control' })
+          = form.select(:subitem_id, options_for_select_subitems, {}, { class: 'form-control' })
       .form-group
         = form.label 'Selecione a conta destino', class: 'col-lg-2 control-label'
         .col-lg-10
@@ -49,15 +49,5 @@
             = hidden_field_tag :new_transaction, true
             = form.submit 'Salvar e nova transação', class: 'btn btn-primary'
 
-- selects = {}
-- @hash_subitems.each do |id, subitems|
-  - selects[id] = (select_tag :subitem_id, options_for_select(subitems.collect { |a| [a.name, a.id] }), class: 'form-control', id: id)
-
-:javascript
-  var selects_subitems = #{selects.to_json.html_safe};
-
-  $('#transaction_item_id').change(function() {
-    var id = this.value
-    $('#transaction_subitem_id').html(selects_subitems[id]);
-  })
+= dynamic_select_items_subitems
 

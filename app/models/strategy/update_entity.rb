@@ -6,7 +6,7 @@ module Strategy
 
       if transporter.status == 'GREEN'
         entity = transporter.entity
-        attributes = transporter.map[:attributes]
+        attributes = transporter.bucket[:attributes]
         entity.update(attributes)
 
         if entity.errors.present?
