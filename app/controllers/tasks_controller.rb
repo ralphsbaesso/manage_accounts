@@ -20,7 +20,7 @@ class TasksController < ApplicationController
   
     @task.accountant = current_accountant
   
-    @transporter = Facade.insert @task
+    @transporter = Facade.insert @task, current_accountant
   
     respond_to do |format|
       if @transporter.status == 'GREEN'

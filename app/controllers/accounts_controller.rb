@@ -18,7 +18,7 @@ class AccountsController < ApplicationController
 
     @account.accountant = current_accountant
 
-    @transporter = Facade.insert @account
+    @transporter = Facade.insert @account, current_accountant
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -46,7 +46,7 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    @transporter = Facade.delete @account
+    @transporter = Facade.delete @account, current_accountant
 
     respond_to do |format|
       if @transporter.status == 'GREEN'

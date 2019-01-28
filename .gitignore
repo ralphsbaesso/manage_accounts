@@ -32,3 +32,5 @@
 Gemfile.lock
 /.idea/*
 
+/public/NiceAdmin/*
+

@@ -1,0 +1,37 @@
+.row
+  .col-lg-12
+    .panel.panel-default
+      #div-filter.panel-heading
+        %h5.mb-0
+          %button.btn.btn-link.collapsed{"aria-controls" => "div-collapse", "aria-expanded" => "false", "data-target" => "#div-collapse", "data-toggle" => "collapse"}
+            Filtros
+      #div-collapse.panel.panel-body.collapse
+        = form_tag url, method: :get do
+          .row
+            .col-lg-2
+              %label Mês
+            .col-lg-2
+              %label Ano
+            .col-lg-2
+              %label Conta
+            .col-lg-2
+              %label Item
+            .col-lg-2
+              %label Subitem
+          .row
+            .col-lg-2
+              = select_tag 'filter[month]', options_for_select(Util::Month.all, Util::Month.current), type: :date, class: 'form-control'
+            .col-lg-2
+              = select_tag 'filter[year]', options_for_select(Util::Year.recent, Util::Year.current), type: :date, class: 'form-control'
+            .col-lg-2
+              = select_tag 'filter[account_id]', options_for_select_accounts(first_blank: true), class: 'form-control'
+            .col-lg-2
+              = select_tag 'filter[item_id]', options_for_select_items(first_blank: true), id: :transaction_item_id, class: 'form-control'
+            .col-lg-2
+              = select_tag 'filter[subitem_id]', options_for_select_subitems(first_blank: true), id: :transaction_subitem_id, class: 'form-control'
+          .row{ style: 'border-top-width: 10px; margin-top: 10px;' }
+            .col-lg-10
+              = submit_tag 'Buscar', class: 'btn btn-info pull-right', style: 'width: 100%'
+
+
+= dynamic_select_items_subitems

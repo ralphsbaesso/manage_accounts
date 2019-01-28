@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :tasks
   resources :transfers
 
+  get '/reports', to: 'reports#transfers'
+
 end

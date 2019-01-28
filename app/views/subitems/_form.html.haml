@@ -30,7 +30,7 @@
       .form-group
         = form.label :item, class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.select 'item_id', current_accountant.items.collect { |item| [ item.name, item.id ] }, {}, class: 'form-control'
+          = form.select 'item_id', driver.items.collect { |item| [ item.name, item.id ] }, {}, class: 'form-control'
       .form-group
         .col-lg-offset-2.col-lg-10
           = form.submit button, class: 'btn btn-outline btn-primary btn-lg'

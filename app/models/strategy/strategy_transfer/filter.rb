@@ -6,9 +6,10 @@ module Strategy::StrategyTransfer
       transfer = transporter.entity
 
       return false unless transfer.is_a? Transfer
+      return true if transporter.bucket[:specific_filter]
 
       filter = transporter.bucket[:filter]
-      accountant = transporter.current_accountant
+      accountant = transporter.driver
 
       query = { account_id: accountant.account_ids }
 
@@ -26,14 +27,52 @@ module Strategy::StrategyTransfer
         query[:subitem_id] = subitem_ids
       end
 
-      account_id = filter[:account_id] || filter['account_id']
-      query[:account_id] = account_id if account_id.present?
+      query[:account_id] = filter[:account_id] if filter[:account_id].present?
 
-      transporter.bucket[:transactions] = Transaction.where(query).order(:date_transaction).page(filter[:page]).per(filter[:per])
+      if transporter.bucket[:format] == :pie_chart
+        transporter.bucket[:data] = format_pie_chart(Transaction.where(query))
+      else
+        transporter.bucket[:transactions] = Transaction.where(query).order(:date_transaction).page(filter[:page]).per(filter[:per])
+      end
 
       true
 
+    end
 
+    private
+
+    def self.format_pie_chart(transactions)
+
+      item_value_hash = {}
+      transactions.each do |transacotion|
+
+        name = transacotion.subitem.item.name
+        if item_value_hash[name]
+          item_value_hash[name] += transacotion.value
+        else
+          item_value_hash[name] = transacotion.value
+        end
+
+      end
+
+      # separa positivo e negativo
+      positives = [['Item', 'Value']]
+      negatives = [['Item', 'Value']]
+
+      item_value_hash.each do |k, v|
+        if v < 0
+          negatives << [k, (v * -1)]
+        else
+          positives << [k, v]
+        end
+
+      end
+
+      data = {
+          positives: positives,
+          negatives: negatives
+      }
+      data
     end
   end
 

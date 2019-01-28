@@ -33,15 +33,15 @@
       .form-group
         = form.label 'Item', class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.select(:item_id, options_for_select_items, {}, { class: 'form-control' })
+          = form.select(:item_id, options_for_select_items(selected: @item_selected), {}, { class: 'form-control' })
       .form-group
         = form.label 'Subitem', class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.select(:subitem_id, options_for_select_subitems, {}, { class: 'form-control' })
+          = form.select(:subitem_id, options_for_select_subitems(selected: @subitem_selected), {}, { class: 'form-control' })
       .form-group
         = form.label 'Selecione a conta destino', class: 'col-lg-2 control-label'
         .col-lg-10
-          = select_tag(:destiny_account_id, options_for_select(@destination_accounts, @destination_account_selected), { class: 'form-control' })
+          = select_tag(:destiny_account_id, options_for_select_accounts(selected: @destination_account_selected, first_blank: true), { class: 'form-control' })
       .form-group
         .col-lg-offset-2.col-lg-10
           = form.submit button, class: 'btn btn-primary'

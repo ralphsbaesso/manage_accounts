@@ -7,7 +7,7 @@ module SharedHelper
 
   def options_for_select_accounts(options={})
 
-    selected = options[:selected]
+    selected = options[:selected] ? [options[:selected].name, options[:selected].id] : nil
     first_blank = options[:first_blank]
 
     accounts = current_accountant.accounts
@@ -18,7 +18,11 @@ module SharedHelper
 
   def options_for_select_items(options= {})
 
-    selected = options[:selected]
+    if options[:selected]
+      @item = options[:selected]
+      selected = [@item.name, @item.id]
+    end
+
     first_blank = options[:first_blank]
 
     @items = current_accountant.items
@@ -32,10 +36,15 @@ module SharedHelper
 
     return raise 'Primeiro selecione "options_for_select_items"' unless @items
 
-    selected = options[:selected]
+    selected = options[:selected] ? [options[:selected].name, options[:selected].id] : nil
     first_blank = options[:first_blank]
 
-    subitems = @items.first.subitems
+    if @item
+      subitems = @item.subitems
+    else
+      subitems = @items.first.subitems
+    end
+
     array = subitems.to_a
     array = [Subitem.new] + array if first_blank
     options_for_select(array.collect { |a| [a.name, a.id] }, selected)

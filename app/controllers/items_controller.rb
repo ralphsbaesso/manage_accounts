@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
 
     @item.accountant = current_accountant
 
-    @transporter = Facade.insert @item
+    @transporter = Facade.insert @item, current_accountant
 
     respond_to do |format|
       if @transporter.status == 'GREEN'

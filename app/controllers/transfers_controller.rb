@@ -3,9 +3,7 @@ class TransfersController < ApplicationController
   before_action :set_transfer, only: [:destroy]
 
   def index
-    @transporter = Facade.select(Transfer.new, current_accountant, filter: filter_params || {})
-    @transactions = @transporter.bucket[:transactions]
-
+    transaction_all
   end
 
   def new
@@ -14,13 +12,16 @@ class TransfersController < ApplicationController
 
   def edit
     @transaction = Transaction.find_by(id: params[:id])
-    account = @transaction.account
-    @account_selected = [account.name, account.id]
+    @account_selected = @transaction.account
+
     associated = @transaction.associated_transaction
     if associated
-      destination_account = associated.account
-      @destination_account_selected = [destination_account.name, destination_account.id]
+      @destination_account_selected = associated.account
     end
+
+    @subitem_selected = @transaction.subitem
+    @item_selected = @subitem_selected.item
+
   end
 
   def create
@@ -33,7 +34,7 @@ class TransfersController < ApplicationController
       transfer.destiny_transaction = @destiny_transaction
     end
 
-    @transporter = Facade.insert(transfer, current_acountant)
+    @transporter = Facade.insert(transfer, current_accountant)
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -47,8 +48,8 @@ class TransfersController < ApplicationController
         end
       else
         @transaction = @origin_transaction
-        @account_selected = [@origin_transaction.account.name, @origin_transaction.account.id]
-        @destination_account_selected = [@destiny_transaction.account.name, @destiny_transaction.account.id] if @destiny_transaction
+        @account_selected = @origin_transaction.account
+        @destination_account_selected = @destiny_transaction.account if @destiny_transaction
         format.html { render :new }
       end
     end
@@ -125,18 +126,27 @@ class TransfersController < ApplicationController
   def filter_params
     filter = { page: params[:page] || 1, per: params[:per] || 10 }
     if params[:filter]
-      hash = params.require(:filter).permit(:subitem_id, :item_id, :account_id)
+      f = params.require(:filter).permit(:subitem_id, :item_id, :account_id)
       year = params[:filter][:year]
       month = Util::Month.number_by_name params[:filter][:month]
       date = Date.parse("#{year}-#{month}-01")
-      hash[:date] = date
+      f[:date] = date
     end
-    filter.merge!(hash) if hash
+    if f.present?
+      f.each do |k, v|
+        filter[k.to_sym] = v
+      end
+    end
     filter
   end
 
   def set_transfer
     @transfer = Transfer.find(params[:id])
+  end
+
+  def transaction_all
+    @transporter = Facade.select(Transfer.new, current_accountant, filter: filter_params || {})
+    @transactions = @transporter.bucket[:transactions]
   end
 
 end
