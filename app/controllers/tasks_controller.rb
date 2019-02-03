@@ -35,7 +35,7 @@ class TasksController < ApplicationController
   
   def update
   
-    @transporter = Facade.update @task, attributes: task_params
+    @transporter = Facade.update @task, current_accountant, attributes: task_params
   
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -49,7 +49,7 @@ class TasksController < ApplicationController
   
   def destroy
   
-    @transporter = Facade.delete @task
+    @transporter = Facade.delete @task, current_accountant
   
     respond_to do |format|
       if @transporter.status == 'GREEN'

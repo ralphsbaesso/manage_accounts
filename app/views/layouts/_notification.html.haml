@@ -10,7 +10,8 @@
         %ul.dropdown-menu.extended.tasks-bar
           .notify-arrow.notify-arrow-blue
           %li
-            %p.blue You have 6 pending letter
+            %p.blue
+              %strong EM IMPLEMENTAÇÃO
           %li
             %a{href: "#"}
               .task-info
@@ -63,7 +64,8 @@
         %ul.dropdown-menu.extended.inbox
           .notify-arrow.notify-arrow-blue
           %li
-            %p.blue You have 5 new messages
+            %p.blue
+              %strong EM IMPLEMENTAÇÃO
           %li
             %a{href: "#"}
               %span.photo
@@ -103,41 +105,25 @@
           %li
             %a{href: "#"} See all messages
             / inbox notificatoin end
-            / alert notification start
+      / alert notification start
+      - notifys = current_accountant.late_debts + current_accountant.current_debts
       %li#alert_notificatoin_bar.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %i.icon-bell-l
-          %span.badge.bg-important 7.000
+          %span.badge.bg-warning= notifys.count
         %ul.dropdown-menu.extended.notification
           .notify-arrow.notify-arrow-blue
           %li
-            %p.blue You have 4 new notifications
+            %p.blue Você tem #{notifys.count} conta(s) pendente(s))
+          - notifys.each do |notify|
+            %li
+              %a{href: edit_task_path(notify.id)}
+                %span.label.label-danger
+                  %i.icon_profile
+                = notify.name
+                %span.small.italic.pull-right= l notify.due_date
           %li
-            %a{href: "#"}
-              %span.label.label-primary
-                %i.icon_profile
-              Friend Request
-              %span.small.italic.pull-right 5 mins
-          %li
-            %a{href: "#"}
-              %span.label.label-warning
-                %i.icon_pin
-              John location.
-              %span.small.italic.pull-right 50 mins
-          %li
-            %a{href: "#"}
-              %span.label.label-danger
-                %i.icon_book_alt
-              Project 3 Completed.
-              %span.small.italic.pull-right 1 hr
-          %li
-            %a{href: "#"}
-              %span.label.label-success
-                %i.icon_like
-              Mick appreciated your work.
-              %span.small.italic.pull-right Today
-          %li
-            %a{href: "#"} See all notifications
+            %a{href: tasks_path} Ver todas as dívidas
             / alert notification end
             / user login dropdown start
       %li.dropdown

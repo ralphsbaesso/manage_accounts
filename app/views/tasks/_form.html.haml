@@ -26,7 +26,7 @@
       .form-group
         = form.label 'Data de vencimento', class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.text_field :due_date, value: Date.today + 7.days, class: 'form-control', type: :date
+          = form.text_field :due_date, value: due_date, class: 'form-control', type: :date
       - if params[:action] == 'edit'
         .form-group
           = form.label 'Pago', class: 'col-lg-2 control-label'

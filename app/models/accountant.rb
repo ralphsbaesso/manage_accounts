@@ -23,4 +23,15 @@ class Accountant < ApplicationRecord
     )
   end
 
+  def late_debts
+    current_month = Date.today.at_beginning_of_month
+    Task.where(accountant_id: self.id, done: false).where('due_date < :current_month', current_month: current_month).to_a
+  end
+
+  def current_debts
+    start = Date.today.at_beginning_of_month
+    final = Date.today.at_end_of_month
+    Task.where(accountant_id: self.id, due_date: start..final).to_a
+  end
+
 end
