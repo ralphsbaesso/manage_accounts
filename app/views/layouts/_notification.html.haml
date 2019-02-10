@@ -5,7 +5,7 @@
       / task notificatoin start
       %li#task_notificatoin_bar.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          %i.icon-task-l
+          %i.far.fa-list-alt
           %span.badge.bg-important 6
         %ul.dropdown-menu.extended.tasks-bar
           .notify-arrow.notify-arrow-blue
@@ -59,7 +59,7 @@
             / inbox notificatoin start
       %li#mail_notificatoin_bar.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          %i.icon-envelope-l
+          %i.far.fa-envelope
           %span.badge.bg-important 5
         %ul.dropdown-menu.extended.inbox
           .notify-arrow.notify-arrow-blue
@@ -109,7 +109,7 @@
       - notifys = current_accountant.late_debts + current_accountant.current_debts
       %li#alert_notificatoin_bar.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          %i.icon-bell-l
+          %i.far.fa-bell
           %span.badge.bg-warning= notifys.count
         %ul.dropdown-menu.extended.notification
           .notify-arrow.notify-arrow-blue

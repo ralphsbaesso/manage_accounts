@@ -5,9 +5,9 @@
       .form-group
         = form_with(model: @accountant, url: accountants_path, local: true) do |f|
           .form-group
-            = f.text_field :name, autocomplete: "email", placeholder: 'Nome...', class: "form-control"
+            = f.text_field :name, autofocus: true, autocomplete: "email", placeholder: 'Nome...', class: "form-control"
           .form-group
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email...', class: "form-control"
+            = f.email_field :email,  autocomplete: "email", placeholder: 'Email...', class: "form-control"
           .form-group
             = text_field_tag :family_name, @family_name,  autofocus: true, placeholder: 'Nome da família', class: "form-control"
           .form-group
@@ -17,7 +17,7 @@
           .form-group
             .checkbox
               %label
-                %input{:type => "checkbox"}/
+                %input{:type => "checkbox"}
                 Please accept the terms and conditions to proceed with your request.
           .form-group
             = f.submit 'Registrar', class: 'btn btn-success'

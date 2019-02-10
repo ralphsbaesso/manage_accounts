@@ -5,7 +5,13 @@ class Accountants::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    super
+    super do
+      if flash[:alert]
+        @transporter = Transporter.new('devise')
+        @transporter.messages << flash[:alert]
+        @transporter.status = 'RED'
+      end
+    end
   end
 
   # POST /resource/sign_in
