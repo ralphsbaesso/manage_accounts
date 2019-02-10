@@ -3003,7 +3003,7 @@ div[data-role="editor-toolbar"] {
 
 }
 
-* /Widget-Content */
+/** /Widget-Content *!*/
 
 
 
@@ -3359,7 +3359,7 @@ div[data-role="editor-toolbar"] {
 
 /*-----	map-----*/
 
-* Google maps */
+/** Google maps *!*/
 
 
 
