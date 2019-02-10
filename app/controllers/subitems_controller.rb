@@ -15,24 +15,20 @@ class SubitemsController < AuthenticateBaseController
 
   def create
     
-    @subitem = Subitem.new(subitem_params)
-    
-    @transporter = @facade.insert(@subitem, accountant_id: current_accountant.id)
+    @transporter = @facade.insert(@subitem, attributes: subitem_params)
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        flash[:notice] = 'Subitem criado com sucesso'
-        subitem_all
-        format.html { render :index }
-      else
-        format.html { render :new }
-      end
+    if @transporter.status == 'GREEN'
+      flash[:notice] = 'Subitem criado com sucesso'
+      subitem_all
+      render :index
+    else
+      render :new
     end
   end
 
   def update
 
-    @transporter = @facade.update @item, attributes: subitem_params
+    @transporter = @facade.update @subitem, attributes: subitem_params
 
     respond_to do |format|
       if @transporter.status == 'GREEN'

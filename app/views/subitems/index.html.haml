@@ -33,5 +33,5 @@
             %td= subitem.level
             %td= subitem.item.name
             %td
-              = link_to 'Editar', edit_item_path(subitem)
+              = link_to 'Editar', edit_subitem_path(subitem)
               = link_to 'Apagar', subitem, method: :delete, data: { confirm: 'Are you sure?' }

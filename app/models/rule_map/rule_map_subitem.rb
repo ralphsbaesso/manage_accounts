@@ -8,15 +8,17 @@ module RuleMap
       ]
     end
 
-    def self.delete
-      [
-          Strategy::CheckExistAssociationToItem,
-      ]
-    end
-
     def self.update
       [
           Strategy::CheckEqualsNameEntityToUpdate,
+          Strategy::UpdateEntity
+      ]
+    end
+
+    def self.delete
+      [
+          Strategy::CheckExistAssociationToItem,
+          Strategy::DestroyEntity
       ]
     end
   end

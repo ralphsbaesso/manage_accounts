@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aplicação para gerenciamento de contas (conta bancária).
 
-Things you may want to cover:
+Projeto em desenvolvimento.
 
-* Ruby version
+Pode ser visto em: 
 
-* System dependencies
+Aplicação feito com: http://manage-accounts.herokuapp.com
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version 2.5.1
+* Rails 5.2.0
+* postgres

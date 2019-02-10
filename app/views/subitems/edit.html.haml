@@ -1,5 +1,1 @@
-%h1 Editing Subitem
-= render 'form', subitem: @subitem
-= link_to 'Show', @subitem
-|
-= link_to 'Back', subitems_path
+= render 'form', subitem: @subitem, method: :put, title: 'ATUALIZAR SUBITEM', button: 'Atualizar'
