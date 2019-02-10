@@ -17,7 +17,7 @@ class SubitemsController < AuthenticateBaseController
     
     @subitem = Subitem.new(subitem_params)
     
-    @transporter = Facade.insert(@subitem, accountant_id: current_accountant.id)
+    @transporter = @facade.insert(@subitem, accountant_id: current_accountant.id)
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -32,7 +32,7 @@ class SubitemsController < AuthenticateBaseController
 
   def update
 
-    @transporter = Facade.update @item, attributes: subitem_params
+    @transporter = @facade.update @item, attributes: subitem_params
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -45,7 +45,7 @@ class SubitemsController < AuthenticateBaseController
   end
 
   def destroy
-    @transporter = Facade.delete @subitem
+    @transporter = @facade.delete @subitem
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
