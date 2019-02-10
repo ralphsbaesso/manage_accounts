@@ -1,4 +1,4 @@
-class AccountantsController < ApplicationController
+class AccountantsController < AuthenticateBaseController
   before_action :set_accountant, only: [:show, :edit, :update, :destroy, :show]
   before_action :authenticate_accountant!
 

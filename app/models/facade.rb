@@ -1,15 +1,19 @@
 class Facade
 
-   @map = {
-      'Transfer': RuleMap::RuleMapTransfer,
-      'Item': RuleMap::RuleMapItem,
-      'Account': RuleMap::RuleMapAccount,
-      'Subitem': RuleMap::RuleMapSubitem,
-      'Task': RuleMap::RuleMapTask,
-   }
+  def initialize(driver)
+    @driver = driver
+    @map = {
+        'Transfer': RuleMap::RuleMapTransfer,
+        'Item': RuleMap::RuleMapItem,
+        'Account': RuleMap::RuleMapAccount,
+        'Subitem': RuleMap::RuleMapSubitem,
+        'Task': RuleMap::RuleMapTask,
+    }
+  end
 
-  def self.insert(entity, accountant, args={})
-    @transporter = Transporter.new(accountant)
+
+  def insert(entity, args={})
+    @transporter = Transporter.new(@driver)
     strategies = @map[entity.class.name.to_sym].insert
     @transporter.entity = entity
     @transporter.bucket = args
@@ -17,8 +21,8 @@ class Facade
     @transporter
   end
    
-  def self.select(entity, accountant, args={})
-     @transporter = Transporter.new(accountant)
+  def select(entity, args={})
+     @transporter = Transporter.new(@driver)
      strategies = @map[entity.class.name.to_sym].select
      @transporter.entity = entity
      @transporter.bucket = args
@@ -26,8 +30,8 @@ class Facade
      @transporter
   end
 
-  def self.update(entity, accountant, args={})
-    @transporter = Transporter.new(accountant)
+  def update(entity, args={})
+    @transporter = Transporter.new(@driver)
     strategies = @map[entity.class.name.to_sym].update
     @transporter.entity = entity
     @transporter.bucket = args
@@ -35,8 +39,8 @@ class Facade
     @transporter
   end
 
-  def self.delete(entity, accountant, args={})
-    @transporter = Transporter.new(accountant)
+  def delete(entity, args={})
+    @transporter = Transporter.new(@driver)
     strategies = @map[entity.class.name.to_sym].delete
     @transporter.entity = entity
     @transporter.bucket = args
@@ -47,7 +51,7 @@ class Facade
 
   private
 
-  def self.execute(strategies)
+  def execute(strategies)
 
     puts ">>>>>>>>>>>>>>   Quantidade de estrategias #{strategies.count}"
 

@@ -1,8 +1,9 @@
-class ReportsController < ApplicationController
+class ReportsController < AuthenticateBaseController
+  before_action :set_facade, only: [:transfers]
 
   def transfers
 
-    @transporter = Facade.select(Transfer.new, current_accountant, filter: filter_params || {}, format: :pie_chart)
+    @transporter = @facade.select(Transfer.new, filter: filter_params || {}, format: :pie_chart)
     data = @transporter.bucket[:data]
 
     @positives = data[:positives]
@@ -30,4 +31,9 @@ class ReportsController < ApplicationController
     end
     filter
   end
+
+  def set_facade
+    @facade ||= Facade.new(current_accountant)
+  end
+
 end

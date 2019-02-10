@@ -12,7 +12,7 @@ class Accountants::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
 
-    @transporter = Transporter.new
+    @transporter = Transporter.new({})
 
     if params[:family_name].present?
       @family_name = params[:family_name]

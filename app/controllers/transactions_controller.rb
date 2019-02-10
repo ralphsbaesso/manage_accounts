@@ -1,3 +1,3 @@
-class TransactionsController < ApplicationController
+class TransactionsController < AuthenticateBaseController
 
 end

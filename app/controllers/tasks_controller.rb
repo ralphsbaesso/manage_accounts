@@ -1,5 +1,6 @@
-class TasksController < ApplicationController
+class TasksController < AuthenticateBaseController
   before_action :set_task, only: [:edit, :update, :destroy]
+  before_action :set_facade, only: [:index, :create, :update, :destroy]
   
   def index
     task_all
@@ -20,7 +21,7 @@ class TasksController < ApplicationController
   
     @task.accountant = current_accountant
   
-    @transporter = Facade.insert @task, current_accountant
+    @transporter = @facade.insert @task
   
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -35,7 +36,7 @@ class TasksController < ApplicationController
   
   def update
   
-    @transporter = Facade.update @task, current_accountant, attributes: task_params
+    @transporter = @facade.update @task, attributes: task_params
   
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -49,7 +50,7 @@ class TasksController < ApplicationController
   
   def destroy
   
-    @transporter = Facade.delete @task, current_accountant
+    @transporter = @facade.delete @task
   
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -79,6 +80,10 @@ class TasksController < ApplicationController
   
   def task_all
     @tasks = Task.where(accountant_id: current_accountant.id)
+  end
+
+  def set_facade
+    @facade ||= Facade.new(current_accountant)
   end
   
 end

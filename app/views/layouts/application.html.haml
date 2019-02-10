@@ -51,6 +51,9 @@
                   $('.alert-success').click(function() {
                     $(this).hide('slow');
                   });
+                  setTimeout(function() {
+                    $('.alert-success').hide('slow');
+                  }, 5000)
 
           = yield
 

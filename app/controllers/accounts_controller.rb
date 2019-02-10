@@ -1,5 +1,6 @@
-class AccountsController < ApplicationController
+class AccountsController < AuthenticateBaseController
   before_action :set_account, only: [:edit, :update, :destroy]
+  before_action :set_facade, only: [:index, :create, :update, :destroy]
 
   def index
     account_all
@@ -18,7 +19,7 @@ class AccountsController < ApplicationController
 
     @account.accountant = current_accountant
 
-    @transporter = Facade.insert @account, current_accountant
+    @transporter = @facade.insert @account, current_accountant
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -33,7 +34,7 @@ class AccountsController < ApplicationController
 
   def update
 
-    @transporter = Facade.update @account, attributes: account_params
+    @transporter = @facade.update @account, attributes: account_params
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -46,7 +47,7 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    @transporter = Facade.delete @account, current_accountant
+    @transporter = @facade.delete @account, current_accountant
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -58,17 +59,22 @@ class AccountsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_account
-      @account = Account.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def account_params
-      params.require(:account).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_account
+    @account = Account.find(params[:id])
+  end
 
-    def account_all
-      @accounts = Account.where(accountant_id: current_accountant.id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def account_params
+    params.require(:account).permit(:name, :description)
+  end
+
+  def account_all
+    @accounts = Account.where(accountant_id: current_accountant.id)
+  end
+
+  def set_facade
+    @facade ||= Facade.new(current_accountant)
+  end
 end

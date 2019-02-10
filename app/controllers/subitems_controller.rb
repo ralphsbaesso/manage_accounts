@@ -1,5 +1,6 @@
-class SubitemsController < ApplicationController
+class SubitemsController < AuthenticateBaseController
   before_action :set_subitem, only: [:edit, :update, :destroy]
+  before_action :set_facade, only: [:index, :create, :update, :destroy]
 
   def index
     subitem_all
@@ -56,22 +57,27 @@ class SubitemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_subitem
-      @subitem = Subitem.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_subitem
+    @subitem = Subitem.find(params[:id])
+  end
 
-    def subitem_params
-      params.require(:subitem).permit(:name, :description, :level, :account_type, :item_id)
-    end
-  
-    def subitem_all
-      subitems = []
-      current_accountant.items.each do |item|
-        item.subitems.each do |subitem|
-          subitems << subitem
-        end
+  def subitem_params
+    params.require(:subitem).permit(:name, :description, :level, :account_type, :item_id)
+  end
+
+  def subitem_all
+    subitems = []
+    current_accountant.items.each do |item|
+      item.subitems.each do |subitem|
+        subitems << subitem
       end
-      @subitems = subitems.sort_by { |sub| sub.name }
     end
+    @subitems = subitems.sort_by { |sub| sub.name }
+  end
+
+  def set_facade
+    @facade ||= Facade.new(current_accountant)
+  end
+
 end

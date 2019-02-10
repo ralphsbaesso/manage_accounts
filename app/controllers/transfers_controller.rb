@@ -1,6 +1,7 @@
-class TransfersController < ApplicationController
+class TransfersController < AuthenticateBaseController
   before_action :initialize_variables, only: [:index, :create, :edit, :new, :update]
   before_action :set_transfer, only: [:destroy]
+  before_action :set_facade, only: [:index, :create, :update, :destroy]
 
   def index
     transaction_all
@@ -34,7 +35,7 @@ class TransfersController < ApplicationController
       transfer.destiny_transaction = @destiny_transaction
     end
 
-    @transporter = Facade.insert(transfer, current_accountant)
+    @transporter = @facade.insert(transfer)
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -66,7 +67,7 @@ class TransfersController < ApplicationController
     }
     map[:attributes_destiny] = { account_id: params[:destiny_account_id] } if params[:destiny_account_id].present?
 
-    @transporter = Facade.update @transfer, current_accountant, map
+    @transporter = @facade.update @transfer, map
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -91,7 +92,7 @@ class TransfersController < ApplicationController
 
   def destroy
 
-    @transporter = Facade.delete @transfer, current_accountant
+    @transporter = @facade.delete @transfer
 
     respond_to do |format|
       if @transporter.status == 'GREEN'
@@ -145,8 +146,12 @@ class TransfersController < ApplicationController
   end
 
   def transaction_all
-    @transporter = Facade.select(Transfer.new, current_accountant, filter: filter_params || {})
+    @transporter = @facade.select(Transfer.new, filter: filter_params || {})
     @transactions = @transporter.bucket[:transactions]
+  end
+
+  def set_facade
+    @facade ||= Facade.new(current_accountant)
   end
 
 end
