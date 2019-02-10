@@ -2,6 +2,7 @@
   "name": "manage_accounts",
   "private": true,
   "dependencies": {
+    "@rails/webpacker": "3.5",
     "bootstrap": "3",
     "bootstrap-theme": "^4.0.0-alpha.6",
     "easy-pie-chart": "^2.1.7",
@@ -9,5 +10,8 @@
     "font-icon": "^0.0.7",
     "owl.carousel": "^2.3.4",
     "tether": "^1.4.5"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
   }
 }
