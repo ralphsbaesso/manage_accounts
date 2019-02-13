@@ -14,8 +14,9 @@ class SubitemsController < AuthenticateBaseController
   end
 
   def create
-    
-    @transporter = @facade.insert(@subitem, attributes: subitem_params)
+
+    @subitem = Subitem.new(subitem_params)
+    @transporter = @facade.insert(@subitem)
 
     if @transporter.status == 'GREEN'
       flash[:notice] = 'Subitem criado com sucesso'
@@ -43,12 +44,11 @@ class SubitemsController < AuthenticateBaseController
   def destroy
     @transporter = @facade.delete @subitem
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        format.html { redirect_to action: :index, notice: 'Subtem deletado com sucesso' }
-      else
-        format.html { render :index }
-      end
+    if @transporter.status == 'GREEN'
+      flash[:notice] = 'Subtem deletado com sucesso'
+      redirect_to action: :index
+    else
+      render :index
     end
   end
 
