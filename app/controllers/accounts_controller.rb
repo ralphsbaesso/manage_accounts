@@ -47,15 +47,15 @@ class AccountsController < AuthenticateBaseController
   end
 
   def destroy
-    @transporter = @facade.delete @account, current_accountant
+    flash[:notice] = 'Metodo não implementado'
+    redirect_to action: :index
+    # @transporter = @facade.delete @account
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        format.html { redirect_to action: :index, notice: 'Conta deletada.' }
-      else
-        format.html { render :index }
-      end
-    end
+    # if @transporter.status == 'GREEN'
+    #   redirect_to action: :index, notice: 'Conta deletada.'
+    # else
+    #   render :index
+    # end
   end
 
   private
