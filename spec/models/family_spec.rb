@@ -8,6 +8,12 @@
 #  updated_at :datetime         not null
 #
 
-class Family < ApplicationRecord
-  has_many :accountants, autosave: true
+require 'rails_helper'
+
+RSpec.describe Family, type: :model do
+
+  describe 'have atrributes' do
+    it { is_expected.to respond_to(:name) }
+  end
+
 end
