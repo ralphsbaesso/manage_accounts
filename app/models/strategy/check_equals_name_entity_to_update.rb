@@ -1,7 +1,9 @@
 module Strategy
   class CheckEqualsNameEntityToUpdate < AStrategy
 
-    def self.process(transporter)
+    def process(transporter)
+
+      puts @ok
 
       entity = transporter.entity
 

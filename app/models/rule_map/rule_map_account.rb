@@ -1,19 +1,25 @@
 module RuleMap
   class RuleMapAccount
 
-    def self.insert
+    def self.insert(transporter)
       [
-        Strategy::CheckExistEntity,
-        Strategy::SaveEntity,
+        Strategy::Accounts::CheckName.new(transporter),
+        Strategy::SaveEntity.new(transporter),
       ]
     end
 
-    def self.delete
-      []
+    def self.delete(transporter)
+      [
+        Strategy::Accounts::CheckAssociation.new(transporter),
+        Strategy::DestroyEntity.new(transporter),
+      ]
     end
 
-    def self.update
-      [Strategy::CheckEqualsNameEntityToUpdate]
+    def self.update(transporter)
+      [
+          Strategy::Accounts::CheckName.new(transporter),
+          Strategy::SaveEntity.new(transporter),
+      ]
     end
   end
 end

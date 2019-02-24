@@ -17,7 +17,7 @@ module RuleMap
 
     def self.delete
       [
-          Strategy::CheckExistAssociationToItem,
+          Strategy::CheckAssociation,
           Strategy::DestroyEntity
       ]
     end

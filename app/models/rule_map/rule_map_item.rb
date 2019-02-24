@@ -1,23 +1,24 @@
 module RuleMap
   class RuleMapItem
 
-    def self.insert
+    def self.insert(transporter)
       [
-          Strategy::CheckExistEntity,
-          Strategy::SaveEntity
+          Strategy::Items::CheckName.new(transporter),
+          Strategy::SaveEntity.new(transporter),
       ]
     end
 
-    def self.delete
+    def self.delete(transporter)
       [
-          Strategy::CheckExistAssociationToItem,
-          Strategy::DestroyEntity
+          Strategy::Items::CheckAssociation.new(transporter),
+          Strategy::DestroyEntity.new(transporter)
       ]
     end
 
-    def self.update
+    def self.update(transporter)
       [
-          Strategy::CheckEqualsNameEntityToUpdate
+          Strategy::Items::CheckName.new(transporter),
+          Strategy::SaveEntity.new(transporter),
       ]
     end
   end

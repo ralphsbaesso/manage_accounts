@@ -1,14 +1,14 @@
 module Strategy
   class CheckExistEntity < AStrategy
 
-    def self.process(transporter)
+    def process
 
-      entity = transporter.entity
+      p entity
 
       if entity.is_a? Item
         check_item(entity, transporter)
       elsif entity.is_a? Account
-        check_account(entity, transporter)
+        check_account entity
       elsif entity.is_a? Subitem
         check_subitem(entity, transporter)
       end
@@ -31,13 +31,13 @@ module Strategy
 
     end
 
-    def self.check_account(account, transporter)
+    def check_account(account)
 
       account = Account.where(name: account.name, accountant_id: account.accountant_id)
 
       if account.present?
-        transporter.messages << 'nome já existe na base de dados'
-        transporter.status = 'RED'
+        messages << 'nome já existe na base de dados'
+        status = 'RED'
         return false
       else
         return true
