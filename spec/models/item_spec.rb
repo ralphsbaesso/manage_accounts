@@ -78,4 +78,15 @@ RSpec.describe Item, type: :model do
     end
   end
 
+  context 'select' do
+
+    it 'return list of items' do
+      amount = 10
+      create_list(:item, amount, accountant: accountant)
+
+      transporter = facade.select Item.new
+      expect(transporter.bucket[:items].count).to eq(amount)
+    end
+  end
+
 end

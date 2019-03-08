@@ -21,5 +21,11 @@ module RuleMap
           Strategy::SaveEntity.new(transporter),
       ]
     end
+
+    def self.select(transporter)
+      [
+        Strategy::Items::Filter.new(transporter)
+      ]
+    end
   end
 end

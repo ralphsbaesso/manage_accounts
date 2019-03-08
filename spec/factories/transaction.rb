@@ -3,9 +3,9 @@ FactoryBot.define do
 
     amount { Faker::Number.digit}
     date_transaction { Faker::Date.backward(10) }
-    description {Faker::Shakespeare.hamlet }
+    description {Faker::Lorem.sentences }
     origin { true}
-    title { Faker::StarWars.character }
+    title { Faker::Book.title }
     value { Faker::Number.decimal(2) }
 
   end

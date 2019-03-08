@@ -1,4 +1,4 @@
-class Strategy::DestroyEntity < Strategy::AStrategy
+class Strategy::DestroyEntity < AStrategy
 
   def process
 
