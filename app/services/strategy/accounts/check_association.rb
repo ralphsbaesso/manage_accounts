@@ -4,8 +4,9 @@ module Strategy
 
       def process
 
+        account = entity
 
-        if entity.transactions.count > 0
+        if entity.transactions.where(account: account).count > 0
           add_message 'Conta com transação.'
           set_status 'YELLOW'
         end

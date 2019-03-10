@@ -19,28 +19,37 @@ class Transporter
   end
 
   def status=(value)
-    @status.status = value
+    @status.status = value.to_sym
   end
 
   def status
-    @status
+    @status.status
+  end
+
+  def method_missing(method)
+
+    method = method.to_s
+
+    if method.start_with? 'status_'
+
+      second_word = method.gsub 'status_', ''
+
+      if second_word.end_with? '!'
+        @status.status = second_word.gsub '!', ''
+      elsif second_word.end_with? '?'
+        second_word = second_word.gsub('?', '').to_sym
+        return @status.status == second_word.to_sym
+      end
+    else
+      raise 'Method missing'
+    end
+
   end
 
   class Status
-
     attr_accessor :status
-
-    def method_missing(method)
-
-      method = method.to_s
-
-      if method.end_with? '!'
-        @status = method.gsub '!', ''
-      elsif method.end_with? '?'
-        method = method.gsub '?', ''
-        return @status == method
-      end
+    def initialize
+      @status = :green
     end
-
   end
 end

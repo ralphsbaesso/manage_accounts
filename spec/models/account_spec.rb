@@ -43,7 +43,7 @@ RSpec.describe Account, type: :model do
       name = other_account.name
       transporter = facade.update(account, attributes: { name: name })
 
-      expect(transporter.status).to eq('RED')
+      expect(transporter.status).to eq(:red)
     end
   end
 
@@ -67,7 +67,7 @@ RSpec.describe Account, type: :model do
         transport = facade.delete(account)
       }.to change(Account, :count).by(0)
 
-      expect(transport.status).to eq('RED')
+      expect(transport.status_red?).to be_truthy
     end
   end
 

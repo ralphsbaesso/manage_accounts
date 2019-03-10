@@ -2,47 +2,49 @@
 
 require 'rails_helper'
 
-RSpec.describe Item, type: :model do
+RSpec.describe Subitem, type: :model do
 
   describe 'have atrributes' do
     it { is_expected.to respond_to(:name) }
     it { is_expected.to respond_to(:description) }
+    it { is_expected.to respond_to(:level) }
   end
 
   let!(:accountant) { create(:accountant) }
+  let!(:item) { create(:item, accountant: accountant) }
   let!(:facade) { Facade.new(accountant) }
 
   context 'Save' do
     it 'increase one item' do
 
-      item = build(:item, accountant: accountant)
+      subitem = build(:subitem, item: item)
       expect {
-        facade.insert(item)
-      }.to change(Item, :count).by(1)
+        facade.insert(subitem)
+      }.to change(Subitem, :count).by(1)
     end
 
     it 'not save if name already existing' do
       name = Faker::FunnyName.name
-      create(:item, accountant: accountant, name: name)
-      item = build(:item, accountant: accountant, name: name)
+      create(:subitem, item: item, name: name)
+      subitem = build(:subitem, item: item, name: name)
       expect {
-        facade.insert(item)
-      }.to change(Item, :count).by(0)
+        facade.insert(subitem)
+      }.to change(Subitem, :count).by(0)
     end
   end
 
   context 'update' do
-    let!(:item) { create(:item, accountant: accountant) }
+    let!(:subitem) { create(:subitem, item: item) }
 
     it 'modify attributes' do
-      id = item.id
+      id = subitem.id
       name = Faker::Name.name
       description = Faker::Book.publisher
-      facade.update item, attributes: { name: name, description: description }
+      facade.update subitem, attributes: { name: name, description: description }
 
-      item_from_db = Item.find(id)
-      expect(item_from_db.name).to eq(name)
-      expect(item_from_db.description).to eq(description)
+      subitem_from_db = Subitem.find(id)
+      expect(subitem_from_db.name).to eq(name)
+      expect(subitem_from_db.description).to eq(description)
     end
 
     it 'return message error update with same name' do
