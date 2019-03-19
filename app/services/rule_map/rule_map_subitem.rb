@@ -17,7 +17,7 @@ module RuleMap
 
     def self.delete(transporter)
       [
-          Strategy::CheckAssociation.new(transporter),
+          Strategy::Subitems::CheckExistAssociationToSubitem.new(transporter),
           Strategy::DestroyEntity.new(transporter)
       ]
     end

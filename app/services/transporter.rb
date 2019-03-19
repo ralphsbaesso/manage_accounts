@@ -35,7 +35,8 @@ class Transporter
       second_word = method.gsub 'status_', ''
 
       if second_word.end_with? '!'
-        @status.status = second_word.gsub '!', ''
+        @status.status = second_word.gsub('!', '').to_sym
+        return @status.status
       elsif second_word.end_with? '?'
         second_word = second_word.gsub('?', '').to_sym
         return @status.status == second_word.to_sym

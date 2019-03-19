@@ -49,34 +49,36 @@ RSpec.describe Subitem, type: :model do
 
     it 'return message error update with same name' do
 
-      other_item = create(:item, accountant: accountant)
+      other_subitem = create(:subitem, item: item)
 
-      name = other_item.name
-      transporter = facade.update(item, attributes: { name: name })
+      name = other_subitem.name
+      transporter = facade.update(subitem, attributes: { name: name })
 
-      expect(transporter.status).to eq(:red)
+      expect(transporter.status_red?).to be true
     end
   end
 
   context 'delete' do
     it 'decrease one item' do
 
-      item = create(:item, accountant: accountant)
+      subitem = create(:subitem, item: item)
       expect {
-        facade.delete(item)
-      }.to change(Item, :count).by(-1)
+        facade.delete(subitem)
+      }.to change(Subitem, :count).by(-1)
     end
 
     it 'return error account with association' do
-      item = create(:item, accountant: accountant)
-      create(:subitem, item: item)
+
+      account = create(:account, accountant: accountant)
+      subitem = create(:subitem, item: item)
+      create(:transaction, subitem: subitem, account: account)
 
       transport = nil
       expect {
-        transport = facade.delete(item)
-      }.to change(Item, :count).by(0)
+        transport = facade.delete(subitem)
+      }.to change(Subitem, :count).by(0)
 
-      expect(transport.status_red!).to be_truthy
+      expect(transport.status_red?).to be true
     end
   end
 
@@ -84,9 +86,9 @@ RSpec.describe Subitem, type: :model do
 
     it 'return list of items' do
       amount = 10
-      create_list(:item, amount, accountant: accountant)
+      create_list(:subitem, amount, item: item)
 
-      transporter = facade.select Item.new
+      transporter = facade.select Subitem.new
       expect(transporter.bucket[:items].count).to eq(amount)
     end
   end
