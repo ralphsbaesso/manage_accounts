@@ -89,7 +89,7 @@ RSpec.describe Subitem, type: :model do
       create_list(:subitem, amount, item: item)
 
       transporter = facade.select Subitem.new
-      expect(transporter.bucket[:items].count).to eq(amount)
+      expect(transporter.bucket[:subitems].count).to eq(amount)
     end
   end
 

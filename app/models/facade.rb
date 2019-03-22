@@ -16,7 +16,7 @@ class Facade
     @transporter = Transporter.new(@driver)
     @transporter.entity = entity
     @transporter.bucket = args
-    strategies = @map[entity.class.name.downcase.to_sym].insert(@transporter)
+    strategies = @map[make_symbol(entity)].insert(@transporter)
     execute strategies
     @transporter
   end
@@ -25,7 +25,7 @@ class Facade
      @transporter = Transporter.new(@driver)
      @transporter.entity = entity
      @transporter.bucket = args
-     strategies = @map[entity.class.name.downcase.to_sym].select(@transporter)
+     strategies = @map[make_symbol(entity)].select(@transporter)
      execute strategies
      @transporter
   end
@@ -36,7 +36,7 @@ class Facade
     @transporter.bucket = args
 
     check_attributes
-    strategies = @map[entity.class.name.downcase.to_sym].update(@transporter)
+    strategies = @map[make_symbol(entity)].update(@transporter)
     execute strategies
     @transporter
   end
@@ -45,7 +45,7 @@ class Facade
     @transporter = Transporter.new(@driver)
     @transporter.entity = entity
     @transporter.bucket = args
-    strategies = @map[entity.class.name.downcase.to_sym].delete(@transporter)
+    strategies = @map[make_symbol(entity)].delete(@transporter)
     execute strategies
     @transporter
   end
@@ -76,6 +76,14 @@ class Facade
         entity[key] = value if entity.respond_to? key
       end
 
+    end
+  end
+
+  def make_symbol(entity)
+    if entity.is_a? Symbol
+      return entity
+    else
+      return entity.class.name.downcase.to_sym
     end
   end
 end

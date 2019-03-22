@@ -21,5 +21,12 @@ module RuleMap
           Strategy::DestroyEntity.new(transporter)
       ]
     end
+
+    def self.select(transporter)
+      [
+          Strategy::Subitems::Filter.new(transporter),
+      ]
+    end
+
   end
 end
