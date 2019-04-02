@@ -1,36 +1,36 @@
 module RuleMap
   class RuleMapTransfer
 
-    def self.insert
+    def self.insert(transporter)
       [
-          Strategy::StrategyTransfer::CheckTransactions,
-          Strategy::StrategyTransfer::CheckAccounts,
-          Strategy::StrategyTransfer::TransferDataBetweenAccounts,
-          Strategy::StrategyTransfer::SetOriginTransaction,
-          Strategy::SaveEntity
+          Strategy::Transfers::CheckTransactions.new(transporter),
+          Strategy::Transfers::CheckAccounts.new(transporter),
+          Strategy::Transfers::TransferDataBetweenAccounts.new(transporter),
+          Strategy::Transfers::SetOriginTransaction.new(transporter),
+          Strategy::SaveEntity.new(transporter),
       ]
     end
 
-    def self.select
+    def self.select(transporter)
       [
-          Strategy::StrategyTransfer::Filter
+          Strategy::Transfers::Filter.new(transporter),
       ]
     end
 
-    def self.delete
+    def self.delete(transporter)
       [
-          Strategy::DestroyEntity
+          Strategy::DestroyEntity.new(transporter),
       ]
     end
 
-    def self.update
+    def self.update(transporter)
       [
-          Strategy::StrategyTransfer::CheckDisassociate,
-          Strategy::StrategyTransfer::SetAttributesTransactions,
-          Strategy::StrategyTransfer::CheckTransactions,
-          Strategy::StrategyTransfer::CheckAccounts,
-          Strategy::StrategyTransfer::TransferDataBetweenAccounts,
-          Strategy::StrategyTransfer::UpdateTransfer,
+          Strategy::Transfers::CheckDisassociate.new(transporter),
+          Strategy::Transfers::SetAttributesTransactions.new(transporter),
+          Strategy::Transfers::CheckTransactions.new(transporter),
+          Strategy::Transfers::CheckAccounts.new(transporter),
+          Strategy::Transfers::TransferDataBetweenAccounts.new(transporter),
+          Strategy::Transfers::UpdateTransfer.new(transporter),
       ]
     end
   end

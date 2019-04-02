@@ -21,14 +21,11 @@ class AccountsController < AuthenticateBaseController
 
     @transporter = @facade.insert @account, current_accountant
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        account_all
-        flash[:notice] = 'Conta criado.'
-        format.html { render :index }
-      else
-        format.html { render :new }
-      end
+    if @transporter.status == :green
+      flash[:notice] = 'Conta criado.'
+      redirect_to action: :index
+    else
+      render :new
     end
   end
 
@@ -36,13 +33,11 @@ class AccountsController < AuthenticateBaseController
 
     @transporter = @facade.update @account, attributes: account_params
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        flash[:notice] = 'conta atualizada.'
-        format.html { redirect_to action: :index }
-      else
-        format.html { render :edit, account: @account }
-      end
+    if @transporter.status == :green
+      flash[:notice] = 'conta atualizada.'
+      redirect_to action: :index
+    else
+      render :edit, account: @account
     end
   end
 

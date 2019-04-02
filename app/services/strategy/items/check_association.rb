@@ -10,7 +10,7 @@ module Strategy
 
         if subitem.present?
           add_message 'Esse item está associado a um SUBITEM, por tanto não poderá ser apagado!'
-          set_status 'RED'
+          set_status :red
           return false
         end
 

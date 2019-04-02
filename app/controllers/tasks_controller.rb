@@ -1,6 +1,6 @@
 class TasksController < AuthenticateBaseController
-  before_action :set_task, only: [:edit, :update, :destroy]
   before_action :set_facade, only: [:index, :create, :update, :destroy]
+  before_action :set_task, only: [:edit, :update, :destroy]
   
   def index
     task_all
@@ -23,15 +23,13 @@ class TasksController < AuthenticateBaseController
   
     @transporter = @facade.insert @task
   
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
+      if @transporter.status == :green
         flash[:notice] = 'Task criado.'
         task_all
-        format.html { render :index }
+        render :index
       else
-        format.html { render :new }
+        render :new
       end
-    end
   end
   
   def update
@@ -79,7 +77,8 @@ class TasksController < AuthenticateBaseController
   end
   
   def task_all
-    @tasks = Task.where(accountant_id: current_accountant.id)
+    transporter = @facade.select(:task)
+    @tasks = transporter.bucket[:tasks]
   end
 
   def set_facade

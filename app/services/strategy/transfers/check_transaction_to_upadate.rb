@@ -1,5 +1,5 @@
 module Strategy
-  module StrategyTransfer
+  module Transfers
     class CheckTransactionToUpdate < AStrategy
 
       def self.process(transporter)

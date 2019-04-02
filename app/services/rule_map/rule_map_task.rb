@@ -1,21 +1,27 @@
 module RuleMap
   class RuleMapTask
 
-    def self.insert
+    def self.insert(transporter)
       [
-          Strategy::SaveEntity
+        Strategy::SaveEntity.new(transporter),
       ]
     end
 
-    def self.delete
+    def self.delete(transporter)
       [
-          Strategy::DestroyEntity
+        Strategy::DestroyEntity.new(transporter),
       ]
     end
 
-    def self.update
+    def self.update(transporter)
       [
-          Strategy::UpdateEntity
+        Strategy::SaveEntity.new(transporter),
+      ]
+    end
+
+    def self.select(transporter)
+      [
+        Strategy::Tasks::Filter.new(transporter),
       ]
     end
   end
