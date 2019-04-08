@@ -68,6 +68,26 @@ RSpec.describe Transfer, type: :model do
       expect(transaction_from_db.description).to eq(description)
     end
 
+    it 'transfer with one transaction update to transfer two transaction' do
+
+      map = {
+          current_transaction: transaction,
+      }
+      map[:attributes_destiny] = { account_id: account2.id }
+
+      transporter = facade.update transfer, map
+
+      expect(transporter.status_green?).to be true
+
+      t1 = Transaction.first
+      t2 = Transaction.last
+
+      expect(t1.transfer).to be_present
+      expect(t2.transfer).to be_present
+
+
+    end
+
     it 'return message error update with wrong date' do
 
       transporter = facade.update(transfer,

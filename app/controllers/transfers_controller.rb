@@ -35,25 +35,24 @@ class TransfersController < AuthenticateBaseController
       transfer.destiny_transaction = @destiny_transaction
     end
 
-    @transporter = @facade.insert(transfer)
+    transporter = @facade.insert(transfer)
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        @transaction = Transaction.new
-        flash[:notice] = 'Transação gravada'
-        if params[:commit].include? 'nova'
-          format.html { render :new }
-        else
-          transaction_all
-          format.html { render :index }
-        end
+    if transporter.status == :green
+      @transaction = Transaction.new
+      flash[:notice] = 'Transação gravada'
+      if params[:commit].include? 'nova'
+        redirect_to action: :new
       else
-        @transaction = @origin_transaction
-        @account_selected = @origin_transaction.account
-        @destination_account_selected = @destiny_transaction.account if @destiny_transaction
-        format.html { render :new }
+        redirect_to action: :index
       end
+    else
+      @transaction = @origin_transaction
+      @account_selected = @origin_transaction.account
+      @destination_account_selected = @destiny_transaction.account if @destiny_transaction
+      flash[:error] = transporter.messages
+      render :new
     end
+    
   end
 
   def update
@@ -67,40 +66,38 @@ class TransfersController < AuthenticateBaseController
     }
     map[:attributes_destiny] = { account_id: params[:destiny_account_id] } if params[:destiny_account_id].present?
 
-    @transporter = @facade.update @transfer, map
+    transporter = @facade.update @transfer, map
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        flash[:notice] = 'Transação atualizada!'
-        format.html { redirect_to action: :index }
-      else
-        transaction_params.each do |key, value|
-          current_transaction[key] = value
-        end
-        @transaction = current_transaction
-        account = @transaction.account
-        @account_selected = [account.name, account.id]
-        associated = @transaction.associated_transaction
-        if associated
-          destination_account = associated.account
-          @destination_account_selected = [destination_account.name, destination_account.id]
-        end
-        format.html { render :edit }
+    if transporter.status == :green
+      flash[:notice] = 'Transação atualizada!'
+      redirect_to action: :index
+    else
+      transaction_params.each do |key, value|
+        current_transaction[key] = value
       end
+      @transaction = current_transaction
+      account = @transaction.account
+      @account_selected = [account.name, account.id]
+      associated = @transaction.associated_transaction
+      if associated
+        destination_account = associated.account
+        @destination_account_selected = [destination_account.name, destination_account.id]
+      end
+      flash[:error] = transporter.messages
+      render :edit
     end
   end
 
   def destroy
 
-    @transporter = @facade.delete @transfer
+    transporter = @facade.delete @transfer
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        format.html { redirect_to action: :index, notice: 'Transação deletado.' }
-      else
-        transaction_all
-        format.html { render :index }
-      end
+    if transporter.status == :green
+      flash[:notice] = 'Transação deletada'
+      redirect_to action: :index
+    else
+      flash[:error] = transporter.messages
+      render :index
     end
   end
 
@@ -146,8 +143,8 @@ class TransfersController < AuthenticateBaseController
   end
 
   def transaction_all
-    @transporter = @facade.select(Transfer.new, filter: filter_params || {})
-    @transactions = @transporter.bucket[:transactions]
+    transporter = @facade.select(Transfer.new, filter: filter_params || {})
+    @transactions = transporter.bucket[:transactions]
   end
 
   def set_facade

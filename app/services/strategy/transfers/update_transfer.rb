@@ -19,6 +19,8 @@ class Strategy::Transfers::UpdateTransfer < AStrategy
       end
     end
 
+    transfer.save!
+
     true
 
   end

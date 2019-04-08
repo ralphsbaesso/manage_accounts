@@ -12,15 +12,12 @@ class Accountants::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
 
-    @transporter = Transporter.new({})
 
     if params[:family_name].present?
       @family_name = params[:family_name]
       family = Family.new(name: @family_name)
     else
-      @transporter.messages << 'Deve criar uma família'
-      @transporter.status = 'RED'
-      @accountant = Accountant.new(accountant_params)
+      flash[:error] = 'Deve criar uma família'
       render :new
       return
     end
@@ -28,10 +25,11 @@ class Accountants::RegistrationsController < Devise::RegistrationsController
     super do
 
       if resource.errors.present?
+        errors = []
         @accountant.errors.full_messages.each do |erro|
-          @transporter.messages << erro
+          errors << erro
         end
-        @transporter.status = 'RED'
+        flash[:error] = errors
         @accountant = Accountant.new(accountant_params)
         render :new
         return

@@ -21,43 +21,40 @@ class TasksController < AuthenticateBaseController
   
     @task.accountant = current_accountant
   
-    @transporter = @facade.insert @task
+    transporter = @facade.insert @task
   
-      if @transporter.status == :green
-        flash[:notice] = 'Task criado.'
-        task_all
-        render :index
-      else
-        render :new
-      end
+    if transporter.status == :green
+      flash[:notice] = 'Task criado.'
+      redirect_to action: :index
+    else
+      flash[:error] = transporter.messages
+      render :new
+    end
   end
   
   def update
   
-    @transporter = @facade.update @task, attributes: task_params
+    transporter = @facade.update @task, attributes: task_params
   
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        flash[:notice] = 'Task atualizado.!'
-        format.html { redirect_to action: :index }
-      else
-        format.html { render :edit, task: @task }
-      end
+    if transporter.status == :green
+      flash[:notice] = 'Task atualizado.!'
+      redirect_to action: :index
+    else
+      flash[:error] = transporter.messages
+      render :edit
     end
   end
   
   def destroy
   
-    @transporter = @facade.delete @task
+    transporter = @facade.delete @task
   
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        flash[:notice] = 'Tarefa deletada'
-        format.html { redirect_to action: :index }
-      else
-        task_all
-        format.html { render :index }
-      end
+    if transporter.status == :green
+      flash[:notice] = 'Tarefa deletada'
+      redirect_to action: :index
+    else
+      flash[:error] = transporter.messages
+      redirect_to action: :index
     end
   end
   

@@ -36,7 +36,6 @@ RSpec.describe Task, type: :model do
       task_from_db = Task.find(task.id)
       expect(task_from_db.name).to eq(name)
       expect(task_from_db.description).to eq(description)
-    endct(transporter.messages).to include('Data da transação é obrigatória')
     end
   end
 

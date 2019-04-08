@@ -39,7 +39,7 @@
         %section.wrapper
           .row
             .col-lg-12
-              - if !@transporter.nil? && @transporter.messages.present?
+              - if flash[:error].present?
                 = render 'shared/modal-error'
                 :javascript
                   $('#modal-error').modal('show');

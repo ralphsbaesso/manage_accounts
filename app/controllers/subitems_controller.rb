@@ -16,38 +16,38 @@ class SubitemsController < AuthenticateBaseController
   def create
 
     @subitem = Subitem.new(subitem_params)
-    @transporter = @facade.insert(@subitem)
+    transporter = @facade.insert(@subitem)
 
-    if @transporter.status == 'GREEN'
+    if transporter.status == :green
       flash[:notice] = 'Subitem criado com sucesso'
-      subitem_all
-      render :index
+      redirect_to action: :index
     else
+      flash[:error] = transporter.messages
       render :new
     end
   end
 
   def update
 
-    @transporter = @facade.update @subitem, attributes: subitem_params
+    transporter = @facade.update @subitem, attributes: subitem_params
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        flash[:notice] = 'Subitem atualizado com sucesso!'
-        format.html { redirect_to action: :index }
-      else
-        format.html { render :edit, subitem: @subitem }
-      end
+    if transporter.status == :green
+      flash[:notice] = 'Subitem atualizado com sucesso!'
+      redirect_to action: :index
+    else
+      flash[:error] = transporter.messages
+      render :edit
     end
   end
 
   def destroy
-    @transporter = @facade.delete @subitem
+    transporter = @facade.delete @subitem
 
-    if @transporter.status == 'GREEN'
-      flash[:notice] = 'Subtem deletado com sucesso'
+    if transporter.status == :green
+      flash[:notice] = 'Subitem deletado com sucesso'
       redirect_to action: :index
     else
+      flash[:error] = transporter.messages
       render :index
     end
   end

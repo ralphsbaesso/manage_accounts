@@ -19,38 +19,40 @@ class AccountsController < AuthenticateBaseController
 
     @account.accountant = current_accountant
 
-    @transporter = @facade.insert @account, current_accountant
+    transporter = @facade.insert @account, current_accountant
 
-    if @transporter.status == :green
+    if transporter.status == :green
       flash[:notice] = 'Conta criado.'
       redirect_to action: :index
     else
+      flash[:error] = transporter.messages
       render :new
     end
   end
 
   def update
 
-    @transporter = @facade.update @account, attributes: account_params
+    transporter = @facade.update @account, attributes: account_params
 
-    if @transporter.status == :green
+    if transporter.status == :green
       flash[:notice] = 'conta atualizada.'
       redirect_to action: :index
     else
+      flash[:error] = transporter.messages
       render :edit, account: @account
     end
   end
 
   def destroy
-    flash[:notice] = 'Metodo não implementado'
-    redirect_to action: :index
-    # @transporter = @facade.delete @account
+    transporter = @facade.delete @account
 
-    # if @transporter.status == 'GREEN'
-    #   redirect_to action: :index, notice: 'Conta deletada.'
-    # else
-    #   render :index
-    # end
+    if transporter.status == :green
+      flash[:notice] = 'Conta deletada.'
+      redirect_to action: :index
+    else
+      flash[:error] = transporter.messages
+      redirect_to action: :index
+    end
   end
 
   private

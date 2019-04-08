@@ -37,16 +37,16 @@ class Strategy::Transfers::Filter < AStrategy
 
   private
 
-  def self.format_pie_chart(transactions)
+  def format_pie_chart(transactions)
 
     item_value_hash = {}
-    transactions.each do |transacotion|
+    transactions.each do |transaction|
 
-      name = transacotion.subitem.item.name
+      name = transaction.subitem.item.name
       if item_value_hash[name]
-        item_value_hash[name] += transacotion.value
+        item_value_hash[name] += transaction.value
       else
-        item_value_hash[name] = transacotion.value
+        item_value_hash[name] = transaction.value
       end
 
     end

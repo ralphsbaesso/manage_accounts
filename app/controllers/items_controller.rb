@@ -19,44 +19,39 @@ class ItemsController < AuthenticateBaseController
 
     @item.accountant = current_accountant
 
-    @transporter = @facade.insert @item
+    transporter = @facade.insert @item
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        flash[:notice] = 'Item criado.'
-        item_all
-        format.html { render :index }
-      else
-        format.html { render :new }
-      end
+    if transporter.status == :green
+      flash[:notice] = 'Item criado.'
+      redirect_to action: :index
+    else
+      flash[:error] = transporter.messages
+      render :new
     end
   end
 
   def update
 
-    @transporter = @facade.update @item, attributes: item_params
+    transporter = @facade.update @item, attributes: item_params
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        flash[:notice] = 'Item atualizado.!'
-        format.html { redirect_to action: :index }
-      else
-        format.html { render :edit, item: @item }
-      end
+    if transporter.status == :green
+      flash[:notice] = 'Item atualizado.!'
+      redirect_to action: :index
+    else
+      flash[:error] = transporter.messages
+      render :edit, item: @item
     end
   end
 
   def destroy
 
-    @transporter = @facade.delete @item
+    transporter = @facade.delete @item
 
-    respond_to do |format|
-      if @transporter.status == 'GREEN'
-        format.html { redirect_to action: :index, notice: 'Item deletado.' }
-      else
-        item_all
-        format.html { render :index }
-      end
+    if transporter.status == 'GREEN'
+      redirect_to action: :index, notice: 'Item deletado.'
+    else
+      flash[:error] = transporter.messages
+      redirect_to action: :index
     end
   end
 

@@ -2,13 +2,14 @@
 #modal-error.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-dialog{:role => "document", style: "position: initial;"}
     .modal-content
-      - if @transporter
+      - if flash[:error].present?
+        - msgs = flash[:error].is_a?(Array) ? flash[:error] : [flash[:error]]
         .modal-header
           %h5#exampleModalLabel.modal-title Atenção
           %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
             %span{"aria-hidden" => "true"} ×
         .modal-body
-          - @transporter.messages.each do |message|
+          - msgs.each do |message|
             %strong= message
             %br/
         .modal-footer

@@ -7,8 +7,10 @@ class Strategy::Transfers::SetAttributesTransactions < AStrategy
     origin_transaction = transfer.origin_transaction
     destiny_transaction = transfer.destiny_transaction
 
-    bucket[:attributes_orgin].each do |key, value|
-      origin_transaction[key] = value if origin_transaction.has_attribute? key
+    if bucket[:attributes_orgin].present?
+      bucket[:attributes_orgin].each do |key, value|
+        origin_transaction[key] = value if origin_transaction.has_attribute? key
+      end
     end
 
     if destiny_transaction and bucket[:attributes_destiny].present?

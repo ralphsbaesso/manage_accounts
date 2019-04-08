@@ -7,9 +7,7 @@ class Accountants::SessionsController < Devise::SessionsController
   def new
     super do
       if flash[:alert]
-        @transporter = Transporter.new('devise')
-        @transporter.messages << flash[:alert]
-        @transporter.status = 'RED'
+        flash[:error] = flash[:alert]
       end
     end
   end
