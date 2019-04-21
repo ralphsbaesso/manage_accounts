@@ -110,20 +110,21 @@
       %li#alert_notificatoin_bar.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %i.far.fa-bell
-          %span.badge.bg-warning= notifys.count
+          - if notifys.count > 0
+            %span.badge.bg-warning= notifys.count
         %ul.dropdown-menu.extended.notification
           .notify-arrow.notify-arrow-blue
           %li
             %p.blue Você tem #{notifys.count} conta(s) pendente(s))
           - notifys.each do |notify|
             %li
-              %a{href: edit_task_path(notify.id)}
+              %a{href: edit_debt_path(notify.id)}
                 %span.label.label-danger
                   %i.icon_profile
                 = notify.name
                 %span.small.italic.pull-right= l notify.due_date
           %li
-            %a{href: tasks_path} Ver todas as dívidas
+            %a{href: debts_path} Ver todas as dívidas
             / alert notification end
             / user login dropdown start
       %li.dropdown

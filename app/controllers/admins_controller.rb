@@ -1,0 +1,3 @@
+class AdminsController < AuthenticateBaseController
+
+end

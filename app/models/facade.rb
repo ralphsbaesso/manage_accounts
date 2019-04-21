@@ -8,6 +8,7 @@ class Facade
         account: RuleMap::RuleMapAccount,
         subitem: RuleMap::RuleMapSubitem,
         task: RuleMap::RuleMapTask,
+        bank_statement: RuleMap::RuleMapBankStatement,
     }
   end
 
@@ -83,7 +84,7 @@ class Facade
     if entity.is_a? Symbol
       return entity
     else
-      return entity.class.name.downcase.to_sym
+      return entity.class.name.underscore.downcase.to_sym
     end
   end
 end

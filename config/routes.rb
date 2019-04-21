@@ -16,9 +16,14 @@ Rails.application.routes.draw do
   resources :items
   resources :accounts
   resources :accountants
-  resources :tasks
+  resources :debts
   resources :transfers
+  resources :bank_statements, only: [:new, :create]
 
   get '/reports', to: 'reports#transfers'
+
+  namespace :admins do
+    resources :tasks
+  end
 
 end

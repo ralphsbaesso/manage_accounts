@@ -6,7 +6,9 @@
 #  amount           :decimal(, )
 #  date_transaction :date
 #  description      :string
+#  input            :string
 #  origin           :boolean
+#  price_cents      :integer
 #  title            :string
 #  value            :decimal(, )
 #  created_at       :datetime         not null
@@ -24,6 +26,8 @@ class Transaction < ApplicationRecord
 
   belongs_to :subitem, optional: true
   belongs_to :account
+
+  monetize :price_cents
 
   def value=(v)
 

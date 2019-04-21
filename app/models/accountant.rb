@@ -7,6 +7,7 @@
 #  encrypted_password     :string           default(""), not null
 #  name                   :string
 #  owner                  :boolean          default(FALSE)
+#  profile                :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -34,7 +35,7 @@ class Accountant < ApplicationRecord
   has_many :accounts
   has_many :items
   belongs_to :family, optional: true
-  has_many :tasks
+  has_many :debts
 
   validates_presence_of :name
 
@@ -52,13 +53,13 @@ class Accountant < ApplicationRecord
 
   def late_debts
     current_month = Date.today.at_beginning_of_month
-    Task.where(accountant_id: self.id, done: false).where('due_date < :current_month', current_month: current_month).to_a
+    Task.where(accountant_id: self.id, done: false, task_type: :debt).where('due_date < :current_month', current_month: current_month).to_a
   end
 
   def current_debts
     start = Date.today.at_beginning_of_month
     final = Date.today.at_end_of_month
-    Task.where(accountant_id: self.id, due_date: start..final).to_a
+    Task.where(accountant_id: self.id, done: false, task_type: :debt, due_date: start..final).to_a
   end
 
 end

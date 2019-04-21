@@ -28,6 +28,11 @@
             Gerenciamento de
             %span.lite contas
         / logo end
+        - unless Rails.env.production?
+          &emsp;
+          &emsp;
+          %a.logo
+            = "-----------------------------------> #{Rails.env}"
 
         = render 'layouts/notification'
       / header end

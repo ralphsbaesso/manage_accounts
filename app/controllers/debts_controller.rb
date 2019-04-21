@@ -1,4 +1,4 @@
-class TasksController < AuthenticateBaseController
+class DebtsController < AuthenticateBaseController
   before_action :set_facade, only: [:index, :create, :update, :destroy]
   before_action :set_task, only: [:edit, :update, :destroy]
   
@@ -15,9 +15,10 @@ class TasksController < AuthenticateBaseController
   
   def create
 
-    p = task_params
-    p[:done] = false
-    @task = Task.new(p)
+    debt = task_params
+    debt[:done] = false
+    debt[:task_type] = :debt
+    @task = Task.new(debt)
   
     @task.accountant = current_accountant
   
@@ -67,14 +68,14 @@ class TasksController < AuthenticateBaseController
   # Never trust parameters from the scary internet, only allow the white list through.
   def task_params
     if params[:task].present?
-      params.require(:task).permit(:id, :name, :description, :due_date, :type, :done)
+      params.require(:task).permit(:id, :name, :description, :due_date, :task_type, :done)
     else
       params.permit(:id, :name, :description)
     end
   end
   
   def task_all
-    transporter = @facade.select(:task)
+    transporter = @facade.select(:task, task_type: :debt)
     @tasks = transporter.bucket[:tasks]
   end
 

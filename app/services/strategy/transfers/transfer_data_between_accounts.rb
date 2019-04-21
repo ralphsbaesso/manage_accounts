@@ -11,6 +11,7 @@ class Strategy::Transfers::TransferDataBetweenAccounts < AStrategy
 
       begin
         destiny.value = (origin.value * - 1)
+        destiny.price_cents = (origin.price_cents * -1)
         destiny.date_transaction = origin.date_transaction
         destiny.amount = origin.amount
         destiny.description = origin.description

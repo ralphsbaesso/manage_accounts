@@ -1,0 +1,35 @@
+.row
+  .col-lg-12
+    %h3.page-header
+      %i.fa.fa-laptop
+      Contas a pagar
+    %ol.breadcrumb{ style: 'background-color: gainsboro;' }
+      %li
+        %i.fa.fa-home
+        %a{href: "/"} Home
+      %li= link_to 'Tarefa', debts_path
+      %li= link_to 'Criar nova tarefa', new_debt_path
+
+.row
+  .col-lg-12
+    %table#table-item.table.table-bordered
+      %thead
+        %tr{:role => "row"}
+          %th Nome
+          %th Descrição
+          %th Data de pagamento
+          %th Pago
+          %th Ações
+      %tbody
+        - @tasks.each do |task|
+          %tr.gradeA.odd{:role => "row", class: task.done ? 'done' : 'not-done' }
+            %td= task.name
+            %td= task.description
+            %td= format_date task.due_date
+            %td= task.done
+            %td
+              = link_to edit_debt_path(task), class: 'btn btn-warning' do
+                editar
+                %i.fas.fa-edit
+              = link_to debt_path(task), method: :delete, class: 'btn btn-danger', data: { confirm: 'Você tem certeza?' } do
+                excluir

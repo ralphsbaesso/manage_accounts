@@ -4,10 +4,10 @@
 #
 #  id            :bigint(8)        not null, primary key
 #  description   :string
-#  done          :boolean
+#  done          :boolean          default(FALSE)
 #  due_date      :date
 #  name          :string
-#  type          :string
+#  task_type     :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  accountant_id :bigint(8)

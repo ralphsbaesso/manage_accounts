@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: transactions
+#
+#  id               :bigint(8)        not null, primary key
+#  amount           :decimal(, )
+#  date_transaction :date
+#  description      :string
+#  input            :string
+#  origin           :boolean
+#  price_cents      :integer
+#  title            :string
+#  value            :decimal(, )
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  account_id       :bigint(8)
+#  subitem_id       :bigint(8)
+#
+# Indexes
+#
+#  index_transactions_on_account_id  (account_id)
+#  index_transactions_on_subitem_id  (subitem_id)
+#
 
 require 'rails_helper'
 

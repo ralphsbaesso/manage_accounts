@@ -1,0 +1,18 @@
+= render 'transfers/header'
+
+
+= form_with(url: bank_statements_path, method: :post, local: true, class: 'form-horizontal') do |form|
+  .form-group
+    = form.label 'Selecione a conta', class: 'col-lg-2 control-label'
+    .col-lg-10
+      = form.select(:account_id, options_for_select_accounts(selected: @account_selected), {}, { class: 'form-control' })
+  .form-group
+    = form.label 'Selecione o arquivo', class: 'col-lg-2 control-label'
+    .col-lg-10
+      = form.file_field :extract, class: 'form-control form-control-file'
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      = form.submit 'Salvar', class: 'btn btn-primary'
+
+
+

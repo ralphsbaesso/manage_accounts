@@ -15,6 +15,7 @@ class Strategy::Transfers::UpdateTransfer < AStrategy
       if destiny_id.present?
         Transaction.destroy destiny_id
       else
+        p destiny
         destiny.save! if destiny
       end
     end

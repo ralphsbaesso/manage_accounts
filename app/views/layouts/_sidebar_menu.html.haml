@@ -17,6 +17,7 @@
           %li= link_to 'Items', items_path
           %li= link_to 'Subitems', subitems_path
           %li= link_to 'Transações', transfers_path
+          %li= link_to 'Upload de Arquivos', new_bank_statement_path
 
       %li.sub-menu
         %a{href: "javascript:;"}
@@ -24,7 +25,7 @@
           %span Lembretes
           %span.menu-arrow.arrow_carrot-right
         %ul.sub
-          %li= link_to 'Contas a pagar', tasks_path
+          %li= link_to 'Contas a pagar', debts_path
 
       %li.sub-menu
         %a{href: "javascript:;"}
@@ -33,4 +34,10 @@
           %span.menu-arrow.arrow_carrot-right
         %ul.sub
           %li= link_to 'Relatórios', reports_path
-
+      %li.sub-menu
+        %a{href: "javascript:;"}
+          %i.icon_toolbox_alt
+          %span Adminstração
+          %span.menu-arrow.arrow_carrot-right
+        %ul.sub
+          %li= link_to 'Tarefas', admins_tasks_path, title: 'Tarefas para fazer no sistema'

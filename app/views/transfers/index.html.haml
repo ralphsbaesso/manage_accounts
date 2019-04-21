@@ -10,8 +10,10 @@
         %tr{:role => "row"}
           %th Conta
           %th Tipo
+          %th Entrada
           %th Data
           %th Valor
+          %th Novo valor
           %th Quantidade
           %th Descrição
           %th Título
@@ -26,8 +28,10 @@
           %tr.gradeA.odd{:role => "row"}
             %td= transaction.account.name
             %td= transaction.origin? ? 'Origem' : 'Destino'
+            %td= transaction.input
             %td= format_date transaction.date_transaction
             %td= transaction.value
+            %td= transaction.try(:price)
             %td= transaction.amount
             %td= transaction.description
             %td= transaction.title

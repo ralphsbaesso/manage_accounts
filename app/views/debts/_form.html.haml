@@ -8,13 +8,13 @@
         %i.fa.fa-home
         %a{href: "/"} Home
       %li
-        = link_to 'Task', tasks_path
+        = link_to 'Debts', debts_path
 
 %section.panel
   %header.panel-heading
     %h1= title
   .panel-body
-    = form_with(model: task, method: method, local: true, class: 'form-horizontal') do |form|
+    = form_with(model: task, url: url, method: method, local: true, class: 'form-horizontal') do |form|
       .form-group
         = form.label 'Nome', class: 'col-lg-2 control-label'
         .col-lg-10

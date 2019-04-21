@@ -13,5 +13,9 @@
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ralphsbaesso/manage_accounts.git",
+  "license": "MIT"
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_17_231803) do
+ActiveRecord::Schema.define(version: 2019_04_21_150534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_01_17_231803) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.boolean "owner", default: false
+    t.string "profile"
     t.index ["email"], name: "index_accountants_on_email", unique: true
     t.index ["family_id"], name: "index_accountants_on_family_id"
     t.index ["reset_password_token"], name: "index_accountants_on_reset_password_token", unique: true
@@ -38,6 +39,36 @@ ActiveRecord::Schema.define(version: 2019_01_17_231803) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["accountant_id"], name: "index_accounts_on_accountant_id"
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "bank_statements", force: :cascade do |t|
+    t.bigint "accountant_id"
+    t.bigint "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_bank_statements_on_account_id"
+    t.index ["accountant_id"], name: "index_bank_statements_on_accountant_id"
   end
 
   create_table "families", force: :cascade do |t|
@@ -55,6 +86,15 @@ ActiveRecord::Schema.define(version: 2019_01_17_231803) do
     t.index ["accountant_id"], name: "index_items_on_accountant_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "accountant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accountant_id"], name: "index_roles_on_accountant_id"
+  end
+
   create_table "subitems", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -69,9 +109,9 @@ ActiveRecord::Schema.define(version: 2019_01_17_231803) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.boolean "done"
+    t.boolean "done", default: false
     t.date "due_date"
-    t.string "type"
+    t.string "task_type"
     t.bigint "accountant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -89,6 +129,8 @@ ActiveRecord::Schema.define(version: 2019_01_17_231803) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "origin"
+    t.integer "price_cents"
+    t.string "input"
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["subitem_id"], name: "index_transactions_on_subitem_id"
   end
@@ -103,6 +145,9 @@ ActiveRecord::Schema.define(version: 2019_01_17_231803) do
   end
 
   add_foreign_key "accountants", "families"
+  add_foreign_key "bank_statements", "accountants"
+  add_foreign_key "bank_statements", "accounts"
+  add_foreign_key "roles", "accountants"
   add_foreign_key "tasks", "accountants"
   add_foreign_key "transfers", "transactions", column: "destiny_transaction_id"
   add_foreign_key "transfers", "transactions", column: "origin_transaction_id"

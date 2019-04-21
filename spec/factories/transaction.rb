@@ -7,6 +7,7 @@ FactoryBot.define do
     origin { true}
     title { Faker::Book.title }
     value { Faker::Number.decimal(2) }
+    price { nil }
 
   end
 end

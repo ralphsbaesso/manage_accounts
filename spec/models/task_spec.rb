@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id            :bigint(8)        not null, primary key
+#  description   :string
+#  done          :boolean          default(FALSE)
+#  due_date      :date
+#  name          :string
+#  task_type     :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  accountant_id :bigint(8)
+#
+# Indexes
+#
+#  index_tasks_on_accountant_id  (accountant_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (accountant_id => accountants.id)
+#
+
 
 require 'rails_helper'
 
@@ -8,7 +31,7 @@ RSpec.describe Task, type: :model do
     it { is_expected.to respond_to(:done) }
     it { is_expected.to respond_to(:due_date) }
     it { is_expected.to respond_to(:name) }
-    it { is_expected.to respond_to(:type) }
+    it { is_expected.to respond_to(:task_type) }
   end
 
   let!(:accountant) { create(:accountant) }
