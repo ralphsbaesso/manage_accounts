@@ -3,6 +3,8 @@ module Strategy
 
     def process
 
+      p entity
+
       if status == :green
         entity.save
 

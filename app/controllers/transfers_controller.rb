@@ -118,7 +118,7 @@ class TransfersController < AuthenticateBaseController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:date_transaction, :value, :description, :title, :amount, :subitem_id, :account_id)
+    params.require(:transaction).permit(:date_transaction, :price, :description, :title, :amount, :subitem_id, :account_id)
   end
 
   def filter_params

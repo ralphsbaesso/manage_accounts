@@ -6,8 +6,7 @@ FactoryBot.define do
     description {Faker::Lorem.sentences }
     origin { true}
     title { Faker::Book.title }
-    value { Faker::Number.decimal(2) }
-    price { nil }
+    price_cents { (0..1000000).to_a.sample }
 
   end
 end

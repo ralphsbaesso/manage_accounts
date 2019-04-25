@@ -47,7 +47,7 @@ RSpec.describe Transfer, type: :model do
     end
 
     it 'not save if without value' do
-      origin_transaction = build(:transaction, subitem: subitem, account: account, value: nil)
+      origin_transaction = build(:transaction, subitem: subitem, account: account, price_cents: nil)
       transfer = build(:transfer)
       transfer.origin_transaction = origin_transaction
       expect {

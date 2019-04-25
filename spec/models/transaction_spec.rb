@@ -10,7 +10,6 @@
 #  origin           :boolean
 #  price_cents      :integer
 #  title            :string
-#  value            :decimal(, )
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  account_id       :bigint(8)
@@ -32,7 +31,7 @@ RSpec.describe Transaction, type: :model do
     it { is_expected.to respond_to(:description) }
     it { is_expected.to respond_to(:origin) }
     it { is_expected.to respond_to(:title) }
-    it { is_expected.to respond_to(:value) }
+    it { is_expected.to respond_to(:price) }
   end
 
 end

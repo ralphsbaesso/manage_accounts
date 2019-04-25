@@ -10,7 +10,6 @@
 #  origin           :boolean
 #  price_cents      :integer
 #  title            :string
-#  value            :decimal(, )
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  account_id       :bigint(8)
@@ -57,5 +56,11 @@ class Transaction < ApplicationRecord
         'and transfers.id = :transfer_id ',
         id: self.id, transfer_id: self.transfer.id
     ).first
+  end
+
+  def set_price
+    if value and !price
+      self.price = value
+    end
   end
 end

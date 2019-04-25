@@ -16,7 +16,7 @@ class Strategy::StrategyTransaction::RequiredFields < AStrategy
       errors << 'Data da transação é obrigatória'
     end
 
-    errors << 'Valor da transação é obrigatório' unless t.value.present?
+    errors << 'Valor da transação é obrigatório' unless t.price.present?
     t.amount = 1 if !t.amount.present? or t.amount < 1 # quantidade não informada, atribui 1
 
     if errors.present?
