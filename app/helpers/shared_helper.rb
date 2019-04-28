@@ -2,12 +2,12 @@ module SharedHelper
 
   def format_date(value, options={})
 
-    value.strftime('%d/%m/%y') if value
+    value.strftime('%d/%m/%Y') if value
   end
 
   def options_for_select_accounts(options={})
 
-    selected = options[:selected] ? [options[:selected].name, options[:selected].id] : nil
+    selected = options[:selected] ? options[:selected] : nil
     first_blank = options[:first_blank]
 
     accounts = current_accountant.accounts
@@ -19,8 +19,8 @@ module SharedHelper
   def options_for_select_items(options= {})
 
     if options[:selected]
-      @item = options[:selected]
-      selected = [@item.name, @item.id]
+      @item = @selected_item
+      selected = options[:selected]
     end
 
     first_blank = options[:first_blank]
@@ -36,7 +36,7 @@ module SharedHelper
 
     return raise 'Primeiro selecione "options_for_select_items"' unless @items
 
-    selected = options[:selected] ? [options[:selected].name, options[:selected].id] : nil
+    selected = options[:selected] ? options[:selected] : nil
     first_blank = options[:first_blank]
 
     if @item

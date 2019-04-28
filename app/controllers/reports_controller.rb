@@ -16,20 +16,19 @@ class ReportsController < AuthenticateBaseController
 
   def filter_params
 
-    filter = { page: params[:page] || 1, per: params[:per] || 10 }
+    @filter = {}
     if params[:filter]
-      f = params.require(:filter).permit(:subitem_id, :item_id, :account_id)
-      year = params[:filter][:year]
-      month = Util::Month.number_by_name params[:filter][:month]
-      date = Date.parse("#{year}-#{month}-01")
-      f[:date] = date
+      filter = params.require(:filter).permit(:subitem_id, :item_id, :account_id, :start_date, :end_date)
+      filter[:start_date] = filter[:start_date].present? ? Date.parse(filter[:start_date]) : nil
+      filter[:end_date] = filter[:end_date].present? ? Date.parse(filter[:end_date]) : nil
     end
-    if f.present?
-      f.each do |k, v|
-        filter[k.to_sym] = v
+
+    if filter.present?
+      filter.each do |k, v|
+        @filter[k.to_sym] = v if v.present?
       end
     end
-    filter
+    @filter
   end
 
   def set_facade

@@ -9,10 +9,10 @@ class Strategy::Transfers::Filter < AStrategy
 
     query = { account_id: accountant.account_ids }
 
-    date = filter[:date] || Date.today
 
-    start_date = date.beginning_of_month
-    end_date = date.end_of_month
+    start_date = filter[:start_date] || -Date::Infinity.new
+    end_date = filter[:end_date] || Date::Infinity.new
+
     query[:date_transaction] = (start_date..end_date)
 
 
@@ -28,7 +28,7 @@ class Strategy::Transfers::Filter < AStrategy
     if bucket[:format] == :pie_chart
       bucket[:data] = format_pie_chart(Transaction.where(query))
     else
-      bucket[:transactions] = Transaction.where(query).order(:date_transaction).page(filter[:page]).per(filter[:per])
+      bucket[:transactions] = Transaction.where(query).order(date_transaction: :desc)
     end
 
     true
@@ -42,11 +42,11 @@ class Strategy::Transfers::Filter < AStrategy
     item_value_hash = {}
     transactions.each do |transaction|
 
-      name = transaction.subitem.item.name
+      name = transaction.subitem.try(:item).try(:name) || 'Item não informado'
       if item_value_hash[name]
-        item_value_hash[name] += transaction.value
+        item_value_hash[name] += transaction.price_cents
       else
-        item_value_hash[name] = transaction.value
+        item_value_hash[name] = transaction.price_cents
       end
 
     end

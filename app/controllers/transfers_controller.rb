@@ -13,15 +13,18 @@ class TransfersController < AuthenticateBaseController
 
   def edit
     @transaction = Transaction.find_by(id: params[:id])
-    @account_selected = @transaction.account
+    @selected_account_id = @transaction.account_id
 
     associated = @transaction.associated_transaction
     if associated
-      @destination_account_selected = associated.account
+      @selected_destination_account_id = associated.account.id
     end
 
-    @subitem_selected = @transaction.subitem
-    @item_selected = @subitem_selected.item
+    @selected_subitem = @transaction.subitem
+    @selected_item = @selected_subitem.item
+
+    @selected_subitem_id = @selected_subitem.id
+    @selected_item_id = @selected_subitem.item_id
 
   end
 
@@ -47,8 +50,8 @@ class TransfersController < AuthenticateBaseController
       end
     else
       @transaction = @origin_transaction
-      @account_selected = @origin_transaction.account
-      @destination_account_selected = @destiny_transaction.account if @destiny_transaction
+      @selected_account_id = @origin_transaction.account
+      @selected_destination_account_id = @destiny_transaction.account.id if @destiny_transaction
       flash[:error] = transporter.messages
       render :new
     end
@@ -76,13 +79,9 @@ class TransfersController < AuthenticateBaseController
         current_transaction[key] = value
       end
       @transaction = current_transaction
-      account = @transaction.account
-      @account_selected = [account.name, account.id]
+      @selected_account_id = @transaction.account_id
       associated = @transaction.associated_transaction
-      if associated
-        destination_account = associated.account
-        @destination_account_selected = [destination_account.name, destination_account.id]
-      end
+      @selected_destination_account_id = associated.account.id if associated
       flash[:error] = transporter.messages
       render :edit
     end
@@ -105,8 +104,8 @@ class TransfersController < AuthenticateBaseController
 
   def initialize_variables
 
-    @account_selected = nil
-    @destination_account_selected = nil
+    @selected_account_id = nil
+    @selected_destination_account_id = nil
     @array_accounts = [['','']] + current_accountant.accounts.collect { |a| [a.name, a.id] }
     @destination_accounts = @array_accounts
 
@@ -122,20 +121,19 @@ class TransfersController < AuthenticateBaseController
   end
 
   def filter_params
-    filter = { page: params[:page] || 1, per: params[:per] || 10 }
+    @filter = {}
     if params[:filter]
-      f = params.require(:filter).permit(:subitem_id, :item_id, :account_id)
-      year = params[:filter][:year]
-      month = Util::Month.number_by_name params[:filter][:month]
-      date = Date.parse("#{year}-#{month}-01")
-      f[:date] = date
+      filter = params.require(:filter).permit(:subitem_id, :item_id, :account_id, :start_date, :end_date)
+      filter[:start_date] = filter[:start_date].present? ? Date.parse(filter[:start_date]) : nil
+      filter[:end_date] = filter[:end_date].present? ? Date.parse(filter[:end_date]) : nil
     end
-    if f.present?
-      f.each do |k, v|
-        filter[k.to_sym] = v
+
+    if filter.present?
+      filter.each do |k, v|
+        @filter[k.to_sym] = v if v.present?
       end
     end
-    filter
+    @filter
   end
 
   def set_transfer
@@ -144,7 +142,7 @@ class TransfersController < AuthenticateBaseController
 
   def transaction_all
     transporter = @facade.select(Transfer.new, filter: filter_params || {})
-    @transactions = transporter.bucket[:transactions]
+    @transactions = transporter.bucket[:transactions].page(page).per(per_page)
   end
 
   def set_facade
