@@ -3,6 +3,7 @@
 # Table name: bank_statements
 #
 #  id            :bigint(8)        not null, primary key
+#  pay_date      :date
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  account_id    :bigint(8)

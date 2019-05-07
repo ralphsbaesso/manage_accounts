@@ -1,5 +1,5 @@
 module RuleMap
-  class RuleMapBankStatement
+  class RuleBankStatement
 
     def self.insert(transporter)
       [

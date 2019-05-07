@@ -43,13 +43,13 @@
                     - total += item[1]
                     %tr
                       %td= item[0]
-                      %td= item[1]
+                      %td= format_currency item[1]
                 %tfoot
                   %tr
                     %th
                       %strong TOTAL
                     %th
-                      %strong= total
+                      %strong= format_currency total
 
           .col-lg-6
             .alert.alert-success
@@ -66,13 +66,13 @@
                     - total += item[1]
                     %tr
                       %td= item[0]
-                      %td= item[1]
+                      %td= format_currency item[1]
                 %tfoot
                   %tr
                     %th
                       %strong TOTAL
                     %th
-                      %strong= total
+                      %strong= format_currency total
 
 :javascript
 

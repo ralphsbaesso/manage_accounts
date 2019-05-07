@@ -1,5 +1,5 @@
 module RuleMap
-  class RuleMapSubitem
+  class RuleSubitem
 
     def self.insert(transporter)
       [

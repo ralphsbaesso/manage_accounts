@@ -3,6 +3,7 @@
 # Table name: bank_statements
 #
 #  id            :bigint(8)        not null, primary key
+#  pay_date      :date
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  account_id    :bigint(8)
@@ -23,9 +24,10 @@ require 'rails_helper'
 
 RSpec.describe BankStatement, type: :model do
 
+  let!(:accountant) { create(:accountant) }
+  let!(:facade) { Facade.new(accountant) }
+
   context 'instance methods' do
-    let!(:accountant) { create(:accountant) }
-    let!(:facade) { Facade.new(accountant) }
 
     context 'account itau_cc' do
       let!(:account) { create(:account, accountant: accountant, name: 'itau_cc') }
@@ -68,6 +70,94 @@ RSpec.describe BankStatement, type: :model do
       end
     end
 
+    context 'account "cartão de crédito santander"' do
+      let!(:account) { create(:account, accountant: accountant, name: 'Santander Cartão de Crédito') }
+
+      it 'save 35 transaction' do
+
+        bs = create(:bank_statement, accountant: accountant, account: account, pay_date: Date.today)
+        path = File.join(Rails.root, 'spec', 'files', 'cartao_de_credito_santander.csv')
+        bs.last_extract.attach(io: File.open(path), filename: 'test')
+
+        facade.insert(bs)
+        expect(bs.transactions.count).to eq(18)
+        expect(bs.transactions.sample).to a_kind_of(Transaction)
+        transfer = bs.transactions.sample.transfer
+        expect(transfer).to_not be_nil
+
+      end
+
+      it 'save 33 transaction' do
+
+        day = Date.today
+
+        create(:transaction,
+               date_transaction: day,
+               description: 'LOJAS AMERICANAS MOG(05/08)',
+               price_cents: 1817,
+               account: account
+        )
+        create(:transaction,
+               date_transaction: day,
+               description: 'PERNAMBUCANAS',
+               price_cents: 4996,
+               account: account
+        )
+
+        bs = create(:bank_statement, accountant: accountant, account: account, pay_date: day)
+        path = File.join(Rails.root, 'spec', 'files', 'cartao_de_credito_santander.csv')
+        bs.last_extract.attach(io: File.open(path), filename: 'test')
+
+        facade.insert(bs)
+        expect(bs.transactions.count).to eq(16)
+        expect(bs.transactions.sample).to a_kind_of(Transaction)
+
+      end
+    end
+
+    context 'account inter' do
+      let!(:account) { create(:account, accountant: accountant, name: 'itau_cc') }
+
+      it 'save 35 transaction' do
+        bs = create(:bank_statement, accountant: accountant, account: account)
+        path = File.join(Rails.root, 'spec', 'files', 'inter.csv')
+        bs.last_extract.attach(io: File.open(path), filename: 'test')
+
+        facade.insert(bs)
+        expect(bs.transactions.count).to eq(32)
+        expect(bs.transactions.sample).to a_kind_of(Transaction)
+        transfer = bs.transactions.sample.transfer
+        expect(transfer).to_not be_nil
+
+      end
+
+      it 'save 33 transaction' do
+        create(:transaction,
+               date_transaction: Date.parse('2019-04-22'),
+               description: '[COMPRA CARTAO - COMPRA no estabelecimento DEIA MELO REST E PIZZA M]',
+               price_cents: -2400,
+               account: account
+        )
+        create(:transaction,
+               date_transaction: Date.parse('2019-05-03'),
+               description: '[COMPRA CARTAO - COMPRA no estabelecimento SHIBATA H 02           M]',
+               price_cents: -12672,
+               account: account
+        )
+
+        bs = create(:bank_statement, accountant: accountant, account: account)
+        path = File.join(Rails.root, 'spec', 'files', 'inter.csv')
+        bs.last_extract.attach(io: File.open(path), filename: 'test')
+
+        facade.insert(bs)
+        expect(bs.transactions.count).to eq(30)
+        expect(bs.transactions.sample).to a_kind_of(Transaction)
+
+      end
+    end
+
   end
+
+
 
 end

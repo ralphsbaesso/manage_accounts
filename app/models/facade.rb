@@ -3,12 +3,13 @@ class Facade
   def initialize(driver)
     @driver = driver
     @map = {
-        transfer: RuleMap::RuleMapTransfer,
-        item: RuleMap::RuleMapItem,
-        account: RuleMap::RuleMapAccount,
-        subitem: RuleMap::RuleMapSubitem,
-        task: RuleMap::RuleMapTask,
-        bank_statement: RuleMap::RuleMapBankStatement,
+        transfer: RuleMap::RuleTransfer,
+        item: RuleMap::RuleItem,
+        account: RuleMap::RuleAccount,
+        subitem: RuleMap::RuleSubitem,
+        task: RuleMap::RuleTask,
+        bank_statement: RuleMap::RuleBankStatement,
+        report: RuleMap::RuleReport,
     }
   end
 
