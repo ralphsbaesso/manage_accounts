@@ -28,13 +28,6 @@ class Transaction < ApplicationRecord
 
   monetize :price_cents
 
-  def value=(v)
-
-    v = v.gsub(',', '.').to_f if v.is_a? String
-
-    super(v)
-  end
-
   def origin?
     self.origin
   end

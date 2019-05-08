@@ -152,6 +152,7 @@ RSpec.describe BankStatement, type: :model do
         facade.insert(bs)
         expect(bs.transactions.count).to eq(30)
         expect(bs.transactions.sample).to a_kind_of(Transaction)
+        expect(bs.account.closed_months.first.price.to_f).to eq(869.23)
 
       end
     end

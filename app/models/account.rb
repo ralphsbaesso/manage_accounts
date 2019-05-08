@@ -17,7 +17,7 @@
 class Account < ApplicationRecord
 
   has_many :transactions
-
+  has_many :closed_months
   belongs_to :accountant
 
 end
