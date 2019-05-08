@@ -13,7 +13,8 @@ class Strategy::BankStatements::CheckTransactionInDatabase < AStrategy
 
     transactions_from_db.each do |t_from_db|
       transactions.delete_if do |transaction|
-        t_from_db.date_transaction == transaction.date_transaction and
+        t_from_db.price_cents == transaction.price_cents and
+          t_from_db.date_transaction == transaction.date_transaction and
           t_from_db.description.include? transaction.description.gsub('[', '').gsub(']', '')
       end
     end

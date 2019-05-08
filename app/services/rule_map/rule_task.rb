@@ -1,5 +1,5 @@
 module RuleMap
-  class RuleMapTask
+  class RuleTask
 
     def self.insert(transporter)
       [

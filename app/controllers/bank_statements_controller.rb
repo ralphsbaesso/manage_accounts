@@ -14,6 +14,7 @@ class BankStatementsController < AuthenticateBaseController
     bank_statement = BankStatement.new
     bank_statement.account = Account.find(params[:account_id])
     bank_statement.last_extract.attach(io: file.tempfile, filename: File.basename(file.tempfile.path))
+    bank_statement.pay_date = params[:pay_date]
 
     transporter = @facade.insert(bank_statement)
 

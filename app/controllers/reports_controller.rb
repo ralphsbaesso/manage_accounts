@@ -3,7 +3,7 @@ class ReportsController < AuthenticateBaseController
 
   def transfers
 
-    @transporter = @facade.select(Transfer.new, filter: filter_params || {}, format: :pie_chart)
+    @transporter = @facade.select(:report, filter: filter_params || {}, pie_chart: true)
     data = @transporter.bucket[:data]
 
     @positives = data[:positives]

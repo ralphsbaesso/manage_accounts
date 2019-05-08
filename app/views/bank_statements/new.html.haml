@@ -7,6 +7,10 @@
     .col-lg-10
       = form.select(:account_id, options_for_select_accounts(selected: @account_selected), {}, { class: 'form-control' })
   .form-group
+    = form.label 'Selecione a data de pagamento (apenas para cartão de crédito)', class: 'col-lg-2 control-label'
+    .col-lg-10
+      = form.text_field :pay_date, type: :date, class: 'form-control'
+  .form-group
     = form.label 'Selecione o arquivo', class: 'col-lg-2 control-label'
     .col-lg-10
       = form.file_field :extract, class: 'form-control form-control-file'

@@ -40,10 +40,10 @@
               = link_to edit_transfer_path(transaction), class: 'btn btn-warning' do
                 editar
                 %i.fas.fa-edit
-              = form_tag  transfer_path(transfer), method: :delete, style: 'display: inline;' do
-                = button_tag nil, type: :submit, class: 'btn btn-danger', data: { confirm: 'Você tem certeza?' } do
-                  excluir
-                  %i.fas.fa-trash-alt
+              = link_to transfer_path(transfer), method: :delete, style: 'display: inline;', class: 'btn btn-danger', data: { confirm: 'Você tem certeza?' } do
+                excluir
+                %i.fas.fa-trash-alt
+
 .row.text-center
   = paginate @transactions
 

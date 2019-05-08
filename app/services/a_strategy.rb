@@ -31,6 +31,7 @@ class AStrategy
 
   def set_status(s)
     @transporter.status = s
+    false if s == :red
   end
 
   def add_message(msg)

@@ -5,6 +5,7 @@ class TransfersController < AuthenticateBaseController
 
   def index
     transaction_all
+    cookies[:filter] = @filter.to_s
   end
 
   def new
@@ -21,10 +22,12 @@ class TransfersController < AuthenticateBaseController
     end
 
     @selected_subitem = @transaction.subitem
-    @selected_item = @selected_subitem.item
+    if @selected_subitem
+      @selected_item = @selected_subitem.item
 
-    @selected_subitem_id = @selected_subitem.id
-    @selected_item_id = @selected_subitem.item_id
+      @selected_subitem_id = @selected_subitem.id
+      @selected_item_id = @selected_subitem.item_id
+    end
 
   end
 
@@ -73,7 +76,7 @@ class TransfersController < AuthenticateBaseController
 
     if transporter.status == :green
       flash[:notice] = 'Transação atualizada!'
-      redirect_to action: :index
+      redirect_to action: :index, filter: eval(cookies[:filter])
     else
       transaction_params.each do |key, value|
         current_transaction[key] = value
