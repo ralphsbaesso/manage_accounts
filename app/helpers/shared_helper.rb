@@ -42,7 +42,7 @@ module SharedHelper
     if @item
       subitems = @item.subitems
     else
-      subitems = @items.first.subitems
+      subitems = @items.first.try(:subitems) || []
     end
 
     array = subitems.to_a
