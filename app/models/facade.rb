@@ -1,4 +1,5 @@
 class Facade
+  include SuperLogger
 
   def initialize(driver)
     @driver = driver
@@ -57,11 +58,11 @@ class Facade
 
   def execute(strategies)
 
-    puts ">>>>>>>>>>>>>>   Quantidade de estrategias #{strategies.count}"
+    info "Quantidade de estrategias #{strategies.count}"
 
     strategies.each do |strategy|
 
-      puts "Executando Strategy: #{strategy.class.name}."
+       info "Executando Strategy: #{strategy.class.name}."
 
        unless strategy.process
          return

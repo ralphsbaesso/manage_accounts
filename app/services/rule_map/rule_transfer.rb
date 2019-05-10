@@ -8,6 +8,7 @@ module RuleMap
           Strategy::Transfers::TransferDataBetweenAccounts.new(transporter),
           Strategy::Transfers::SetOriginTransaction.new(transporter),
           Strategy::SaveEntity.new(transporter),
+          Strategy::ClosedMonths::Update.new(transporter)
       ]
     end
 

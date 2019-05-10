@@ -10,7 +10,6 @@ class ReadFile::CartaoCreditoSantander < AReadFile
     account = args[:account]
     file = args[:file]
 
-    puts "<<<<<<<<<<<<<<<<<<<<<<<<< #{pay_date}"
     raise CreditCardError.new unless pay_date
 
     transactions = []

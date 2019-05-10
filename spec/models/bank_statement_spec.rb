@@ -145,6 +145,9 @@ RSpec.describe BankStatement, type: :model do
                account: account
         )
 
+        # cria um mes fechado para simular que ja exite para o mes de janeiro
+        create(:closed_month, account: account, reference: Date.parse('2019-01-01'))
+
         bs = create(:bank_statement, accountant: accountant, account: account)
         path = File.join(Rails.root, 'spec', 'files', 'inter.csv')
         bs.last_extract.attach(io: File.open(path), filename: 'test')
@@ -152,7 +155,10 @@ RSpec.describe BankStatement, type: :model do
         facade.insert(bs)
         expect(bs.transactions.count).to eq(30)
         expect(bs.transactions.sample).to a_kind_of(Transaction)
-        expect(bs.account.closed_months.first.price.to_f).to eq(869.23)
+        expect(bs.account.closed_months.count).to eq(3)
+        expect(bs.account.closed_months[0].price.to_f).to eq(123.52)
+        expect(bs.account.closed_months[1].price.to_f).to eq(508.87)
+        expect(bs.account.closed_months[2].price.to_f).to eq(-300.65)
 
       end
     end
