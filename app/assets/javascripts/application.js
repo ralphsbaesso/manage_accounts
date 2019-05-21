@@ -43,4 +43,5 @@
 //= require js/sparklines.js
 //= require js/charts.js
 //= require js/jquery.slimscroll.min.js
+//= require charts
 //= require_tree .

@@ -5,7 +5,7 @@ class TransfersController < AuthenticateBaseController
 
   def index
     transaction_all
-    cookies[:filter] = @filter.to_s
+    cookies[:filter] = @filter.to_json
   end
 
   def new
@@ -96,7 +96,7 @@ class TransfersController < AuthenticateBaseController
 
     if transporter.status == :green
       flash[:notice] = 'Transação deletada'
-      redirect_to action: :index
+      redirect_to action: :index, filter: eval(cookies[:filter])
     else
       flash[:error] = transporter.messages
       render :index

@@ -1,0 +1,19 @@
+
+%meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+
+= render 'transfers/filter', url: reports_path
+
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        %h5.mb-0
+          %button.btn.btn-link.collapsed{"aria-controls" => "div-collapse", "aria-expanded" => "false", "data-target" => "#div-collapse-grafico", "data-toggle" => "collapse"}
+            Gráficos
+      #div-collapse-grafico.panel.panel-body.collapse.in
+        .row
+          .col-lg-12
+            #line-chart{style: "width: 100%; height: 500px; z-index: -1"}
+
+%script
+  = render partial: 'line', formats: [:js]

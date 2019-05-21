@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   resources :transfers
   resources :bank_statements, only: [:new, :create]
 
+  resources :reports, only: [] do
+    get :line, on: :collection
+    get :pie_chart, on: :collection
+  end
+
   get '/reports', to: 'reports#transfers'
 
   namespace :admins do

@@ -1,6 +1,5 @@
 
 %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-%script{src: "https://www.gstatic.com/charts/loader.js", type: "text/javascript"}
 
 = render 'transfers/filter', url: reports_path
 
@@ -37,7 +36,6 @@
                     %th Valor
                 %tbody
                   - array = @negatives.clone
-                  - array.shift
                   - total = 0
                   - array.each do |item|
                     - total += item[1]
@@ -60,7 +58,6 @@
                     %th Valor
                 %tbody
                   - array = @positives.clone
-                  - array.shift
                   - total = 0
                   - array.each do |item|
                     - total += item[1]
@@ -73,51 +70,5 @@
                       %strong TOTAL
                     %th
                       %strong= format_currency total
-
-:javascript
-
-  var positives = JSON.parse('#{@positives.to_json.html_safe}');
-  var negatives = JSON.parse('#{@negatives.to_json.html_safe}');
-
-  for(var i = 1; i < negatives.length; i++){
-    negatives[i][1] = parseFloat(negatives[i][1]);
-  }
-
-  for(var i = 1; i < positives.length; i++){
-    positives[i][1] = parseFloat(positives[i][1]);
-  }
-
-  google.charts.load("current", {packages:["corechart"]});
-  google.charts.setOnLoadCallback(drawChart);
-  google.charts.setOnLoadCallback(drawChart2);
-
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable(
-      negatives
-    );
-
-    var options = {
-      title: 'SALDO NEGATIVO',
-      is3D: true,
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_negatives'));
-    chart.draw(data, options);
-  }
-
-
-  // google.charts.load("current", {packages:["corechart"]});
-  // google.charts.setOnLoadCallback(drawChart);
-  function drawChart2() {
-    var data = google.visualization.arrayToDataTable(
-      positives
-    );
-
-    var options = {
-      title: 'SALDO POSITIVO',
-      is3D: true,
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_positives'));
-    chart.draw(data, options);
-  }
+%script
+  = render partial: 'pie_chart', formats: [:js]

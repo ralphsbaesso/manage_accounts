@@ -1,0 +1,54 @@
+
+var positives = [['Item', 'Valor']]; //JSON.parse('#{@positives.to_json.html_safe}');
+var negatives = [['Item', 'Valor']]; //JSON.parse('#{@negatives.to_json.html_safe}');
+
+<% @positives.each do |positive| %>
+  positives.push(<%= raw positive %>)
+<% end %>
+
+<% @negatives.each do |negative| %>
+  negatives.push(<%= raw negative %>)
+<% end %>
+
+for(var i = 1; i < negatives.length; i++){
+    negatives[i][1] = parseFloat(negatives[i][1]);
+}
+
+for(var i = 1; i < positives.length; i++){
+    positives[i][1] = parseFloat(positives[i][1]);
+}
+
+google.charts.load("current", {packages:["corechart"]});
+google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(drawChart2);
+
+function drawChart() {
+    var data = google.visualization.arrayToDataTable(
+        negatives
+    );
+
+    var options = {
+        title: 'SALDO NEGATIVO',
+        is3D: true,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_negatives'));
+    chart.draw(data, options);
+}
+
+
+// google.charts.load("current", {packages:["corechart"]});
+// google.charts.setOnLoadCallback(drawChart);
+function drawChart2() {
+    var data = google.visualization.arrayToDataTable(
+        positives
+    );
+
+    var options = {
+        title: 'SALDO POSITIVO',
+        is3D: true,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_positives'));
+    chart.draw(data, options);
+}

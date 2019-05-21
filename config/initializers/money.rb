@@ -25,14 +25,14 @@ MoneyRails.configure do |config|
 
   # Default ActiveRecord migration configuration values for columns:
   #
-  # config.amount_column = { prefix: '',           # column name prefix
-  #                          postfix: '_cents',    # column name  postfix
-  #                          column_name: nil,     # full column name (overrides prefix, postfix and accessor name)
-  #                          type: :integer,       # column type
-  #                          present: true,        # column will be created
-  #                          null: false,          # other options will be treated as column options
-  #                          default: 0
-  #                        }
+  config.amount_column = { prefix: '',           # column name prefix
+                           postfix: '_cents',    # column name  postfix
+                           column_name: nil,     # full column name (overrides prefix, postfix and accessor name)
+                           type: :integer,       # column type
+                           present: true,        # column will be created
+                           null: false,          # other options will be treated as column options
+                           default: 0
+                         }
   #
   # config.currency_column = { prefix: '',
   #                            postfix: '_currency',
@@ -46,17 +46,17 @@ MoneyRails.configure do |config|
   # Register a custom currency
   #
   # Example:
-  # config.register_currency = {
-  #   priority:            1,
-  #   iso_code:            "EU4",
-  #   name:                "Euro with subunit of 4 digits",
-  #   symbol:              "€",
-  #   symbol_first:        true,
-  #   subunit:             "Subcent",
-  #   subunit_to_unit:     10000,
-  #   thousands_separator: ".",
-  #   decimal_mark:        ","
-  # }
+  config.register_currency = {
+    priority:            1,
+    iso_code:            "BRL",
+    name:                "Real",
+    symbol:              "R$ ",
+    symbol_first:        true,
+    subunit:             "cent",
+    subunit_to_unit:     100,
+    thousands_separator: ".",
+    decimal_mark:        ","
+  }
 
   # Specify a rounding mode
   # Any one of:

@@ -1,0 +1,50 @@
+    google.charts.load('current', {'packages':['line']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var header = <%= raw @data.shift %>;
+
+      var data = new google.visualization.DataTable();
+
+      for(var i = 0; i < header.length; i++) {
+          if ( i== 0)
+            data.addColumn('date', header[i]);
+          else
+              data.addColumn('number', header[i]);
+      }
+//      data.addColumn('number', 'Guardians of the Galaxy');
+//      data.addColumn('number', 'The Avengers');
+//      data.addColumn('number', 'Transformers: Age of Extinction');
+
+      var rows = [];
+      <% @data.each do |data| %>
+        <% date = data.shift.strftime(('%m/%d/%Y')) %>
+        var row = [];
+        row.push(new Date('<%= raw date %>'));
+        <% data.each do |d| %>
+          row.push(<%= raw Money.new(d).to_f %>);
+        <% end %>
+        rows.push(row);
+      <% end %>
+
+      data.addRows(rows);
+
+      var options = {
+      chart: {
+      title: 'Box Office Earnings in First Two Weeks of Opening',
+      subtitle: 'in millions of dollars (USD)'
+  },
+      width: 900,
+      height: 500,
+      axes: {
+      x: {
+      0: {side: 'top'}
+  }
+  }
+  };
+
+      var chart = new google.charts.Line(document.getElementById('line-chart'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+  }

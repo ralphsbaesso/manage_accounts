@@ -19,16 +19,16 @@ class Strategy::Reports::PieChart < AStrategy
 
       name = transaction.subitem.try(:item).try(:name) || 'Item não informado'
       if item_value_hash[name]
-        item_value_hash[name] += transaction.price.to_f
+        item_value_hash[name] += transaction.price_cents
       else
-        item_value_hash[name] = transaction.price.to_f
+        item_value_hash[name] = transaction.price_cents
       end
 
     end
 
     # separa positivo e negativo
-    positives = [['Item', 'Value']]
-    negatives = [['Item', 'Value']]
+    positives = []
+    negatives = []
 
     item_value_hash.each do |k, v|
       if v < 0
