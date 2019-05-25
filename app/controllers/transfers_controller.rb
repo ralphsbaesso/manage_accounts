@@ -1,7 +1,7 @@
 class TransfersController < AuthenticateBaseController
   before_action :initialize_variables, only: [:index, :create, :edit, :new, :update]
   before_action :set_transfer, only: [:destroy]
-  before_action :set_facade, only: [:index, :create, :update, :destroy]
+  before_action :set_facade, only: [:index, :create, :update, :destroy, :pie_chart]
 
   def index
     transaction_all
@@ -103,6 +103,13 @@ class TransfersController < AuthenticateBaseController
     end
   end
 
+  def pie_chart
+    @transporter = @facade.select(:transfer, filter: filter_params || {}, pie_chart: true)
+    data = @transporter.bucket[:data]
+    @positives = data[:positives]
+    @negatives = data[:negatives]
+  end
+
   private
 
   def initialize_variables
@@ -144,7 +151,7 @@ class TransfersController < AuthenticateBaseController
   end
 
   def transaction_all
-    transporter = @facade.select(Transfer.new, filter: filter_params || {})
+    transporter = @facade.select(:transfer, filter: filter_params || {})
     @transactions = transporter.bucket[:transactions].page(page).per(per_page)
   end
 

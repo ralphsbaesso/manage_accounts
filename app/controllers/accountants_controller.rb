@@ -2,22 +2,8 @@ class AccountantsController < AuthenticateBaseController
   before_action :set_accountant, only: [:show, :edit, :update, :destroy, :show]
   before_action :authenticate_accountant!
 
-  # GET /accountants
-  # GET /accountants.json
   def index
     @accountants = Accountant.all
-  end
-
-  # GET /accountants/1
-  # GET /accountants/1.json
-  def show
-    puts params
-    params
-
-  end
-
-  def show_all
-    puts 'ok'
   end
 
   def new
@@ -31,7 +17,7 @@ class AccountantsController < AuthenticateBaseController
     @accountant = Accountant.new(accountant_params)
 
     respond_to do |format|
-      if @accountant.saverail
+      if @accountant.save
         format.html { redirect_to @accountant, notice: 'Accountant was successfully created.' }
         format.json { render :show, status: :created, location: @accountant }
       else

@@ -9,7 +9,9 @@ class Strategy::Reports::LineChart < AStrategy
     accountant.accounts.each do |account|
       closed_months += account.closed_months
     end
-    bucket[:data] = format_line_chart(closed_months)
+    # bucket[:data] = format_line_chart(closed_months)
+
+    send("#{entity}_line_chart")
 
     true
 
@@ -17,32 +19,42 @@ class Strategy::Reports::LineChart < AStrategy
 
   private
 
-  def format_line_chart(closed_months)
+  def account_line_chart
+    accountant = driver
 
-    dates = Set.new(closed_months.map(&:reference))
+    closed_months  = []
+    accountant.accounts.each do |account|
+      closed_months += account.closed_months
+    end
+
+    dates = closed_months.map(&:reference).uniq
     accounts = Set.new(closed_months.map(&:account))
     hash_accounts = {}
-    accounts.each_with_index { |account, index| hash_accounts[index] = account }
+    accounts.each_with_index { |account, index| hash_accounts[account] = index }
 
-    data = [['Days'] + hash_accounts.values.map { |account| account.name }]
+    rows = [['Days'] + hash_accounts.keys.map { |account| account.name }]
 
-    closed_months.each do |cm|
+    dates.each do |date|
+      row = Array.new(hash_accounts.length)
 
-      value = Array.new(hash_accounts.length + 1)
-      value[0] = cm.reference
-
-      hash_accounts.each do |k, v|
-        index = k + 1
-        if dates.include? cm.reference and cm.account = v
-          value[index] = cm.price_cents
-        else
-          value[index] = 0
+      closed_months.each do |cm|
+        if cm.reference == date
+          row[hash_accounts[cm.account]] = cm.price_cents
         end
       end
 
-      data << value
+      row.unshift(date)
+      rows << row
     end
 
-    data
+    bucket[:data] = rows
+  end
+
+  def transaction_line_chart(transactions)
+    puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+    puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+    puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+    p transactions
+
   end
 end

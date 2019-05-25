@@ -14,10 +14,14 @@ Rails.application.routes.draw do
   # resources :transactions
   resources :subitems
   resources :items
-  resources :accounts
+  resources :accounts do
+    get :line_chart, on: :collection
+  end
   resources :accountants
   resources :debts
-  resources :transfers
+  resources :transfers do
+    get :pie_chart, on: :collection
+  end
   resources :bank_statements, only: [:new, :create]
 
   resources :reports, only: [] do

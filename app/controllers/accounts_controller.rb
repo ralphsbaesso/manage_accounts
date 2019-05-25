@@ -1,6 +1,6 @@
 class AccountsController < AuthenticateBaseController
   before_action :set_account, only: [:edit, :update, :destroy]
-  before_action :set_facade, only: [:index, :create, :update, :destroy]
+  before_action :set_facade, only: [:index, :create, :update, :destroy, :line_chart]
 
   def index
     account_all
@@ -14,9 +14,7 @@ class AccountsController < AuthenticateBaseController
   end
 
   def create
-
     @account = Account.new(account_params)
-
     @account.accountant = current_accountant
 
     transporter = @facade.insert @account, current_accountant
@@ -53,6 +51,13 @@ class AccountsController < AuthenticateBaseController
       flash[:error] = transporter.messages
       redirect_to action: :index
     end
+  end
+
+  def line_chart
+    @filter = {}
+    @transporter = @facade.select(:account, filter: {}, line_chart: true)
+    @data = @transporter.bucket[:data]
+    @data
   end
 
   private

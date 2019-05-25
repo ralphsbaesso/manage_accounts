@@ -1,11 +1,9 @@
 class ReadFile::Factory
   class << self
-    def build(name_account)
-      if name_account == 'itau_cc' or name_account == 'Itaú CC' or name_account == 'Inter'
-        ReadFile::Itau.new
-      elsif name_account.downcase == 'santander cartão de crédito'
-        ReadFile::CartaoCreditoSantander.new
-      end
+    def build(header_file)
+      name_class = header_file.camelize
+      constant = "ReadFile::#{name_class}".constantize
+      constant.new
     end
   end
 end

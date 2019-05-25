@@ -30,7 +30,7 @@ RSpec.describe BankStatement, type: :model do
   context 'instance methods' do
 
     context 'account itau_cc' do
-      let!(:account) { create(:account, accountant: accountant, name: 'itau_cc') }
+      let!(:account) { create(:account, accountant: accountant, header_file: :date_description_value) }
 
       it 'save 35 transaction' do
         bs = create(:bank_statement, accountant: accountant, account: account)
@@ -71,7 +71,7 @@ RSpec.describe BankStatement, type: :model do
     end
 
     context 'account "cartão de crédito santander"' do
-      let!(:account) { create(:account, accountant: accountant, name: 'Santander Cartão de Crédito') }
+      let!(:account) { create(:account, accountant: accountant, header_file: :date_description_ignore_value) }
 
       it 'save 35 transaction' do
 
@@ -116,7 +116,7 @@ RSpec.describe BankStatement, type: :model do
     end
 
     context 'account inter' do
-      let!(:account) { create(:account, accountant: accountant, name: 'itau_cc') }
+      let!(:account) { create(:account, accountant: accountant, header_file: :date_description_value) }
 
       it 'save 35 transaction' do
         bs = create(:bank_statement, accountant: accountant, account: account)
@@ -159,6 +159,23 @@ RSpec.describe BankStatement, type: :model do
         expect(bs.account.closed_months[0].price.to_f).to eq(123.52)
         expect(bs.account.closed_months[1].price.to_f).to eq(508.87)
         expect(bs.account.closed_months[2].price.to_f).to eq(-300.65)
+
+      end
+    end
+
+    context 'ignore_date_doc_description_value_symbol' do
+      let!(:account) { create(:account, accountant: accountant, header_file: :ignore_date_doc_description_value_symbol) }
+
+      it 'save 4 transaction' do
+        bs = create(:bank_statement, accountant: accountant, account: account)
+        path = File.join(Rails.root, 'spec', 'files', 'ignore_date_doc_description_value_symbol.txt')
+        bs.last_extract.attach(io: File.open(path), filename: 'test')
+
+        facade.insert(bs)
+        expect(bs.transactions.count).to eq(4)
+        expect(bs.transactions.sample).to a_kind_of(Transaction)
+        transfer = bs.transactions.sample.transfer
+        expect(transfer).to_not be_nil
 
       end
     end

@@ -10,7 +10,7 @@ class Strategy::BankStatements::FileToTransfers < AStrategy
       file: bank_statement.last_extract.download,
     }
 
-    read = ReadFile::Factory.build(bank_statement.account.name)
+    read = ReadFile::Factory.build(bank_statement.account.header_file)
     transactions = read.file_to_transactions(args)
 
     if transactions.present?

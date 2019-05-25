@@ -3,18 +3,19 @@ module RuleMap
 
     def self.insert(transporter)
       [
-          Strategy::Transfers::CheckTransactions.new(transporter),
-          Strategy::Transfers::CheckAccounts.new(transporter),
-          Strategy::Transfers::TransferDataBetweenAccounts.new(transporter),
-          Strategy::Transfers::SetOriginTransaction.new(transporter),
-          Strategy::SaveEntity.new(transporter),
-          Strategy::ClosedMonths::Update.new(transporter)
+        Strategy::Transfers::CheckTransactions.new(transporter),
+        Strategy::Transfers::CheckAccounts.new(transporter),
+        Strategy::Transfers::TransferDataBetweenAccounts.new(transporter),
+        Strategy::Transfers::SetOriginTransaction.new(transporter),
+        Strategy::SaveEntity.new(transporter),
+        Strategy::ClosedMonths::Update.new(transporter),
       ]
     end
 
     def self.select(transporter)
       [
-          Strategy::Transfers::Filter.new(transporter),
+        Strategy::Transfers::Filter.new(transporter),
+        Strategy::Reports::PieChart.new(transporter),
       ]
     end
 

@@ -15,6 +15,13 @@ module RuleMap
       ]
     end
 
+    def self.select(transporter)
+      [
+          Strategy::Accounts::Filter.new(transporter),
+          Strategy::Reports::LineChart.new(transporter),
+      ]
+    end
+
     def self.update(transporter)
       [
           Strategy::Accounts::CheckName.new(transporter),
