@@ -156,6 +156,7 @@ RSpec.describe BankStatement, type: :model do
         expect(bs.transactions.count).to eq(30)
         expect(bs.transactions.sample).to a_kind_of(Transaction)
         expect(bs.account.closed_months.count).to eq(3)
+        bs.account.closed_months.reload
         expect(bs.account.closed_months[0].price.to_f).to eq(123.52)
         expect(bs.account.closed_months[1].price.to_f).to eq(508.87)
         expect(bs.account.closed_months[2].price.to_f).to eq(-300.65)

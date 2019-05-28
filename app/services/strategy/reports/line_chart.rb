@@ -28,6 +28,7 @@ class Strategy::Reports::LineChart < AStrategy
     end
 
     dates = closed_months.map(&:reference).uniq
+    dates.sort!
     accounts = Set.new(closed_months.map(&:account))
     hash_accounts = {}
     accounts.each_with_index { |account, index| hash_accounts[account] = index }

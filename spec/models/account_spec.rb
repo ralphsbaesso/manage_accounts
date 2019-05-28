@@ -4,6 +4,7 @@
 #
 #  id            :bigint(8)        not null, primary key
 #  description   :string
+#  header_file   :string
 #  name          :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -13,8 +14,6 @@
 #
 #  index_accounts_on_accountant_id  (accountant_id)
 #
-
-
 
 require 'rails_helper'
 
@@ -84,6 +83,23 @@ RSpec.describe Account, type: :model do
       }.to change(Account, :count).by(0)
 
       expect(transport.status_red?).to be_truthy
+    end
+  end
+
+  context 'methods' do
+    context '#total_balance' do
+      let!(:account) { create(:account, accountant: accountant, header_file: :date_description_value) }
+
+      it 'Must return total balance' do
+        bs = create(:bank_statement, accountant: accountant, account: account)
+        path = File.join(Rails.root, 'spec', 'files', 'inter.csv')
+        bs.last_extract.attach(io: File.open(path), filename: 'test')
+
+        facade.insert(bs)
+
+        account_from_db = Account.find(account.id)
+        expect(account_from_db.total_balance.to_f).to eq(331.74)
+      end
     end
   end
 

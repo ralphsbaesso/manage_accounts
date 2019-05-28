@@ -16,13 +16,17 @@
   .panel-body
     = form_with(model: account, local: true, class: 'form-horizontal') do |form|
       .form-group
-        = form.label 'Nome', class: 'col-lg-2 control-label', for: "inputEmail1"
+        = form.label :name, class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.text_field :name, class: 'form-control', placeholder: "Nome da conta"
+          = form.text_field :name, class: 'form-control', placeholder: 'Nome da conta'
       .form-group
-        = form.label 'Descrição', class: 'col-lg-2 control-label', for: "inputEmail1"
+        = form.label :description, class: 'col-lg-2 control-label'
         .col-lg-10
-          = form.text_field :description, class: 'form-control', placeholder: "Descrição da conta"
+          = form.text_field :description, class: 'form-control', placeholder: 'Descrição da conta'
+      .form-group
+        = form.label :header_file, class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.select :header_file, options_for_select_header_file(account.header_file, first_blank: true), {}, class: 'form-control'
       .form-group
         .col-lg-offset-2.col-lg-10
           = form.submit button, class: 'btn btn-primary'
