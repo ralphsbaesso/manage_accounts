@@ -24,7 +24,7 @@
         - @transactions.each do |transaction|
           - transfer = transaction.transfer
           - associated = transaction.associated_transaction
-          %tr.gradeA.odd{:role => "row"}
+          %tr.gradeA.odd{role: :row, class: transaction.ignore? ? 'disable' : ''}
             %td= transaction.account.name
             %td= transaction.origin? ? 'Origem' : 'Destino'
             %td= transaction.input
@@ -47,3 +47,8 @@
 .row.text-center
   = paginate @transactions
 
+:css
+
+  .disable {
+    background-color: #e2cecc;
+  }

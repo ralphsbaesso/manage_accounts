@@ -27,7 +27,7 @@ RSpec.describe BankStatement, type: :model do
   let!(:accountant) { create(:accountant) }
   let!(:facade) { Facade.new(accountant) }
 
-  context 'instance methods' do
+  context 'account with header_file:' do
 
     context 'account itau_cc' do
       let!(:account) { create(:account, accountant: accountant, header_file: :date_description_value) }
@@ -115,12 +115,12 @@ RSpec.describe BankStatement, type: :model do
       end
     end
 
-    context 'account inter' do
+    context 'date_description_value' do
       let!(:account) { create(:account, accountant: accountant, header_file: :date_description_value) }
 
       it 'save 35 transaction' do
         bs = create(:bank_statement, accountant: accountant, account: account)
-        path = File.join(Rails.root, 'spec', 'files', 'inter.csv')
+        path = File.join(Rails.root, 'spec', 'files', 'date_description_value.csv')
         bs.last_extract.attach(io: File.open(path), filename: 'test')
 
         facade.insert(bs)
@@ -149,19 +149,35 @@ RSpec.describe BankStatement, type: :model do
         create(:closed_month, account: account, reference: Date.parse('2019-01-01'))
 
         bs = create(:bank_statement, accountant: accountant, account: account)
-        path = File.join(Rails.root, 'spec', 'files', 'inter.csv')
+        path = File.join(Rails.root, 'spec', 'files', 'date_description_value.csv')
         bs.last_extract.attach(io: File.open(path), filename: 'test')
 
         facade.insert(bs)
         expect(bs.transactions.count).to eq(30)
         expect(bs.transactions.sample).to a_kind_of(Transaction)
-        expect(bs.account.closed_months.count).to eq(3)
+        expect(bs.account.closed_months.count).to eq(5)
         bs.account.closed_months.reload
         expect(bs.account.closed_months[0].price.to_f).to eq(123.52)
-        expect(bs.account.closed_months[1].price.to_f).to eq(508.87)
-        expect(bs.account.closed_months[2].price.to_f).to eq(-300.65)
+        expect(bs.account.closed_months[1].price.to_f).to eq(123.52)
+        expect(bs.account.closed_months[2].price.to_f).to eq(123.52)
+        expect(bs.account.closed_months[3].price.to_f).to eq(632.39)
+        expect(bs.account.closed_months[4].price.to_f).to eq(331.74)
 
       end
+
+      it 'must save one and ignore two transactions' do
+        account.ignore_descriptions = "ignorar\n ; SALDO ANTERIOR\n"
+        bs = create(:bank_statement, accountant: accountant, account: account)
+        path = File.join(Rails.root, 'spec', 'files', 'date_description_value2.csv')
+        bs.last_extract.attach(io: File.open(path), filename: 'test')
+
+        facade.insert(bs)
+
+        expect(bs.transactions.count).to eq(3)
+        expect(bs.transactions.sample).to a_kind_of(Transaction)
+        expect(bs.transactions.delete_if {|t| t.ignore? }.count).to eq(1)
+      end
+
     end
 
     context 'ignore_date_doc_description_value_symbol' do
@@ -177,8 +193,8 @@ RSpec.describe BankStatement, type: :model do
         expect(bs.transactions.sample).to a_kind_of(Transaction)
         transfer = bs.transactions.sample.transfer
         expect(transfer).to_not be_nil
-
       end
+
     end
 
   end

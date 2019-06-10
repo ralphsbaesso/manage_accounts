@@ -15,7 +15,7 @@ class Strategy::Reports::PieChart < AStrategy
   def format_pie_chart(transactions)
 
     item_value_hash = {}
-    transactions.each do |transaction|
+    transactions.valids.each do |transaction|
 
       name = transaction.subitem.try(:item).try(:name) || 'Item não informado'
       if item_value_hash[name]

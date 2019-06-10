@@ -11,6 +11,7 @@ pt-BR:
       account:
         description: Descrição
         header_file: Formato das Colunas do Arquivo
+        ignore_descriptions: Descrições a serem ignoradas (separar com ';')
         name: Nome
         created_at: Criando em
         updated_at: Atualizado em

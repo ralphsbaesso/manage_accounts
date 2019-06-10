@@ -25,7 +25,7 @@ class Strategy::Transfers::Filter < AStrategy
 
     query[:account_id] = filter[:account_id] if filter[:account_id].present?
 
-    bucket[:transactions] = Transaction.where(query).order(date_transaction: :desc, created_at: :desc)
+    bucket[:transactions] = Transaction.where(query).order(date_transaction: :desc, price_cents: :desc)
 
     true
 

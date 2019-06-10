@@ -4,6 +4,7 @@ module RuleMap
     def self.insert(transporter)
       [
           Strategy::BankStatements::FileToTransfers.new(transporter),
+          Strategy::BankStatements::CheckIgnoreDescriptions.new(transporter),
           Strategy::BankStatements::CheckTransactionInDatabase.new(transporter),
           Strategy::BankStatements::SaveTransactions.new(transporter),
           Strategy::ClosedMonths::Update.new(transporter),

@@ -16,6 +16,7 @@ class Strategy::Transfers::TransferDataBetweenAccounts < AStrategy
         destiny.description = origin.description
         destiny.title = origin.title
         destiny.subitem = origin.subitem
+        destiny.ignore = true
       rescue => e
         set_status :red
         add_message e.message

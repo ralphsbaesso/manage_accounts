@@ -6,6 +6,7 @@
 #  amount           :decimal(, )
 #  date_transaction :date
 #  description      :string
+#  ignore           :boolean          default(FALSE)
 #  input            :string
 #  origin           :boolean
 #  price_cents      :integer

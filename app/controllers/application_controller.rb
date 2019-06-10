@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def per_page
-    @total_per_page = params[:per_page] || 10
+    @total_per_page = params[:per_page] || 20
   end
 
 end

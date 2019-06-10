@@ -3,12 +3,12 @@ class Strategy::ClosedMonths::Update < AStrategy
   def process
 
     if entity.is_a? BankStatement
-      update entity.account, entity.transactions.min_by(&:date_transaction).date_transaction
+      transaction = entity.transactions.min_by(&:date_transaction)
+      update(entity.account, transaction.date_transaction) if transaction
     elsif entity.is_a? Transfer
-      transactions = []
-      transactions << entity.origin_transaction
-      transactions << entity.destiny_transaction if entity.destiny_transaction
-      update transactions
+      account = entity.origin_transaction.account
+      date_transaction = entity.origin_transaction.date_transaction
+      update account, date_transaction
     end
 
     true

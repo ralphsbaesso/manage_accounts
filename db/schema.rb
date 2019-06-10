@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_26_144009) do
+ActiveRecord::Schema.define(version: 2019_06_02_115750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_144009) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "header_file"
+    t.text "ignore_descriptions", default: ""
     t.index ["accountant_id"], name: "index_accounts_on_accountant_id"
   end
 
@@ -142,6 +143,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_144009) do
     t.integer "price_cents"
     t.string "input"
     t.string "status"
+    t.boolean "ignore", default: false
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["subitem_id"], name: "index_transactions_on_subitem_id"
   end

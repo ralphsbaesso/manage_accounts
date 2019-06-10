@@ -11,6 +11,10 @@
         .col-lg-10
           = form.select(:account_id, options_for_select_accounts(selected: @selected_account_id), {}, { class: 'form-control' })
       .form-group
+        = form.label 'Ignorar?', class: 'col-lg-2 control-label'
+        .col-lg-10
+          = form.check_box :ignore
+      .form-group
         = form.label 'Data', class: 'col-lg-2 control-label'
         .col-lg-10
           = form.text_field :date_transaction, type: :date, class: 'form-control'

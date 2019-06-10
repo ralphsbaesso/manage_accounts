@@ -2,13 +2,14 @@
 #
 # Table name: accounts
 #
-#  id            :bigint(8)        not null, primary key
-#  description   :string
-#  header_file   :string
-#  name          :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  accountant_id :bigint(8)
+#  id                  :bigint(8)        not null, primary key
+#  description         :string
+#  header_file         :string
+#  ignore_descriptions :text             default("")
+#  name                :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  accountant_id       :bigint(8)
 #
 # Indexes
 #
@@ -26,6 +27,11 @@ class Account < ApplicationRecord
   def total_balance_cents
     last = self.closed_months.try(:last)
     last ? last.price_cents : 0
+  end
+
+  def ignores
+    list = ignore_descriptions.split ';'
+    list.map { |description| description.strip.downcase }
   end
 
 end

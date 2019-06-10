@@ -1,14 +1,11 @@
 class BankStatementsController < AuthenticateBaseController
   before_action :set_facade, only: [:create]
 
-
   def new
-
+    # new
   end
 
-
   def create
-
     file = params[:extract]
 
     bank_statement = BankStatement.new
@@ -25,7 +22,6 @@ class BankStatementsController < AuthenticateBaseController
       flash[:error] = transporter.messages
       render :new
     end
-    
   end
 
   def set_facade

@@ -6,6 +6,7 @@
 #  amount           :decimal(, )
 #  date_transaction :date
 #  description      :string
+#  ignore           :boolean          default(FALSE)
 #  input            :string
 #  origin           :boolean
 #  price_cents      :integer
@@ -26,6 +27,8 @@ class Transaction < ApplicationRecord
 
   belongs_to :subitem, optional: true
   belongs_to :account
+
+  scope :valids, -> { where(ignore: false) }
 
   monetize :price_cents
 
@@ -56,5 +59,14 @@ class Transaction < ApplicationRecord
     if value and !price
       self.price = value
     end
+  end
+
+  def set_x
+    if self.description.include? ']'
+      self.description.tr!(']', 'XXX]')
+    elsif self.description.include? ')'
+      self.description.tr!(')', 'XXX)')
+    end
+    self.save!
   end
 end

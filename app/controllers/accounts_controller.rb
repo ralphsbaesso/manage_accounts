@@ -69,7 +69,7 @@ class AccountsController < AuthenticateBaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def account_params
-    params.require(:account).permit(:name, :description, :header_file)
+    params.require(:account).permit(:name, :description, :header_file, :ignore_descriptions)
   end
 
   def account_all

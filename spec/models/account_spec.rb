@@ -2,13 +2,14 @@
 #
 # Table name: accounts
 #
-#  id            :bigint(8)        not null, primary key
-#  description   :string
-#  header_file   :string
-#  name          :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  accountant_id :bigint(8)
+#  id                  :bigint(8)        not null, primary key
+#  description         :string
+#  header_file         :string
+#  ignore_descriptions :text             default("")
+#  name                :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  accountant_id       :bigint(8)
 #
 # Indexes
 #
@@ -92,7 +93,7 @@ RSpec.describe Account, type: :model do
 
       it 'Must return total balance' do
         bs = create(:bank_statement, accountant: accountant, account: account)
-        path = File.join(Rails.root, 'spec', 'files', 'inter.csv')
+        path = File.join(Rails.root, 'spec', 'files', 'date_description_value.csv')
         bs.last_extract.attach(io: File.open(path), filename: 'test')
 
         facade.insert(bs)
