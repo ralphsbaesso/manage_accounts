@@ -1,8 +1,10 @@
 class Facade
   include SuperLogger
 
+  attr_reader :transporter
+
   def initialize(driver)
-    @driver = driver
+    @transporter = Transporter.new(driver)
     @map = {
         transfer: RuleMap::RuleTransfer,
         item: RuleMap::RuleItem,
@@ -16,10 +18,12 @@ class Facade
 
 
   def insert(entity, args={})
-    @transporter = Transporter.new(@driver)
+
+    strategies =_strategies(entity)
+
     @transporter.entity = entity
     @transporter.bucket = args
-    strategies = @map[make_symbol(entity)].insert(@transporter)
+    # strategies = @map[make_symbol(entity)].insert(@transporter)
     execute strategies
     @transporter
   end
@@ -88,5 +92,15 @@ class Facade
     else
       return entity.class.name.underscore.downcase.to_sym
     end
+  end
+
+  def _strategies(entity)
+
+    rule = "Rule#{entity.class.name.capitalize}".constantize
+    s = rule.insert.map { |rule| rule.new(@transporter) }
+    p s
+
+    s
+
   end
 end

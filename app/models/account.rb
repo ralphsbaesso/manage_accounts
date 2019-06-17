@@ -34,4 +34,39 @@ class Account < ApplicationRecord
     list.map { |description| description.strip.downcase }
   end
 
+  def eu
+    self.class.name
+  end
+
+end
+
+class RuleAccount
+
+  def self.insert
+    [
+        Strategy::Accounts::CheckName,
+        Strategy::SaveEntity,
+    ]
+  end
+
+  def self.delete
+    [
+        Strategy::Accounts::CheckAssociation,
+        Strategy::DestroyEntity,
+    ]
+  end
+
+  def self.select
+    [
+        Strategy::Accounts::Filter,
+        Strategy::Reports::LineChart,
+    ]
+  end
+
+  def self.update
+    [
+        Strategy::Accounts::CheckName,
+        Strategy::SaveEntity,
+    ]
+  end
 end
