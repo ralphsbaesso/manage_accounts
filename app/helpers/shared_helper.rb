@@ -1,12 +1,10 @@
 module SharedHelper
 
   def format_date(value, options={})
-
     value.strftime('%d/%m/%Y') if value
   end
 
   def options_for_select_accounts(options={})
-
     selected = options[:selected] ? options[:selected] : nil
     first_blank = options[:first_blank]
 

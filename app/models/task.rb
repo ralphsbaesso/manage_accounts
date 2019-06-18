@@ -22,5 +22,24 @@
 #
 
 class Task < ApplicationRecord
+  extend RuleMap
+  
   belongs_to :accountant
+
+  rules_of_insert [
+    Strategy::SaveEntity,
+  ]
+
+  rules_of_destroy [
+    Strategy::DestroyEntity,
+  ]
+
+  rules_of_update [
+    Strategy::SaveEntity,
+  ]
+  
+  rules_of_list [
+    Strategy::Tasks::Filter,
+  ]
+  
 end

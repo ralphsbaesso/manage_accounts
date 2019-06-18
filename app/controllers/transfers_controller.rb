@@ -5,7 +5,6 @@ class TransfersController < AuthenticateBaseController
 
   def index
     transaction_all
-    cookies[:filter] = @filter.to_json
   end
 
   def new
@@ -49,7 +48,7 @@ class TransfersController < AuthenticateBaseController
       if params[:commit].include? 'nova'
         redirect_to action: :new
       else
-        redirect_to action: :index
+        redirect_to action: :index, filter: filter_from_session, page: page_from_session, per_page: per_page_from_session
       end
     else
       @transaction = @origin_transaction
@@ -76,7 +75,7 @@ class TransfersController < AuthenticateBaseController
 
     if transporter.status == :green
       flash[:notice] = 'Transação atualizada!'
-      redirect_to action: :index, filter: eval(cookies[:filter])
+      redirect_to action: :index, filter: filter_from_session, page: page_from_session, per_page: per_page_from_session
     else
       transaction_params.each do |key, value|
         current_transaction[key] = value
@@ -96,7 +95,7 @@ class TransfersController < AuthenticateBaseController
 
     if transporter.status == :green
       flash[:notice] = 'Transação deletada'
-      redirect_to action: :index, filter: eval(cookies[:filter])
+      redirect_to action: :index, filter: filter_from_session, page: page_from_session, per_page: per_page_from_session
     else
       flash[:error] = transporter.messages
       render :index
@@ -131,19 +130,9 @@ class TransfersController < AuthenticateBaseController
   end
 
   def filter_params
-    @filter = {}
-    if params[:filter]
-      filter = params.require(:filter).permit(:subitem_id, :item_id, :account_id, :start_date, :end_date)
-      filter[:start_date] = filter[:start_date].present? ? Date.parse(filter[:start_date]) : nil
-      filter[:end_date] = filter[:end_date].present? ? Date.parse(filter[:end_date]) : nil
-    end
-
-    if filter.present?
-      filter.each do |k, v|
-        @filter[k.to_sym] = v if v.present?
-      end
-    end
-    @filter
+    filter[:start_date] = Date.today.beginning_of_month unless filter[:start_date].present?
+    filter[:end_date] = Date.today.end_of_month unless filter[:end_date].present?
+    filter
   end
 
   def set_transfer
@@ -151,8 +140,9 @@ class TransfersController < AuthenticateBaseController
   end
 
   def transaction_all
-    transporter = @facade.select(:transfer, filter: filter_params || {})
+    transporter = @facade.select(:transfer, filter: filter_params)
     @transactions = transporter.bucket[:transactions].page(page).per(per_page)
+    cookies[:filter] = @filter.to_json
   end
 
   def set_facade

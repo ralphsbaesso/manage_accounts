@@ -15,8 +15,27 @@
 #
 
 class Item < ApplicationRecord
+  extend RuleMap
 
   belongs_to :accountant
-
   has_many :subitems
+
+  rules_of_insert [
+    Strategy::Items::CheckName,
+    Strategy::SaveEntity,
+  ]
+
+  rules_of_update [
+    Strategy::Items::CheckName,
+    Strategy::SaveEntity,
+  ]
+
+  rules_of_destroy [
+    Strategy::Items::CheckAssociation,
+    Strategy::DestroyEntity,
+  ]
+
+  rules_of_list [
+    Strategy::Items::Filter
+  ]
 end

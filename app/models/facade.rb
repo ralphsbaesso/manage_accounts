@@ -1,79 +1,62 @@
 class Facade
   include SuperLogger
+  attr_reader :transporter
 
   def initialize(driver)
-    @driver = driver
-    @map = {
-        transfer: RuleMap::RuleTransfer,
-        item: RuleMap::RuleItem,
-        account: RuleMap::RuleAccount,
-        subitem: RuleMap::RuleSubitem,
-        task: RuleMap::RuleTask,
-        bank_statement: RuleMap::RuleBankStatement,
-        report: RuleMap::RuleReport,
-    }
+    @transporter = Transporter.new(driver)
   end
 
-
   def insert(entity, args={})
-    @transporter = Transporter.new(@driver)
-    @transporter.entity = entity
-    @transporter.bucket = args
-    strategies = @map[make_symbol(entity)].insert(@transporter)
+    transporter.entity = entity
+    transporter.bucket = args
+    strategies = RuleMap.insert(entity).map { |strategy| strategy.new(transporter) }
     execute strategies
-    @transporter
+    transporter
   end
    
   def select(entity, args={})
-     @transporter = Transporter.new(@driver)
-     @transporter.entity = entity
-     @transporter.bucket = args
-     strategies = @map[make_symbol(entity)].select(@transporter)
+     transporter.entity = entity
+     transporter.bucket = args
+     strategies = RuleMap.list(entity).map { |strategy| strategy.new(transporter) }
      execute strategies
-     @transporter
+     transporter
   end
 
   def update(entity, args={})
-    @transporter = Transporter.new(@driver)
-    @transporter.entity = entity
-    @transporter.bucket = args
+    transporter.entity = entity
+    transporter.bucket = args
 
     check_attributes
-    strategies = @map[make_symbol(entity)].update(@transporter)
+    strategies = RuleMap.update(entity).map { |strategy| strategy.new(transporter) }
     execute strategies
-    @transporter
+    transporter
   end
 
   def delete(entity, args={})
-    @transporter = Transporter.new(@driver)
-    @transporter.entity = entity
-    @transporter.bucket = args
-    strategies = @map[make_symbol(entity)].delete(@transporter)
+    transporter.entity = entity
+    transporter.bucket = args
+    strategies = RuleMap.destroy(entity).map { |strategy| strategy.new(transporter) }
     execute strategies
-    @transporter
+    transporter
   end
 
 
   private
 
   def execute(strategies)
-
     info "Quantidade de estrategias #{strategies.count}"
 
     strategies.each do |strategy|
-
        info "Executando Strategy: #{strategy.class.name}."
 
-       unless strategy.process
-         return
-       end
+       return unless strategy.process
     end
   end
 
   def check_attributes
-    attributes = @transporter.bucket[:attributes]
+    attributes = transporter.bucket[:attributes]
     if attributes.present?
-      entity = @transporter.entity
+      entity = transporter.entity
 
       attributes.each do |key, value|
         entity[key] = value if entity.respond_to? key
@@ -82,11 +65,4 @@ class Facade
     end
   end
 
-  def make_symbol(entity)
-    if entity.is_a? Symbol
-      return entity
-    else
-      return entity.class.name.underscore.downcase.to_sym
-    end
-  end
 end

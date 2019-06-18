@@ -21,6 +21,8 @@
 #
 
 class BankStatement < ApplicationRecord
+  extend RuleMap
+
   belongs_to :accountant
   belongs_to :account
   has_many_attached :extracts
@@ -35,5 +37,13 @@ class BankStatement < ApplicationRecord
   def transactions
     @transactions ||= []
   end
+
+  rules_of_insert [
+    Strategy::BankStatements::FileToTransfers,
+    Strategy::BankStatements::CheckIgnoreDescriptions,
+    Strategy::BankStatements::CheckTransactionInDatabase,
+    Strategy::BankStatements::SaveTransactions,
+    Strategy::ClosedMonths::Update,
+  ]
 
 end

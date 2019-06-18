@@ -17,6 +17,26 @@
 #
 
 class Subitem < ApplicationRecord
+  extend RuleMap
 
   belongs_to :item
+
+  rules_of_insert [
+    Strategy::Subitems::CheckName,
+    Strategy::SaveEntity,
+  ]
+
+  rules_of_update [
+    Strategy::Subitems::CheckName,
+    Strategy::SaveEntity,
+  ]
+
+  rules_of_destroy [
+    Strategy::Subitems::CheckExistAssociationToSubitem,
+    Strategy::DestroyEntity,
+  ]
+
+  rules_of_list [
+    Strategy::Subitems::Filter,
+  ]
 end
