@@ -17,6 +17,7 @@ class Accountants::RegistrationsController < Devise::RegistrationsController
       @family_name = params[:family_name]
       family = Family.new(name: @family_name)
     else
+      @accountant = Accountant.new(accountant_params)
       flash[:error] = 'Deve criar uma família'
       render :new
       return

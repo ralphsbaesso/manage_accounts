@@ -15,10 +15,5 @@
           .form-group
             = f.password_field :password_confirmation, autofocus: true, autocomplete: "email", placeholder: 'Confirme a Senha...', class: "form-control"
           .form-group
-            .checkbox
-              %label
-                %input{:type => "checkbox"}
-                Please accept the terms and conditions to proceed with your request.
-          .form-group
             = f.submit 'Registrar', class: 'btn btn-success'
             = render "accountants/shared/links"

@@ -39,6 +39,7 @@ class Accountant < ApplicationRecord
   has_many :debts
 
   validates_presence_of :name
+  after_create :create_defaut_item
 
   def account_ids
     self.accounts.map { |account| account.id }
@@ -61,6 +62,11 @@ class Accountant < ApplicationRecord
     start = Date.today.at_beginning_of_month
     final = Date.today.at_end_of_month
     Task.where(accountant_id: self.id, done: false, task_type: :debt, due_date: start..final).to_a
+  end
+
+  def create_defaut_item
+    item = Item.create(name: 'Outros', description: 'outros', accountant: self)
+    Subitem.create(name: 'Outros', description: 'outros', item: item)
   end
 
 end

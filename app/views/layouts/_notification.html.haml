@@ -163,8 +163,17 @@
           / notificatoin dropdown end
 
   - else
-    = link_to "Entrar", new_accountant_session_path, class: "btn btn-primary btn-sm"
-    = link_to "Registrar", new_accountant_registration_path, class: "btn btn-default btn-sm"
+
+    %li.dropdown{ style: "list-style-type:none; top: 10px"}
+      %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+        %span.username{ style: 'font-size: 20px'} Entrar
+        %b.caret
+      %ul.dropdown-menu.extended.logout
+        .log-arrow-up
+        %li.eborder-top
+          = link_to "Entrar", new_accountant_session_path, class: "btn btn-sucess btn-sm"
+        %li
+          = link_to "Registrar", new_accountant_registration_path, class: "btn btn-default btn-sm"
 
 :javascript
   $('.dropdown').click(function() {

@@ -21,23 +21,40 @@ module RuleMap
   end
 
   def self.insert(entity)
+    load
     @@rule_of_insert[make_symbol(entity)]
   end
 
   def self.update(entity)
+    load
     @@rule_of_update[make_symbol(entity)]
   end
 
   def self.destroy(entity)
+    load
     @@rule_of_destroy[make_symbol(entity)]
   end
 
   def self.list(entity)
+    load
     @@rule_of_list[make_symbol(entity)]
   end
 
   def self.make_symbol(entity)
     entity.is_a?(Symbol) ? entity : entity.class.name.underscore.downcase.to_sym
+  end
+
+  def self.load
+    @load ||= load_entities
+  end
+
+  def self.load_entities
+    model_path = File.join(Rails.root, 'app', 'models')
+    Dir.glob("#{model_path}/*.rb") do |path|
+      name_file = path.split('/').last
+      name_file.split('.').first.camelize.constantize
+    end
+    true
   end
 
   private
