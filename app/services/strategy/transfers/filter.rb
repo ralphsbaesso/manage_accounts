@@ -9,7 +9,7 @@ class Strategy::Transfers::Filter < AStrategy
 
     query = { account_id: accountant.account_ids }
 
-
+    query[:ignore] = false unless filter[:ignore].present?
     start_date = filter[:start_date] || -Date::Infinity.new
     end_date = filter[:end_date] || Date::Infinity.new
 

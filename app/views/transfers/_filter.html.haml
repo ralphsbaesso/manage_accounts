@@ -18,6 +18,8 @@
               %label Item
             .col-lg-2
               %label Subitem
+            .col-lg-2
+              %lable Ignorados?
           .row
             .col-lg-2
               = text_field_tag 'filter[start_date]', filter[:start_date], type: :date, class: 'form-control'
@@ -29,6 +31,8 @@
               = select_tag 'filter[item_id]', options_for_select_items(first_blank: true, selected: filter[:item_id]), id: :transaction_item_id, class: 'form-control'
             .col-lg-2
               = select_tag 'filter[subitem_id]', options_for_select_subitems(first_blank: true, selected: filter[:subitem_id]), id: :transaction_subitem_id, class: 'form-control'
+            .col-lg-2
+              = check_box_tag 'filter[ignore]', true, filter[:ignore]
           .row{ style: 'border-top-width: 10px; margin-top: 10px;' }
             .col-lg-10
               = submit_tag 'Buscar', class: 'btn btn-info pull-right', style: 'width: 100%'
