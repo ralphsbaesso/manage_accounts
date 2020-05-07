@@ -15,29 +15,29 @@ class Strategy::Reports::PieChart < AStrategy
   def format_pie_chart(transactions)
 
     item_value_hash = {}
+    item_negative_value_hash = {}
     transactions.valids.each do |transaction|
 
       name = transaction.subitem.try(:item).try(:name) || 'Item não informado'
-      if item_value_hash[name]
-        item_value_hash[name] += transaction.price_cents
+      if transaction.price_cents >= 0
+        if item_value_hash[name]
+          item_value_hash[name] += transaction.price_cents
+        else
+          item_value_hash[name] = transaction.price_cents
+        end
       else
-        item_value_hash[name] = transaction.price_cents
+        if item_negative_value_hash[name]
+          item_negative_value_hash[name] += transaction.price_cents
+        else
+          item_negative_value_hash[name] = transaction.price_cents
+        end
       end
 
     end
 
     # separa positivo e negativo
-    positives = []
-    negatives = []
-
-    item_value_hash.each do |k, v|
-      if v < 0
-        negatives << [k, (v * -1)]
-      else
-        positives << [k, v]
-      end
-
-    end
+    negatives = item_negative_value_hash.map { |k, v| [k, (v * -1)] }
+    positives = item_value_hash.map { |k, v| [k, v] }
 
     data = {
         positives: positives,

@@ -6,7 +6,7 @@ namespace :util do
     date = DateTime.now.strftime('%Y%m%d%H%M%S')
     puts date
 
-    puts `export PGPASSWORD='root'; pg_dump -h localhost -U postgres manage_accounts> ~/backup/#{date}.txt`
+    puts `export PGPASSWORD='bkps1234'; pg_dump -h localhost -U postgres manage_accounts> ~/backup/#{date}.txt`
   end
 
 end
